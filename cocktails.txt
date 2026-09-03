@@ -1,0 +1,198 @@
+[
+  {
+    "id": "old-fashioned",
+    "name": "Old Fashioned",
+    "category": "classic",
+    "origin": "Est. 1880s • Louisville, KY",
+    "image": "assets/old-fashioned.jpg",
+    "glassware": "rocks",
+    "method": "stir",
+    "ice": "large-rock",
+    "garnish": "orange-peel",
+    "liquidColorBottom": "#78350f",
+    "liquidColorTop": "#c2410c",
+    "hasFoam": false,
+    "isCarbonated": false,
+    "totalTargetVolumeOz": 2.25,
+    "ingredients": [
+      { "name": "Bourbon / Rye Whiskey", "measureOz": 2.0, "measureMl": 60, "type": "Spirit" },
+      { "name": "Demerara Syrup", "measureOz": 0.25, "measureMl": 7.5, "type": "Sweetener" },
+      { "name": "Angostura Bitters", "measureOz": "dash", "measureMl": "dash", "type": "Bitters" }
+    ],
+    "decoys": [
+      { "name": "Sweet Vermouth", "type": "Fortified Wine" },
+      { "name": "Campari", "type": "Aperitif" },
+      { "name": "Fresh Lemon Juice", "type": "Citrus" }
+    ],
+    "lore": {
+      "history": "The Old Fashioned was born when drinkers pushed back against 19th-century bar experimentations, demanding spirits served the 'old-fashioned way': whiskey, sugar, water, and aromatic bitters.",
+      "science": "Spirit-forward cocktails require 30 seconds of gentle stirring over dense ice to dilute by 20–25% and bring the liquid down to 28°F without cloudy aeration.",
+      "proTip": "Express the oils from a wide orange swatch over the glass surface and rim, but avoid macerating fruit in the glass.",
+      "flavorTags": ["Spirit-Forward", "Charred Oak", "Caramel & Spice"]
+    }
+  },
+  {
+    "id": "negroni",
+    "name": "Negroni",
+    "category": "classic",
+    "origin": "Est. 1919 • Florence, Italy",
+    "image": "assets/negroni.jpg",
+    "glassware": "rocks",
+    "method": "stir",
+    "ice": "large-rock",
+    "garnish": "orange-peel",
+    "liquidColorBottom": "#7f1d1d",
+    "liquidColorTop": "#c2410c",
+    "hasFoam": false,
+    "isCarbonated": false,
+    "totalTargetVolumeOz": 3.0,
+    "ingredients": [
+      { "name": "London Dry Gin", "measureOz": 1.0, "measureMl": 30, "type": "Spirit" },
+      { "name": "Campari", "measureOz": 1.0, "measureMl": 30, "type": "Bitter Liqueur" },
+      { "name": "Sweet Vermouth", "measureOz": 1.0, "measureMl": 30, "type": "Fortified Wine" }
+    ],
+    "decoys": [
+      { "name": "Dry Vermouth", "type": "Fortified Wine" },
+      { "name": "Aperol", "type": "Bitter Liqueur" },
+      { "name": "Soda Water", "type": "Effervescent" }
+    ],
+    "lore": {
+      "history": "Count Camillo Negroni famously requested bartender Forsco Scarselli at Caffè Casoni to bolster his favorite Americano cocktail by replacing soda water with London dry gin.",
+      "science": "The 1:1:1 balance matches gin's piney juniper backbone against sweet vermouth's botanical sugars and Campari's bitter gentian root.",
+      "proTip": "Always store vermouth in the refrigerator once uncorked; oxidized fortified wine ruins the drink's nuance.",
+      "flavorTags": ["Bittersweet", "Herbaceous", "Botanical"]
+    }
+  },
+  {
+    "id": "margarita",
+    "name": "Classic Margarita",
+    "category": "classic",
+    "origin": "Est. 1938 • Baja California",
+    "image": "assets/margarita.jpg",
+    "glassware": "coupe",
+    "method": "shake",
+    "ice": "neat",
+    "garnish": "lime-wheel",
+    "liquidColorBottom": "#4d7c0f",
+    "liquidColorTop": "#a3e635",
+    "hasFoam": false,
+    "isCarbonated": false,
+    "totalTargetVolumeOz": 3.0,
+    "ingredients": [
+      { "name": "Blanco Tequila", "measureOz": 2.0, "measureMl": 60, "type": "Agave Spirit" },
+      { "name": "Cointreau / Triple Sec", "measureOz": 0.75, "measureMl": 22.5, "type": "Orange Liqueur" },
+      { "name": "Fresh Lime Juice", "measureOz": 0.75, "measureMl": 22.5, "type": "Citrus" },
+      { "name": "Agave Nectar", "measureOz": 0.25, "measureMl": 7.5, "type": "Sweetener" }
+    ],
+    "decoys": [
+      { "name": "Mezcal", "type": "Agave Spirit" },
+      { "name": "Simple Syrup", "type": "Sweetener" },
+      { "name": "Lemon Juice", "type": "Citrus" }
+    ],
+    "lore": {
+      "history": "Part of the historic Daisy cocktail lineage (spirits sweetened with fruit liqueur and balanced by citrus), adapted for Mexican agave spirits.",
+      "science": "Citrus acids require vigorous shaking with hard ice to break down oils, emulsify pectin, and chill the drink below freezing.",
+      "proTip": "Rim only half of the glass perimeter with kosher or Maldon salt to leave the guest with an unsalted sipping option.",
+      "flavorTags": ["Bright Citrus", "Earthy Agave", "Saline Edge"]
+    }
+  },
+  {
+    "id": "espresso-martini",
+    "name": "Espresso Martini",
+    "category": "signature",
+    "origin": "Est. 1983 • Dick Bradsell, London",
+    "image": "assets/espresso-martini.jpg",
+    "glassware": "coupe",
+    "method": "shake",
+    "ice": "neat",
+    "garnish": "coffee-beans",
+    "liquidColorBottom": "#1c1917",
+    "liquidColorTop": "#44352b",
+    "hasFoam": true,
+    "isCarbonated": false,
+    "totalTargetVolumeOz": 3.5,
+    "ingredients": [
+      { "name": "Vodka", "measureOz": 1.5, "measureMl": 45, "type": "Spirit" },
+      { "name": "Coffee Liqueur", "measureOz": 0.75, "measureMl": 22.5, "type": "Liqueur" },
+      { "name": "Fresh Espresso", "measureOz": 1.0, "measureMl": 30, "type": "Coffee" },
+      { "name": "Demerara Syrup", "measureOz": 0.25, "measureMl": 7.5, "type": "Sweetener" }
+    ],
+    "decoys": [
+      { "name": "Vanilla Vodka", "type": "Spirit" },
+      { "name": "Irish Cream", "type": "Cream Liqueur" },
+      { "name": "Cold Brew Concentrate", "type": "Coffee" }
+    ],
+    "lore": {
+      "history": "Invented at London's Soho Brasserie when an icon demanded a drink that would 'wake me up, and then mess me up.'",
+      "science": "Using hot, freshly pulled espresso yields superior microfoam compared to cold brew due to intact CO2 emulsions and coffee lipids.",
+      "proTip": "Garnish with 3 beans placed in a triangular triad representing health, wealth, and happiness.",
+      "flavorTags": ["Velvet Crema", "Roasted Cocoa", "Energetic"]
+    }
+  },
+  {
+    "id": "smoky-oaxaca",
+    "name": "Oaxaca Old Fashioned",
+    "category": "signature",
+    "origin": "Est. 2007 • Death & Co, NYC",
+    "image": "assets/smoky-oaxaca.jpg",
+    "glassware": "rocks",
+    "method": "stir",
+    "ice": "large-rock",
+    "garnish": "orange-peel",
+    "liquidColorBottom": "#431407",
+    "liquidColorTop": "#c2410c",
+    "hasFoam": false,
+    "isCarbonated": false,
+    "totalTargetVolumeOz": 2.5,
+    "ingredients": [
+      { "name": "Reposado Tequila", "measureOz": 1.5, "measureMl": 45, "type": "Agave Spirit" },
+      { "name": "Mezcal", "measureOz": 0.5, "measureMl": 15, "type": "Agave Spirit" },
+      { "name": "Agave Nectar", "measureOz": 0.25, "measureMl": 7.5, "type": "Sweetener" },
+      { "name": "Angostura Bitters", "measureOz": "dash", "measureMl": "dash", "type": "Bitters" }
+    ],
+    "decoys": [
+      { "name": "Bourbon / Rye Whiskey", "type": "Spirit" },
+      { "name": "Lime Juice", "type": "Citrus" },
+      { "name": "Peychaud's Bitters", "type": "Bitters" }
+    ],
+    "lore": {
+      "history": "Crafted by Phil Ward, this pioneer modern classic proved that split-base agave formulations could sit comfortably beside centuries-old whiskey drinks.",
+      "science": "The 3:1 split base provides Reposado's subtle wood vanilla tones up front while letting smoky, artisanal Mezcal carry through the finish.",
+      "proTip": "Flame the orange oils across a matchstick to caramelize citrus sugars directly into the mezcal smoke.",
+      "flavorTags": ["Artisanal Smoke", "Honey Agave", "Warm Oak"]
+    }
+  },
+  {
+    "id": "penicillin",
+    "name": "Penicillin",
+    "category": "classic",
+    "origin": "Est. 2005 • Sam Ross, Milk & Honey, NYC",
+    "image": "assets/penicillin.jpg",
+    "glassware": "rocks",
+    "method": "shake",
+    "ice": "large-rock",
+    "garnish": "orange-peel",
+    "liquidColorBottom": "#9a3412",
+    "liquidColorTop": "#ea580c",
+    "hasFoam": false,
+    "isCarbonated": false,
+    "totalTargetVolumeOz": 3.75,
+    "ingredients": [
+      { "name": "Blended Scotch", "measureOz": 2.0, "measureMl": 60, "type": "Whisky" },
+      { "name": "Fresh Lemon Juice", "measureOz": 0.75, "measureMl": 22.5, "type": "Citrus" },
+      { "name": "Honey-Ginger Syrup", "measureOz": 0.75, "measureMl": 22.5, "type": "Sweetener" },
+      { "name": "Islay Peated Scotch Float", "measureOz": 0.25, "measureMl": 7.5, "type": "Whisky Float" }
+    ],
+    "decoys": [
+      { "name": "Bourbon / Rye Whiskey", "type": "Spirit" },
+      { "name": "Simple Syrup", "type": "Sweetener" },
+      { "name": "Ginger Beer", "type": "Effervescent" }
+    ],
+    "lore": {
+      "history": "Sam Ross invented this modern standard during an experimental prep shift at the famed Milk & Honey speakeasy in Manhattan.",
+      "science": "Floating peated single malt unifies the olfactory senses: intense campfire smoke hits your nose before silky ginger and honey soothe the palate.",
+      "proTip": "Float the Islay Scotch delicately over the convex back of a barspoon so it remains stratified atop the ice block.",
+      "flavorTags": ["Peat Smoke", "Candied Ginger", "Raw Honey"]
+    }
+  }
+]
