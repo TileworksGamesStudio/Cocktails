@@ -3,211 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#090807">
-    <title>SPECS // Speakeasy Card Masterclass</title>
-
+    <meta name="theme-color" content="#0d0c0a">
+    <title>SPECS // Cocktail Deck</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Ambience -->
-    <div class="ambient-glow glow-top"></div>
-    <div class="ambient-glow glow-bottom"></div>
 
-    <!-- Celebration Sparkle Canvas -->
-    <canvas id="sparkle-canvas"></canvas>
-
-    <div class="app-viewport">
+    <div class="app-shell">
         
         <!-- HEADER -->
-        <header class="app-header">
-            <div class="header-top">
-                <div class="brand">
-                    <span class="brand-sub">SPEAKEASY DECK</span>
-                    <h1 class="brand-title">S P E C S</h1>
-                </div>
-
-                <!-- Difficulty Selector -->
-                <div class="diff-control" id="diff-control">
-                    <button class="diff-btn" data-mode="easy">EASY</button>
-                    <button class="diff-btn active" data-mode="medium">MED</button>
-                    <button class="diff-btn" data-mode="hard">HARD</button>
-                </div>
-
-                <!-- Audio Toggle -->
-                <button id="sound-btn" class="icon-tool" aria-label="Toggle Sound">
-                    <svg id="sound-icon-on" class="sound-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                        <path d="M19 5a10 10 0 0 1 0 14M15.5 8.5a5 5 0 0 1 0 7"></path>
-                    </svg>
-                    <svg id="sound-icon-off" class="sound-svg hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                        <line x1="23" y1="9" x2="17" y2="15"></line>
-                        <line x1="17" y1="9" x2="23" y2="15"></line>
-                    </svg>
-                </button>
+        <header class="top-nav">
+            <div class="nav-brand">
+                <span class="logo">SPECS</span>
+                <span class="drink-count" id="card-index-indicator">01 / 37</span>
             </div>
 
-            <!-- Card Ribbon & Stats -->
-            <div class="deck-ribbon">
-                <button id="prev-card-btn" class="nav-arrow" aria-label="Previous Drink">‹</button>
-                <div class="meta-status">
-                    <span id="card-counter" class="status-pill">CARD 1 / 10</span>
-                    <span id="streak-counter" class="status-pill highlight">STREAK: 0 🔥</span>
+            <div class="nav-controls">
+                <!-- Mode Toggle -->
+                <div class="mode-pill">
+                    <button id="btn-mode-quiz" class="mode-btn active">QUIZ</button>
+                    <button id="btn-mode-study" class="mode-btn">STUDY</button>
                 </div>
-                <button id="next-card-btn" class="nav-arrow" aria-label="Next Drink">›</button>
+
+                <!-- Streak & Sound -->
+                <div class="streak-pill" id="streak-badge" title="Current streak">
+                    🔥 <span id="streak-val">0</span>
+                </div>
+                <button id="btn-sound" class="icon-btn" aria-label="Toggle Sound">
+                    <span id="sound-icon">🔊</span>
+                </button>
             </div>
         </header>
 
-        <!-- CENTER STAGE: 3D FLIPPABLE CARD -->
-        <main class="card-stage">
-            <div class="card-scene">
-                <div class="card-flip" id="active-card">
-
-                    <!-- ================= CARD FRONT (CHALLENGE) ================= -->
-                    <div class="card-face card-front">
-                        <div class="card-front-header">
-                            <div class="card-badge-row">
-                                <span class="tag-category" id="front-category">CLASSIC</span>
-                                <span class="tag-era" id="front-era">Circa 1880s</span>
-                            </div>
-                            <h2 class="drink-name" id="front-drink-name">Old Fashioned</h2>
+        <!-- MAIN CARD VIEW -->
+        <main class="deck-container">
+            <div class="card-flipper" id="card-flipper">
+                
+                <!-- FRONT FACE -->
+                <section class="card-face card-front" id="card-front">
+                    <div class="card-header">
+                        <div class="meta-tags">
+                            <span class="tag" id="card-category">PRE-PROHIBITION</span>
+                            <span class="tag-sub" id="card-era">Circa 1880s</span>
                         </div>
-
-                        <!-- Hardware Slots: Glassware & Method -->
-                        <div class="hardware-row">
-                            <div class="hw-slot" id="slot-glass" data-target="glass">
-                                <span class="hw-label">GLASSWARE</span>
-                                <div class="hw-placeholder" id="display-glass">
-                                    <span class="plus-icon">+</span> Select Glass
-                                </div>
+                        <h1 class="drink-title" id="card-title">Old Fashioned</h1>
+                        <div class="spec-badges">
+                            <div class="spec-badge">
+                                <span class="badge-label">GLASS</span>
+                                <strong id="card-glass">Rocks</strong>
                             </div>
-                            <div class="hw-slot" id="slot-method" data-target="method">
-                                <span class="hw-label">METHOD</span>
-                                <div class="hw-placeholder" id="display-method">
-                                    <span class="plus-icon">+</span> Select Method
-                                </div>
+                            <div class="spec-badge">
+                                <span class="badge-label">METHOD</span>
+                                <strong id="card-method">Stirred</strong>
                             </div>
-                        </div>
-
-                        <!-- Ingredients Slots Section -->
-                        <div class="ingredients-section">
-                            <div class="section-title-row">
-                                <span class="sec-label">REQUIRED INGREDIENTS</span>
-                                <span class="sec-hint" id="missing-count-hint">Missing 2</span>
-                            </div>
-                            <div class="ingredient-slots-list" id="ingredient-slots-container">
-                                <!-- Dynamic ingredient slot items generated via JS -->
-                            </div>
-                        </div>
-
-                        <!-- Card Front Footer / Status Hint -->
-                        <div class="card-status-bar" id="card-status-bar">
-                            <span id="status-hint-text">Select missing items from the rack below</span>
                         </div>
                     </div>
 
-                    <!-- ================= CARD BACK (BIO & DOSSIER) ================= -->
-                    <div class="card-face card-back">
-                        <div class="card-back-header">
-                            <div>
-                                <span class="dossier-tag">MASTER ARCHIVE SPEC</span>
-                                <h3 class="back-title" id="back-drink-name">Old Fashioned</h3>
-                            </div>
-                            <button id="flip-back-btn" class="return-chip" aria-label="Flip to Card Front">
-                                <span>BUILD</span> ↺
-                            </button>
-                        </div>
-
-                        <!-- Scrollable Bio & Historical Notes -->
-                        <div class="card-back-scroll">
-                            <!-- Canonical Formulation -->
-                            <div class="bio-block">
-                                <h4 class="bio-heading">CANONICAL FORMULATION</h4>
-                                <div class="canonical-recipe" id="back-canonical-recipe">
-                                    <!-- Populated via JS -->
-                                </div>
-                            </div>
-
-                            <!-- Tasting & Sensory Profile -->
-                            <div class="bio-block">
-                                <h4 class="bio-heading">FLAVOR & PALATE PROFILE</h4>
-                                <div class="tasting-tags" id="back-tasting-tags">
-                                    <!-- Populated via JS -->
-                                </div>
-                            </div>
-
-                            <!-- Historical Pedigree -->
-                            <div class="bio-block">
-                                <h4 class="bio-heading">HISTORICAL PEDIGREE</h4>
-                                <p class="bio-text" id="back-history-text"></p>
-                            </div>
-
-                            <!-- Head Bartender's Secret -->
-                            <div class="bio-block secret-box">
-                                <h4 class="bio-heading amber">HEAD BARTENDER'S SECRET</h4>
-                                <p class="bio-text" id="back-protip-text"></p>
-                            </div>
-
-                            <!-- Glassware & Dilution Lore -->
-                            <div class="bio-block">
-                                <h4 class="bio-heading">TECHNIQUE & GLASS NOTES</h4>
-                                <p class="bio-text" id="back-technique-text"></p>
-                            </div>
-                        </div>
-
-                        <!-- Back Card Action Bar -->
-                        <div class="card-back-footer">
-                            <button id="advance-next-btn" class="advance-btn">
-                                <span>NEXT SPECIMEN</span> ›
-                            </button>
-                        </div>
+                    <!-- INGREDIENTS AREA -->
+                    <div class="recipe-container">
+                        <div class="section-heading">SPECIFICATION</div>
+                        <ul class="recipe-list" id="recipe-list">
+                            <!-- Injected via JavaScript -->
+                        </ul>
                     </div>
 
-                </div>
+                    <!-- FLIP HINT / TOGGLE -->
+                    <button class="flip-action-bar" id="btn-flip-front">
+                        <span>TAP FOR PEDIGREE & PRO-TIP</span>
+                        <span class="flip-arrow">↺</span>
+                    </button>
+                </section>
+
+                <!-- BACK FACE -->
+                <section class="card-face card-back" id="card-back">
+                    <div class="card-header back-header">
+                        <div>
+                            <span class="tag back-tag">MASTER DOSSIER</span>
+                            <h2 class="drink-title small" id="back-title">Old Fashioned</h2>
+                        </div>
+                        <button class="icon-btn-text" id="btn-flip-back">
+                            RETURN ✕
+                        </button>
+                    </div>
+
+                    <div class="dossier-body">
+                        <!-- Tasting Profile -->
+                        <div class="dossier-section">
+                            <div class="section-heading">TASTING PROFILE</div>
+                            <div class="tasting-tags" id="back-tasting"></div>
+                        </div>
+
+                        <!-- Full Recipe with Exact Specs -->
+                        <div class="dossier-section">
+                            <div class="section-heading">CANONICAL MEASURES</div>
+                            <div class="canonical-box" id="back-canonical"></div>
+                        </div>
+
+                        <!-- Pro Tip -->
+                        <div class="dossier-section tip-box">
+                            <div class="section-heading amber">BARTENDER'S PRO-TIP</div>
+                            <p class="body-text" id="back-protip"></p>
+                        </div>
+
+                        <!-- Historical Lore -->
+                        <div class="dossier-section">
+                            <div class="section-heading">HISTORICAL ORIGIN</div>
+                            <p class="body-text" id="back-history"></p>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </main>
 
-        <!-- BOTTOM INTERACTIVE RACK -->
-        <footer class="selection-dock">
-            <!-- Rack Category Tabs -->
-            <div class="dock-nav-tabs" id="rack-tabs">
-                <button class="dock-tab active" data-tab="ingredients">
-                    <span>INGREDIENTS</span>
-                    <span class="tab-badge" id="tab-ing-count">0</span>
-                </button>
-                <button class="dock-tab" data-tab="hardware">
-                    <span>GLASS & METHOD</span>
-                </button>
-            </div>
-
-            <!-- TRAY VIEW 1: INGREDIENTS -->
-            <div class="dock-pane active" id="pane-ingredients">
-                <div class="tray-scroll" id="ingredients-tray">
-                    <!-- Dynamic chips generated via JS -->
+        <!-- BOTTOM INTERACTION AREA -->
+        <footer class="bottom-dock">
+            
+            <!-- QUIZ CHOICES (Visible in Quiz Mode) -->
+            <div class="quiz-tray" id="quiz-tray">
+                <div class="quiz-prompt" id="quiz-prompt">Identify the missing ingredient:</div>
+                <div class="choices-grid" id="choices-grid">
+                    <!-- 4 Large Tappable Option Buttons -->
                 </div>
             </div>
 
-            <!-- TRAY VIEW 2: GLASSWARE & METHOD -->
-            <div class="dock-pane" id="pane-hardware">
-                <div class="hw-picker-grid">
-                    <div class="hw-picker-col">
-                        <span class="picker-subtitle">SELECT GLASS</span>
-                        <div class="hw-chips-list" id="glass-tray">
-                            <!-- Populated with SVG vector icons -->
-                        </div>
-                    </div>
-                    <div class="hw-picker-col">
-                        <span class="picker-subtitle">SELECT METHOD</span>
-                        <div class="hw-chips-list" id="method-tray">
-                            <!-- Populated via JS -->
-                        </div>
-                    </div>
-                </div>
+            <!-- DECK NAVIGATION -->
+            <div class="nav-bar">
+                <button class="nav-btn" id="btn-prev" aria-label="Previous Drink">
+                    <span class="nav-icon">‹</span> PREV
+                </button>
+
+                <button class="nav-btn center-action" id="btn-search-modal">
+                    ALL SPECIMENS ☰
+                </button>
+
+                <button class="nav-btn" id="btn-next" aria-label="Next Drink">
+                    NEXT <span class="nav-icon">›</span>
+                </button>
             </div>
         </footer>
+
+        <!-- QUICK JUMP MODAL -->
+        <div class="modal-overlay" id="search-modal">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h3>SELECT DRINK (37)</h3>
+                    <button class="icon-btn" id="btn-close-modal">✕</button>
+                </div>
+                <div class="modal-list" id="modal-drinks-list">
+                    <!-- 37 items injected via JS -->
+                </div>
+            </div>
+        </div>
 
     </div>
 
