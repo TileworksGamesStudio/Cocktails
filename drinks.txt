@@ -1,0 +1,712 @@
+[
+  {
+    "id": "old-fashioned",
+    "name": "Old Fashioned",
+    "category": "Pre-Prohibition",
+    "era": "Circa 1880s • Louisville, KY",
+    "glassware": "Rocks / Lowball",
+    "method": "Stirred over Ice",
+    "ingredients": ["Bourbon or Rye Whiskey", "Demerara Syrup", "Angostura Bitters", "Orange Peel"],
+    "decoys": ["Sweet Vermouth", "Campari", "Lemon Juice", "Club Soda"],
+    "canonicalRecipe": [
+      { "item": "Bourbon or Rye Whiskey", "amount": "2.0 oz (60 ml)" },
+      { "item": "Demerara Syrup (2:1)", "amount": "0.25 oz (7.5 ml)" },
+      { "item": "Angostura Bitters", "amount": "2–3 Dashes" },
+      { "item": "Orange Peel", "amount": "Expressed over Top" }
+    ],
+    "tastingNotes": ["Spirit-Forward", "Charred Oak", "Caramelized Sugar", "Warm Spice"],
+    "history": "Born when 19th-century patrons grew exhausted by elaborate bar novelties and ordered their whiskey prepared the 'old-fashioned way'—spirit, sugar, water, and bitters.",
+    "proTip": "Express orange peel oils firmly over the rim and liquid surface. Never muddle cocktail cherries into the liquid; keep the silhouette clear and dense."
+  },
+  {
+    "id": "negroni",
+    "name": "Negroni",
+    "category": "Classic Aperitivo",
+    "era": "Est. 1919 • Caffè Casoni, Florence",
+    "glassware": "Rocks / Lowball",
+    "method": "Stirred over Ice",
+    "ingredients": ["London Dry Gin", "Campari", "Sweet Vermouth", "Orange Twist"],
+    "decoys": ["Dry Vermouth", "Aperol", "Club Soda", "Tequila Blanco"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "1.0 oz (30 ml)" },
+      { "item": "Campari", "amount": "1.0 oz (30 ml)" },
+      { "item": "Sweet Vermouth", "amount": "1.0 oz (30 ml)" },
+      { "item": "Orange Twist", "amount": "Expressed over Top" }
+    ],
+    "tastingNotes": ["Bittersweet", "Pungent Juniper", "Bitter Orange", "Herbal Gentian"],
+    "history": "Count Camillo Negroni famously requested bartender Forsco Scarselli fortify his favorite Americano by swapping club soda for pungent London Dry gin.",
+    "proTip": "Keep sweet vermouth refrigerated once uncorked; oxidized fortified wine flattens the herbal brightness of this legendary trio."
+  },
+  {
+    "id": "whiskey-sour",
+    "name": "Whiskey Sour",
+    "category": "Pre-Prohibition",
+    "era": "Est. 1860s • Waukesha, WI / New York",
+    "glassware": "Rocks / Lowball",
+    "method": "Vigorously Shaken",
+    "ingredients": ["Bourbon Whiskey", "Fresh Lemon Juice", "Simple Syrup", "Egg White / Aquafaba"],
+    "decoys": ["Rye Whiskey", "Lime Juice", "Orange Liqueur", "Sweet Vermouth"],
+    "canonicalRecipe": [
+      { "item": "Bourbon Whiskey", "amount": "2.0 oz (60 ml)" },
+      { "item": "Fresh Lemon Juice", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Simple Syrup (1:1)", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Fresh Egg White (or Aquafaba)", "amount": "0.5 oz (15 ml)" }
+    ],
+    "tastingNotes": ["Creamy Texture", "Tart Lemon", "Warm Caramel", "Subtle Vanilla"],
+    "history": "First codified in Jerry Thomas's 1862 guide. The addition of egg white emerged in the early 20th century to create its signature velvety crown.",
+    "proTip": "Perform a 'reverse dry shake': shake hard with ice first to chill and dilute, strain out ice, then shake vigorously without ice to whip dense, meringue-like foam."
+  },
+  {
+    "id": "dark-n-stormy",
+    "name": "Dark 'n Stormy",
+    "category": "Bermuda Heritage",
+    "era": "Circa 1920s • Bermuda",
+    "glassware": "Highball",
+    "method": "Built in Glass",
+    "ingredients": ["Gosling's Black Seal Rum", "Spicy Ginger Beer", "Fresh Lime Juice"],
+    "decoys": ["White Rum", "Ginger Ale", "Simple Syrup", "Cola"],
+    "canonicalRecipe": [
+      { "item": "Gosling's Black Seal Rum", "amount": "2.0 oz (60 ml)" },
+      { "item": "Spicy Ginger Beer", "amount": "4.0 oz (120 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.5 oz (15 ml)" }
+    ],
+    "tastingNotes": ["Dark Molasses", "Pungent Ginger", "Tart Citrus", "Caramelized Spice"],
+    "history": "Trademarked by Gosling Brothers in Bermuda after British naval officers combined black molasses rum with carbonated ginger beer.",
+    "proTip": "Float black rum gently on top of ginger beer over ice so the dense, dark rum resembles a storm cloud over a churning sea."
+  },
+  {
+    "id": "americano",
+    "name": "Americano",
+    "category": "Italian Heritage",
+    "era": "Est. 1860s • Caffè Campari, Milan",
+    "glassware": "Highball",
+    "method": "Built in Glass",
+    "ingredients": ["Campari", "Sweet Vermouth", "Club Soda", "Orange Slice"],
+    "decoys": ["London Dry Gin", "Aperol", "Tonic Water", "Dry Vermouth"],
+    "canonicalRecipe": [
+      { "item": "Campari", "amount": "1.5 oz (45 ml)" },
+      { "item": "Sweet Italian Vermouth", "amount": "1.5 oz (45 ml)" },
+      { "item": "Chilled Club Soda", "amount": "Top (~2.0 oz)" }
+    ],
+    "tastingNotes": ["Bittersweet", "Herbal Botanical", "Effervescent", "Zesty Orange"],
+    "history": "Originally known as the Milano-Torino, renamed due to its tremendous popularity among American tourists visiting during Prohibition.",
+    "proTip": "Pour club soda down the twisted spiral shaft of a barspoon directly into the ice to preserve carbonation effervescence."
+  },
+  {
+    "id": "bloody-mary",
+    "name": "Classic Bloody Mary",
+    "category": "World Classic",
+    "era": "Est. 1921 • Harry's New York Bar, Paris",
+    "glassware": "Highball",
+    "method": "Thrown between Shakers",
+    "ingredients": ["Vodka", "Tomato Juice", "Fresh Lemon Juice", "Worcestershire Sauce", "Hot Pepper Sauce", "Celery Salt"],
+    "decoys": ["Gin", "Clamato Juice", "Lime Juice", "Soy Sauce"],
+    "canonicalRecipe": [
+      { "item": "Vodka", "amount": "1.5 oz (45 ml)" },
+      { "item": "Tomato Juice", "amount": "3.0 oz (90 ml)" },
+      { "item": "Fresh Lemon Juice", "amount": "0.5 oz (15 ml)" },
+      { "item": "Worcestershire Sauce", "amount": "2 Dashes" },
+      { "item": "Tabasco & Celery Salt", "amount": "To Taste" }
+    ],
+    "tastingNotes": ["Savory Umami", "Spicy Heat", "Zesty Tomato", "Bracing Citrus"],
+    "history": "Created by Fernand Petiot at Harry's New York Bar in Paris, later elevated at the St. Regis King Cole Bar in NYC as the 'Red Snapper'.",
+    "proTip": "Never shake a Bloody Mary. Shaking breaks tomato pectin cells into a watery foam. Rolling (throwing) chills and integrates without destroying viscosity."
+  },
+  {
+    "id": "tom-collins",
+    "name": "Tom Collins",
+    "category": "Pre-Prohibition",
+    "era": "Est. 1876 • Jerry Thomas, New York",
+    "glassware": "Collins",
+    "method": "Shaken & Topped",
+    "ingredients": ["Old Tom Gin (or London Dry)", "Fresh Lemon Juice", "Simple Syrup", "Club Soda"],
+    "decoys": ["Lime Juice", "Vodka", "Tonic Water", "Ginger Ale"],
+    "canonicalRecipe": [
+      { "item": "Old Tom Gin (or London Dry)", "amount": "2.0 oz (60 ml)" },
+      { "item": "Fresh Lemon Juice", "amount": "1.0 oz (30 ml)" },
+      { "item": "Simple Syrup (1:1)", "amount": "0.5 oz (15 ml)" },
+      { "item": "Chilled Club Soda", "amount": "Top (~2.5 oz)" }
+    ],
+    "tastingNotes": ["Sparkling Citrus", "Botanical Pine", "Balanced Sweet", "Quenching"],
+    "history": "Linked to the Great Tom Collins Hoax of 1874, where pranksters sent victims racing through New York bars seeking a slanderous fellow named Tom Collins.",
+    "proTip": "Add chilled club soda to the glass before straining the shaken gin and lemon mix; this incorporates bubbles uniformly without flat spots."
+  },
+  {
+    "id": "mojito",
+    "name": "Cuban Mojito",
+    "category": "Cuban Heritage",
+    "era": "Circa 1930s • Havana, Cuba",
+    "glassware": "Collins",
+    "method": "Muddled & Built",
+    "ingredients": ["White Rum", "Fresh Lime Juice", "Fresh Spearmint", "Demerara Sugar", "Club Soda"],
+    "decoys": ["Dark Rum", "Lemon Juice", "Tonic Water", "Triple Sec"],
+    "canonicalRecipe": [
+      { "item": "White Cuban Rum", "amount": "2.0 oz (60 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Fine Sugar / Demerara Syrup", "amount": "0.5 oz (15 ml)" },
+      { "item": "Fresh Spearmint Leaves", "amount": "8–10 Leaves" },
+      { "item": "Club Soda", "amount": "Top (~1.5 oz)" }
+    ],
+    "tastingNotes": ["Crisp Mint", "Zesty Lime", "Cane Sugar", "Effervescent"],
+    "history": "Beloved by Ernest Hemingway at La Bodeguita del Medio in Havana, evolving from 16th-century medicinal aguardiente tonics.",
+    "proTip": "Never pulverize mint with the muddler; aggressive muddling tears leaf chlorophyll veins, releasing bitter, grassy tannins. Press gently."
+  },
+  {
+    "id": "ramos-gin-fizz",
+    "name": "Ramos Gin Fizz",
+    "category": "New Orleans Classic",
+    "era": "Est. 1888 • Imperial Cabinet Saloon, New Orleans",
+    "glassware": "Collins",
+    "method": "Vigorously Shaken",
+    "ingredients": ["London Dry Gin", "Fresh Lemon Juice", "Fresh Lime Juice", "Simple Syrup", "Heavy Cream", "Egg White", "Orange Flower Water", "Club Soda"],
+    "decoys": ["Triple Sec", "Grapefruit Juice", "Almond Orgeat", "Angostura Bitters"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "1.5 oz (45 ml)" },
+      { "item": "Fresh Lemon & Lime Juice", "amount": "0.5 oz each (30 ml)" },
+      { "item": "Simple Syrup", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Heavy Cream", "amount": "1.0 oz (30 ml)" },
+      { "item": "Fresh Egg White", "amount": "1 Egg White" },
+      { "item": "Orange Flower Water", "amount": "3–4 Drops" },
+      { "item": "Club Soda", "amount": "To Rise Head" }
+    ],
+    "tastingNotes": ["Floral Cream", "Bright Citrus", "Fluffy Cloud", "Velvet Botanical"],
+    "history": "Invented by Henry C. Ramos. During Mardi Gras 1915, he employed a chain of 35 'shaker boys' to pass each cocktail down the line for continuous shaking.",
+    "proTip": "Pour soda into the glass, add the shaken cocktail, and let it rest 60 seconds; the foam pillar will rise above the rim like a soufflé."
+  },
+  {
+    "id": "daiquiri",
+    "name": "Authentic Daiquiri",
+    "category": "Cuban Heritage",
+    "era": "Est. 1898 • Daiquirí, Cuba",
+    "glassware": "Cocktail Coupe",
+    "method": "Vigorously Shaken",
+    "ingredients": ["White Rum", "Fresh Lime Juice", "Demerara Simple Syrup"],
+    "decoys": ["Dark Rum", "Triple Sec", "Lemon Juice", "Maraschino Liqueur"],
+    "canonicalRecipe": [
+      { "item": "Light Cuban Rum", "amount": "2.0 oz (60 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Rich Demerara Syrup (2:1)", "amount": "0.75 oz (22.5 ml)" }
+    ],
+    "tastingNotes": ["Electric Citrus", "Cane Grass", "Mineral Crispness", "Silky Balance"],
+    "history": "Originated when American mining engineer Jennings Cox ran out of gin at a gathering in Cuba and mixed local cane rum with freshly plucked limes.",
+    "proTip": "The classic Daiquiri is the ultimate bartender litmus test. There is nowhere to hide poor ice technique or pasteurized citrus juice."
+  },
+  {
+    "id": "aviation",
+    "name": "Aviation",
+    "category": "Pre-Prohibition",
+    "era": "Est. 1916 • Hotel Wallick, NYC",
+    "glassware": "Cocktail Coupe",
+    "method": "Vigorously Shaken",
+    "ingredients": ["London Dry Gin", "Maraschino Liqueur", "Crème de Violette", "Fresh Lemon Juice"],
+    "decoys": ["Vodka", "Triple Sec", "Blue Curaçao", "Sweet Vermouth"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "2.0 oz (60 ml)" },
+      { "item": "Maraschino Liqueur (Luxardo)", "amount": "0.5 oz (15 ml)" },
+      { "item": "Crème de Violette", "amount": "0.25 oz (7.5 ml)" },
+      { "item": "Fresh Lemon Juice", "amount": "0.75 oz (22.5 ml)" }
+    ],
+    "tastingNotes": ["Floral Violet", "Sour Cherry Stone", "Crisp Pine", "Powdered Blossom"],
+    "history": "Published by Hugo Ensslin on the eve of Prohibition, named for its atmospheric sky-blue hue reminiscent of early 20th-century aviation dawn.",
+    "proTip": "A heavy hand with Crème de Violette turns the drink into lavender hand-soap. Treat violette with the caution of liquid perfume."
+  },
+  {
+    "id": "last-word",
+    "name": "The Last Word",
+    "category": "Prohibition Classic",
+    "era": "Est. 1916 • Detroit Athletic Club",
+    "glassware": "Cocktail Coupe",
+    "method": "Vigorously Shaken",
+    "ingredients": ["London Dry Gin", "Green Chartreuse", "Maraschino Liqueur", "Fresh Lime Juice"],
+    "decoys": ["Yellow Chartreuse", "Cointreau", "Lemon Juice", "Vodka"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Green Chartreuse", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Maraschino Liqueur (Luxardo)", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.75 oz (22.5 ml)" }
+    ],
+    "tastingNotes": ["Intense Herbal", "Sharp Lime", "Cherry Pit", "Complex Pine"],
+    "history": "Conceived during Prohibition at the Detroit Athletic Club and rescued from obscurity in 2004 by Seattle bartender Murray Stenson.",
+    "proTip": "Equal parts (1:1:1:1) is gospel. The ferocious 110-proof Green Chartreuse balances Maraschino's sweet cherry stone and fresh lime acidity."
+  },
+  {
+    "id": "el-presidente",
+    "name": "El Presidente",
+    "category": "Cuban Golden Age",
+    "era": "Circa 1920s • Sevilla Biltmore, Havana",
+    "glassware": "Cocktail Coupe",
+    "method": "Thrown between Shakers",
+    "ingredients": ["Aged White Cuban Rum", "Blanc / Bianco Vermouth", "Dry Orange Curaçao", "Real Pomegranate Grenadine"],
+    "decoys": ["Dry French Vermouth", "Sweet Red Vermouth", "Lime Juice", "Angostura Bitters"],
+    "canonicalRecipe": [
+      { "item": "Aged White Cuban Rum", "amount": "1.5 oz (45 ml)" },
+      { "item": "Blanc / Bianco Vermouth", "amount": "1.5 oz (45 ml)" },
+      { "item": "Pierre Ferrand Dry Curaçao", "amount": "1 Barspoon (0.25 oz)" },
+      { "item": "Real Pomegranate Grenadine", "amount": "1 Barspoon (0.25 oz)" }
+    ],
+    "tastingNotes": ["Silky Vanilla", "Floral Vermouth", "Candied Orange Peel", "Ruby Dryness"],
+    "history": "Created during American Prohibition by Eddie Woelke in Havana for Cuban President Gerardo Machado.",
+    "proTip": "Use French Blanc or Italian Bianco vermouth (sweet white vermouth), NOT bone-dry vermouth. The delicate sweetness is essential."
+  },
+  {
+    "id": "dry-martini",
+    "name": "Classic Dry Martini",
+    "category": "Classic",
+    "era": "Circa 1900s • New York / San Francisco",
+    "glassware": "Martini Glass",
+    "method": "Stirred over Ice",
+    "ingredients": ["London Dry Gin", "Dry Vermouth", "Orange Bitters", "Lemon Peel or Olive"],
+    "decoys": ["Sweet Vermouth", "Vodka", "Maraschino Liqueur", "Simple Syrup"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "2.5 oz (75 ml)" },
+      { "item": "Dry French Vermouth", "amount": "0.5 oz (15 ml)" },
+      { "item": "Orange Bitters", "amount": "1 Dash (Classic Spec)" },
+      { "item": "Lemon Peel or Castelvetrano Olive", "amount": "1 Garnish" }
+    ],
+    "tastingNotes": ["Bone Dry", "Pine Juniper", "Delicate Floral", "Silken"],
+    "history": "The apex of cocktail minimalism. Evolving from the sweeter Martinez into a bone-dry beacon of early 20th-century cafe society.",
+    "proTip": "Chill your glassware in a freezer below 0°F. A Martini should be served brutally cold; warm temperatures expose unrefined alcohol burn."
+  },
+  {
+    "id": "espresso-martini",
+    "name": "Espresso Martini",
+    "category": "Modern Craft",
+    "era": "Est. 1983 • Soho Brasserie, London",
+    "glassware": "Martini Glass",
+    "method": "Vigorously Shaken",
+    "ingredients": ["Vodka", "Coffee Liqueur", "Fresh Espresso", "Simple Syrup"],
+    "decoys": ["Irish Cream", "Cold Brew", "Dark Rum", "Cacao Liqueur"],
+    "canonicalRecipe": [
+      { "item": "Vodka", "amount": "1.5 oz (45 ml)" },
+      { "item": "Coffee Liqueur (e.g. Kahlúa)", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Fresh Pulled Hot Espresso", "amount": "1.0 oz (30 ml)" },
+      { "item": "Rich Simple Syrup (2:1)", "amount": "0.25 oz (7.5 ml)" }
+    ],
+    "tastingNotes": ["Velveteen Crema", "Roasted Cocoa", "Dark Toffee", "Clean Finish"],
+    "history": "Invented by London icon Dick Bradsell when a supermodel walked up to his bar asking for a drink to 'wake me up and then mess me up.'",
+    "proTip": "Pull the espresso shot right before shaking; natural crema oils emulsify under hard aeration to create a dense, mousse-like foam head."
+  },
+  {
+    "id": "vesper",
+    "name": "Vesper Martini",
+    "category": "Literary Classic",
+    "era": "Est. 1953 • Ian Fleming / Casino Royale",
+    "glassware": "Martini Glass",
+    "method": "Vigorously Shaken",
+    "ingredients": ["London Dry Gin", "Vodka", "Lillet Blanc / Kina Lillet", "Lemon Peel"],
+    "decoys": ["Dry Vermouth", "Sweet Vermouth", "Orange Bitters", "Olive"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin (e.g. Gordon's)", "amount": "3.0 oz (90 ml)" },
+      { "item": "100-Proof Grain Vodka", "amount": "1.0 oz (30 ml)" },
+      { "item": "Kina Lillet / Cocchi Americano", "amount": "0.5 oz (15 ml)" },
+      { "item": "Large Thin Lemon Peel", "amount": "1 Expressed" }
+    ],
+    "tastingNotes": ["Potent", "Crisp Grain", "Bitter Quinine", "Bright Lemon"],
+    "history": "Invented by Ian Fleming in his 1953 debut James Bond novel 'Casino Royale', named for double agent Vesper Lynd.",
+    "proTip": "Bond ordered this shaken, not stirred, to deliberately aerate and dilute the massive 4.5 oz high-proof alcohol payload."
+  },
+  {
+    "id": "manhattan",
+    "name": "Manhattan",
+    "category": "Pre-Prohibition",
+    "era": "Est. 1870s • Manhattan Club, NYC",
+    "glassware": "Nick & Nora",
+    "method": "Stirred over Ice",
+    "ingredients": ["Rye Whiskey", "Sweet Vermouth", "Angostura Bitters", "Brandied Cherry"],
+    "decoys": ["Bourbon Whiskey", "Dry Vermouth", "Orange Bitters", "Campari"],
+    "canonicalRecipe": [
+      { "item": "Straight Rye Whiskey (100 Proof)", "amount": "2.0 oz (60 ml)" },
+      { "item": "Sweet Italian Vermouth", "amount": "1.0 oz (30 ml)" },
+      { "item": "Angostura Bitters", "amount": "2 Dashes" },
+      { "item": "Luxardo Brandied Cherry", "amount": "1 Garnish" }
+    ],
+    "tastingNotes": ["Dark Cherry", "Spicy Rye Grain", "Warming Botanical", "Vanilla Oak"],
+    "history": "A timeless masterpiece created in New York City. The peppery rye grain cuts cleanly across the lush, fortified wine herbal sweetness.",
+    "proTip": "Always reach for spicy 100-proof Straight Rye rather than softer Bourbon to avoid a flabby, overly sweet flavor profile."
+  },
+  {
+    "id": "martinez",
+    "name": "Martinez",
+    "category": "Pre-Prohibition",
+    "era": "Circa 1884 • O.H. Byron / Jerry Thomas",
+    "glassware": "Nick & Nora",
+    "method": "Stirred over Ice",
+    "ingredients": ["Old Tom Gin", "Sweet Vermouth", "Maraschino Liqueur", "Angostura Bitters", "Orange Bitters"],
+    "decoys": ["London Dry Gin", "Dry Vermouth", "Campari", "Simple Syrup"],
+    "canonicalRecipe": [
+      { "item": "Old Tom Gin (Malted)", "amount": "1.5 oz (45 ml)" },
+      { "item": "Sweet Italian Vermouth", "amount": "1.5 oz (45 ml)" },
+      { "item": "Luxardo Maraschino Liqueur", "amount": "1 Barspoon (0.25 oz)" },
+      { "item": "Angostura Bitters", "amount": "1 Dash" },
+      { "item": "Orange Bitters", "amount": "1 Dash" }
+    ],
+    "tastingNotes": ["Malty Juniper", "Cherry Stone", "Herbal Vermouth", "Warm Spice"],
+    "history": "The historic evolutionary link between the Manhattan and the Dry Martini, often credited to Jerry Thomas en route to Martinez, California.",
+    "proTip": "Use Old Tom Gin; its malted base and light sweetness bridge the botanical gap between sweet vermouth and maraschino."
+  },
+  {
+    "id": "bamboo",
+    "name": "Bamboo Cocktail",
+    "category": "Late Victorian",
+    "era": "Circa 1890s • Grand Hotel, Yokohama (Louis Eppinger)",
+    "glassware": "Nick & Nora",
+    "method": "Thrown between Shakers",
+    "ingredients": ["Dry Fino Sherry", "Sweet Vermouth", "Angostura Bitters", "Orange Bitters"],
+    "decoys": ["Gin", "Dry Vermouth", "Campari", "Whiskey"],
+    "canonicalRecipe": [
+      { "item": "Dry Fino or Manzanilla Sherry", "amount": "1.5 oz (45 ml)" },
+      { "item": "Sweet Italian Vermouth", "amount": "1.5 oz (45 ml)" },
+      { "item": "Angostura Bitters", "amount": "1 Dash" },
+      { "item": "Orange Bitters", "amount": "2 Dashes" }
+    ],
+    "tastingNotes": ["Saline Almond", "Nutty Yeast", "Herbal Sweetness", "Low-ABV Dryness"],
+    "history": "Created by German bartender Louis Eppinger in Yokohama, Japan, becoming a low-proof sensation among Western travelers.",
+    "proTip": "Use bone-dry Fino or Manzanilla Sherry fresh from the fridge; oxidized sherry ruins the nutty flor complexity."
+  },
+  {
+    "id": "hurricane",
+    "name": "New Orleans Hurricane",
+    "category": "Tiki Classic",
+    "era": "Est. 1940s • Pat O'Brien's, New Orleans",
+    "glassware": "Hurricane",
+    "method": "Vigorously Shaken",
+    "ingredients": ["Dark Jamaican Rum", "White Rum", "Passion Fruit Syrup", "Fresh Lemon Juice", "Real Grenadine"],
+    "decoys": ["Bourbon", "Orange Juice", "Pineapple Juice", "Blue Curaçao"],
+    "canonicalRecipe": [
+      { "item": "Dark Jamaican Overproof Rum", "amount": "2.0 oz (60 ml)" },
+      { "item": "Light Rum", "amount": "2.0 oz (60 ml)" },
+      { "item": "Passion Fruit Syrup", "amount": "1.5 oz (45 ml)" },
+      { "item": "Fresh Lemon Juice", "amount": "1.0 oz (30 ml)" },
+      { "item": "Pomegranate Grenadine", "amount": "0.5 oz (15 ml)" }
+    ],
+    "tastingNotes": ["Tart Passion Fruit", "Funky Molasses", "Sweet Pomegranate", "Island Punch"],
+    "history": "Created by Pat O'Brien during WWII when whiskey was rationed and bar owners were forced to buy up to 50 cases of rum to secure a single case of scotch.",
+    "proTip": "Avoid commercial neon red Hurricane mixes; authentic tart passion fruit syrup and fresh lemon juice transform this drink into a world-class punch."
+  },
+  {
+    "id": "pina-colada",
+    "name": "Piña Colada",
+    "category": "Tropical Heritage",
+    "era": "Est. 1954 • Caribe Hilton, San Juan, Puerto Rico",
+    "glassware": "Hurricane",
+    "method": "Vigorously Shaken",
+    "ingredients": ["White Puerto Rican Rum", "Cream of Coconut", "Fresh Pineapple Juice", "Fresh Lime Juice"],
+    "decoys": ["Dark Rum", "Coconut Water", "Milk", "Banana Liqueur"],
+    "canonicalRecipe": [
+      { "item": "White Puerto Rican Rum", "amount": "2.0 oz (60 ml)" },
+      { "item": "Cream of Coconut (Coco López)", "amount": "1.5 oz (45 ml)" },
+      { "item": "Fresh Pineapple Juice", "amount": "2.5 oz (75 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.5 oz (15 ml)" }
+    ],
+    "tastingNotes": ["Rich Coconut", "Tropical Pineapple", "Creamy Sweet", "Lime Zest"],
+    "history": "Invented by Ramón 'Monchito' Marrero at the Caribe Hilton in San Juan, Puerto Rico, where it was declared the official national drink in 1978.",
+    "proTip": "Shake vigorously with pebble ice rather than electric blending to preserve fresh rum character and prevent waterlogged dilution."
+  },
+  {
+    "id": "singapore-sling",
+    "name": "Singapore Sling",
+    "category": "Colonial Classic",
+    "era": "Est. 1915 • Raffles Hotel, Singapore",
+    "glassware": "Hurricane",
+    "method": "Shaken & Topped",
+    "ingredients": ["London Dry Gin", "Cherry Heering", "Bénédictine", "Cointreau", "Fresh Lime Juice", "Pineapple Juice", "Angostura Bitters", "Club Soda"],
+    "decoys": ["Vodka", "Maraschino Liqueur", "Grenadine", "Orange Juice"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "1.5 oz (45 ml)" },
+      { "item": "Cherry Heering", "amount": "0.5 oz (15 ml)" },
+      { "item": "Bénédictine D.O.M.", "amount": "0.25 oz (7.5 ml)" },
+      { "item": "Cointreau", "amount": "0.25 oz (7.5 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.5 oz (15 ml)" },
+      { "item": "Fresh Pineapple Juice", "amount": "3.0 oz (90 ml)" },
+      { "item": "Angostura Bitters", "amount": "1 Dash" },
+      { "item": "Club Soda", "amount": "Splash" }
+    ],
+    "tastingNotes": ["Herbal Cherry", "Tropical Froth", "Pineapple Sweetness", "Complex Spice"],
+    "history": "Devised by bartender Ngiam Tong Boon at the Long Bar in Raffles Hotel so ladies could drink alcohol disguised as innocent fruit punch.",
+    "proTip": "Do not skip Bénédictine or Cointreau; their herbal and bitter orange oils balance Cherry Heering's sweetness."
+  },
+  {
+    "id": "margarita",
+    "name": "Classic Margarita",
+    "category": "Agave Classic",
+    "era": "Est. 1938 • Baja California, Mexico",
+    "glassware": "Margarita Glass",
+    "method": "Vigorously Shaken",
+    "ingredients": ["Blanco Tequila", "Cointreau", "Fresh Lime Juice", "Agave Nectar"],
+    "decoys": ["Mezcal", "Simple Syrup", "Lemon Juice", "Orange Bitters"],
+    "canonicalRecipe": [
+      { "item": "Blanco Tequila (100% Blue Agave)", "amount": "2.0 oz (60 ml)" },
+      { "item": "Cointreau / Triple Sec", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Agave Nectar", "amount": "1 Barspoon" }
+    ],
+    "tastingNotes": ["Crisp Citrus", "Earthy Agave", "Bright Saline", "Candied Orange"],
+    "history": "A descendant of the 1930s Daisy family of cocktails (spirit + citrus + orange liqueur), reformulated to celebrate Mexican blue agave spirits.",
+    "proTip": "Salt only half of the glass perimeter. This allows the guest to choose between crisp saline bursts and pure citrus agave sips."
+  },
+  {
+    "id": "b-52",
+    "name": "B-52 Pousse-Café",
+    "category": "Disco Era Layered Shot",
+    "era": "Est. 1977 • Banff Springs Hotel, Alberta",
+    "glassware": "Shot Glass",
+    "method": "Layered over Spoon",
+    "ingredients": ["Coffee Liqueur (Kahlúa)", "Irish Cream (Baileys)", "Grand Marnier (Orange Cognac)"],
+    "decoys": ["Vodka", "Dark Rum", "Amaretto", "Sambuca"],
+    "canonicalRecipe": [
+      { "item": "Coffee Liqueur (e.g. Kahlúa)", "amount": "0.5 oz (15 ml) [Bottom]" },
+      { "item": "Irish Cream (e.g. Baileys)", "amount": "0.5 oz (15 ml) [Middle]" },
+      { "item": "Grand Marnier (Triple Sec)", "amount": "0.5 oz (15 ml) [Top]" }
+    ],
+    "tastingNotes": ["Rich Espresso", "Creamy Vanilla", "Candied Orange", "Velvet Cocoa"],
+    "history": "Invented by Peter Fich at the Banff Springs Hotel, named after the Boeing B-52 Stratofortress bomber and the band The B-52's.",
+    "proTip": "Pour layers slowly over the back of a barspoon touching the glass wall. The liqueurs must be warm or room temperature; cold liquids blend easily."
+  },
+  {
+    "id": "kamikaze",
+    "name": "Classic Kamikaze",
+    "category": "Late 20th Century",
+    "era": "Circa 1970s • Yokosuka Naval Base / Boston",
+    "glassware": "Shot Glass",
+    "method": "Vigorously Shaken",
+    "ingredients": ["Vodka", "Triple Sec / Cointreau", "Fresh Lime Juice"],
+    "decoys": ["Tequila", "Gin", "Lemon Juice", "Simple Syrup"],
+    "canonicalRecipe": [
+      { "item": "Vodka", "amount": "1.0 oz (30 ml)" },
+      { "item": "Triple Sec / Cointreau", "amount": "0.5 oz (15 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.5 oz (15 ml)" }
+    ],
+    "tastingNotes": ["Sharp Lime", "Clean Spirit", "Candied Orange", "Bracing Cold"],
+    "history": "A direct predecessor to the Cosmopolitan. It gained popularity during the 1970s disco era as an elevated, high-proof party shooter.",
+    "proTip": "Shake vigorously with crushed ice to aerate the citrus. When made with fresh lime juice instead of sour mix, it serves as a crisp vodka Daisy."
+  },
+  {
+    "id": "mint-julep",
+    "name": "Kentucky Mint Julep",
+    "category": "American Heritage",
+    "era": "Circa 1800 • Louisville, KY",
+    "glassware": "Julep Cup",
+    "method": "Muddled & Built",
+    "ingredients": ["Kentucky Straight Bourbon", "Fresh Spearmint", "Demerara Syrup", "Crushed Ice"],
+    "decoys": ["Rye Whiskey", "Club Soda", "Lemon Juice", "Bitters"],
+    "canonicalRecipe": [
+      { "item": "Kentucky Straight Bourbon (High Proof)", "amount": "2.5 oz (75 ml)" },
+      { "item": "Demerara Syrup (1:1)", "amount": "0.5 oz (15 ml)" },
+      { "item": "Fresh Mint Leaves", "amount": "8–10 Leaves" },
+      { "item": "Pellet / Pebble Crushed Ice", "amount": "Packed to Dome" }
+    ],
+    "tastingNotes": ["Cooling Mint", "Warm Vanilla", "Charred Oak", "Caramel"],
+    "history": "Synonymous with Churchill Downs and the Kentucky Derby since 1938, originating as an early morning medicine in Virginia and Kentucky.",
+    "proTip": "Hold the pewter julep cup strictly by the top rim or bottom base so your hand heat doesn't melt the exterior frost coating."
+  },
+  {
+    "id": "moscow-mule",
+    "name": "Moscow Mule",
+    "category": "Mid-Century Classic",
+    "era": "Est. 1941 • Cock 'n Bull, Hollywood, CA",
+    "glassware": "Copper Mug",
+    "method": "Built in Glass",
+    "ingredients": ["Vodka", "Fresh Lime Juice", "Spicy Ginger Beer", "Lime Wheel"],
+    "decoys": ["Gin", "Ginger Ale", "Simple Syrup", "Lemon Juice"],
+    "canonicalRecipe": [
+      { "item": "Vodka", "amount": "2.0 oz (60 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Spicy Ginger Beer", "amount": "Top (~4.0 oz)" },
+      { "item": "Fresh Lime Wheel & Mint", "amount": "1 Garnish" }
+    ],
+    "tastingNotes": ["Fiery Ginger", "Tart Lime", "Crisp Clean", "Chilled Frost"],
+    "history": "Created when John Martin of Smirnoff, Jack Morgan of the Cock 'n Bull restaurant, and a businesswoman with excess copper mugs joined forces to market vodka in America.",
+    "proTip": "Use fermented, fiery ginger beer (like Fever-Tree or Bundaberg), not sweet ginger ale. Vodka requires sharp ginger heat for backbone."
+  },
+  {
+    "id": "b-and-b",
+    "name": "B&B (Brandy & Bénédictine)",
+    "category": "Interwar Digestif",
+    "era": "Circa 1930s • 21 Club, NYC",
+    "glassware": "Snifter",
+    "method": "Built in Glass",
+    "ingredients": ["Cognac / Fine Brandy", "Bénédictine D.O.M."],
+    "decoys": ["Rye Whiskey", "Grand Marnier", "Drambuie", "Sweet Vermouth"],
+    "canonicalRecipe": [
+      { "item": "Cognac (VSOP)", "amount": "1.0 oz (30 ml)" },
+      { "item": "Bénédictine D.O.M.", "amount": "1.0 oz (30 ml)" }
+    ],
+    "tastingNotes": ["Herbal Honey", "Dried Apricot", "Warm Cognac", "Saffron Spice"],
+    "history": "Originated at New York's 21 Club during the 1930s, pairing the herbal richness of Normandy monks' Bénédictine with dry French Cognac.",
+    "proTip": "Serve neat at room temperature. Swirl gently in the snifter and cradle the bowl in your palm to warm the aromatic botanical vapors."
+  },
+  {
+    "id": "french-75",
+    "name": "French 75",
+    "category": "Prohibition Classic",
+    "era": "Est. 1915 • Harry's New York Bar, Paris",
+    "glassware": "Champagne Flute",
+    "method": "Shaken & Topped",
+    "ingredients": ["London Dry Gin", "Fresh Lemon Juice", "Simple Syrup", "Brut Champagne"],
+    "decoys": ["Vodka", "Club Soda", "Lime Juice", "Orange Liqueur"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "1.0 oz (30 ml)" },
+      { "item": "Fresh Lemon Juice", "amount": "0.5 oz (15 ml)" },
+      { "item": "Simple Syrup (1:1)", "amount": "0.5 oz (15 ml)" },
+      { "item": "Brut Champagne", "amount": "Top (~2.5 oz)" }
+    ],
+    "tastingNotes": ["Effervescent", "Crisp Botanical", "Tart Lemon", "Dry Toast"],
+    "history": "Named for the devastating French 75mm artillery gun, said to kick with identical force. Popularized in Paris and immortalized in the Savoy Cocktail Book.",
+    "proTip": "Use bone-dry Brut Champagne; sweetness from cheap sparkling wine destroys the brisk, razor-sharp lemon acidity."
+  },
+  {
+    "id": "champagne-cocktail",
+    "name": "Classic Champagne Cocktail",
+    "category": "Pre-Prohibition",
+    "era": "Est. 1862 • Jerry Thomas, New York",
+    "glassware": "Champagne Flute",
+    "method": "Built in Glass",
+    "ingredients": ["Brut Champagne", "Cognac", "Angostura Bitters", "White Sugar Cube", "Lemon Peel"],
+    "decoys": ["Gin", "Simple Syrup", "Orange Bitters", "Club Soda"],
+    "canonicalRecipe": [
+      { "item": "Brut Champagne", "amount": "Top (~4.0 oz)" },
+      { "item": "Cognac", "amount": "0.5 oz (15 ml)" },
+      { "item": "Angostura Bitters", "amount": "3 Dashes on Sugar Cube" },
+      { "item": "White Sugar Cube", "amount": "1 Whole Cube" }
+    ],
+    "tastingNotes": ["Geyser Effervescence", "Warm Oak", "Spiced Sugar", "Brioche Toast"],
+    "history": "One of the earliest recorded cocktails in Jerry Thomas's 1862 Bartenders Guide, serving as an aristocratic staple of grand hotels.",
+    "proTip": "Saturate the sugar cube with bitters on a bar spoon before dropping it into the flute. As it rests on the base, it produces a steady stream of bubbles."
+  },
+  {
+    "id": "mimosa",
+    "name": "Buck's Mimosa",
+    "category": "Brunch Heritage",
+    "era": "Est. 1925 • Ritz Hotel, Paris",
+    "glassware": "Champagne Flute",
+    "method": "Built in Glass",
+    "ingredients": ["Brut Champagne", "Freshly Squeezed Orange Juice", "Grand Marnier"],
+    "decoys": ["Grapefruit Juice", "Vodka", "Triple Sec", "Lemon Juice"],
+    "canonicalRecipe": [
+      { "item": "Brut Champagne", "amount": "2.5 oz (75 ml)" },
+      { "item": "Freshly Squeezed Orange Juice (Strained)", "amount": "2.5 oz (75 ml)" },
+      { "item": "Grand Marnier", "amount": "1 Barspoon (Optional)" }
+    ],
+    "tastingNotes": ["Bright Citrus", "Crisp Bubbles", "Dry Yeast", "Refreshing"],
+    "history": "Invented by Frank Meier at the Ritz Hotel in Paris, named after the golden-yellow flowers of the mimosa plant.",
+    "proTip": "Never use bottled or pasteurized orange juice; freshly squeezed juice strained of pulp ensures clean effervescence without bitter scum."
+  },
+  {
+    "id": "aperol-spritz",
+    "name": "Aperol Spritz",
+    "category": "Italian Aperitivo",
+    "era": "Est. 1950s • Venice / Padua, Italy",
+    "glassware": "Stemmed Wine Glass",
+    "method": "Built in Glass",
+    "ingredients": ["Prosecco", "Aperol", "Club Soda", "Fresh Orange Slice"],
+    "decoys": ["Campari", "Sweet Vermouth", "Gin", "Lemon Juice"],
+    "canonicalRecipe": [
+      { "item": "Dry Prosecco (DOC)", "amount": "3.0 oz (90 ml)" },
+      { "item": "Aperol", "amount": "2.0 oz (60 ml)" },
+      { "item": "Chilled Club Soda", "amount": "1.0 oz (30 ml)" },
+      { "item": "Castelvetrano Olive & Orange Slice", "amount": "1 Garnish each" }
+    ],
+    "tastingNotes": ["Bittersweet Orange", "Crisp Effervescence", "Rhubarb & Gentian", "Floral Peach"],
+    "history": "Derived from the 19th-century Austrian Habsburg soldiers' practice of 'spritzing' heavy Venetian wine with water to make it lighter.",
+    "proTip": "Follow the Venetian 3-2-1 rule: 3 parts Prosecco, 2 parts Aperol, 1 splash soda. Pour Prosecco first to prevent Aperol from sinking."
+  },
+  {
+    "id": "sangria",
+    "name": "Spanish Red Sangria",
+    "category": "Iberian Heritage",
+    "era": "Historical • Spain / World's Fair 1964",
+    "glassware": "Stemmed Wine Glass",
+    "method": "Built in Glass",
+    "ingredients": ["Spanish Red Wine", "Spanish Brandy", "Fresh Orange Juice", "Cinnamon Stick", "Diced Fruit"],
+    "decoys": ["Vodka", "White Rum", "Club Soda", "Grenadine"],
+    "canonicalRecipe": [
+      { "item": "Dry Spanish Red Wine", "amount": "4.0 oz (120 ml)" },
+      { "item": "Spanish Brandy (e.g. Torres)", "amount": "1.0 oz (30 ml)" },
+      { "item": "Fresh Orange Juice", "amount": "1.0 oz (30 ml)" },
+      { "item": "Macerated Oranges & Apples", "amount": "Generous Scoop" }
+    ],
+    "tastingNotes": ["Dark Berry", "Spiced Oak", "Juicy Citrus", "Vibrant Tannins"],
+    "history": "Named from the Spanish word 'sangre' (blood). It became an international staple after being showcased at the 1964 New York World's Fair.",
+    "proTip": "Macerate sliced fruit in brandy and a pinch of sugar for at least two hours before adding wine; this extracts fruit sugars and aromatics."
+  },
+  {
+    "id": "michelada",
+    "name": "Mexican Michelada",
+    "category": "Mexican Heritage",
+    "era": "Circa 1960s • San Luis Potosí, Mexico",
+    "glassware": "Pilsner",
+    "method": "Built in Glass",
+    "ingredients": ["Mexican Crisp Lager", "Fresh Lime Juice", "Worcestershire Sauce", "Hot Sauce", "Tajín Salt Rim"],
+    "decoys": ["Tequila", "Tomato Puree", "Orange Juice", "Mezcal"],
+    "canonicalRecipe": [
+      { "item": "Cold Mexican Lager (e.g. Modelo)", "amount": "Top Full Bottle" },
+      { "item": "Fresh Lime Juice", "amount": "1.0 oz (30 ml)" },
+      { "item": "Worcestershire Sauce (Salsa Inglesa)", "amount": "3 Dashes" },
+      { "item": "Maggi Seasoning & Hot Sauce", "amount": "2 Dashes each" },
+      { "item": "Chili-Lime Salt (Tajín)", "amount": "Full Rim on Glass" }
+    ],
+    "tastingNotes": ["Zesty Saline", "Savory Umami", "Crisp Malt", "Fiery Chili"],
+    "history": "Named as a contraction of 'Mi Chela Helada' ('My Ice-Cold Beer') or credited to Michel Ésper at the Club Deportivo Potosino in Mexico.",
+    "proTip": "Use a crisp, clean adjunct lager. Heavy, hoppy IPAs or rich stouts clash with the tart lime acidity and savory sauces."
+  },
+  {
+    "id": "black-velvet",
+    "name": "Black Velvet",
+    "category": "Victorian Classic",
+    "era": "Est. 1861 • Brooks's Club, London",
+    "glassware": "Pilsner",
+    "method": "Built in Glass",
+    "ingredients": ["Guinness Extra Stout", "Brut Champagne"],
+    "decoys": ["Bourbon", "Ginger Ale", "Cola", "Irish Cream"],
+    "canonicalRecipe": [
+      { "item": "Brut Champagne", "amount": "3.5 oz (105 ml) [Bottom]" },
+      { "item": "Guinness Extra Stout", "amount": "3.5 oz (105 ml) [Top Float]" }
+    ],
+    "tastingNotes": ["Roasted Malt", "Crisp Brioche", "Creamy Cocoa", "Dry Effervescence"],
+    "history": "Concocted by the bartender at Brooks's Club in London to mourn the death of Queen Victoria's husband, Prince Albert, symbolizing black mourning armbands.",
+    "proTip": "Pour Champagne first. Then pour cold Guinness gently over an inverted spoon against the inner glass wall so the stout floats on top."
+  },
+  {
+    "id": "mai-tai",
+    "name": "1944 Trader Vic Mai Tai",
+    "category": "Tiki Heritage",
+    "era": "Est. 1944 • Hinky Dinks, Oakland, CA",
+    "glassware": "Tiki Mug / Double Rocks",
+    "method": "Vigorously Shaken",
+    "ingredients": ["Aged Jamaican Rum", "Rhum Agricole", "Orange Curaçao", "Orgeat (Almond Syrup)", "Fresh Lime Juice"],
+    "decoys": ["Pineapple Juice", "Grenadine", "Spiced Rum", "Club Soda"],
+    "canonicalRecipe": [
+      { "item": "Aged Jamaican Pot Still Rum", "amount": "1.0 oz (30 ml)" },
+      { "item": "Martinique Rhum Agricole", "amount": "1.0 oz (30 ml)" },
+      { "item": "Pierre Ferrand Dry Curaçao", "amount": "0.5 oz (15 ml)" },
+      { "item": "Orgeat (Almond Milk Syrup)", "amount": "0.5 oz (15 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "1.0 oz (30 ml)" }
+    ],
+    "tastingNotes": ["Nutty Almond", "Funky Molasses", "Tart Lime", "Candied Orange"],
+    "history": "Trader Vic Bergeron shook this for Tahitian friends who exclaimed 'Maita'i roa a'e!' ('Out of this world!'). True Tiki contains no neon mixers or grenadine.",
+    "proTip": "Slap a fresh mint bouquet against the back of your hand before resting it alongside a spent lime wheel hull to evoke an island palm tree."
+  },
+  {
+    "id": "zombie",
+    "name": "Don the Beachcomber Zombie",
+    "category": "Tiki Heritage",
+    "era": "Est. 1934 • Don the Beachcomber, Hollywood",
+    "glassware": "Tiki Mug",
+    "method": "Vigorously Shaken",
+    "ingredients": ["Jamaican Dark Rum", "Gold Puerto Rican Rum", "151-Proof Demerara Rum", "Fresh Lime Juice", "Grapefruit & Cinnamon Syrup", "Falernum", "Grenadine", "Absinthe", "Angostura Bitters"],
+    "decoys": ["Vodka", "Triple Sec", "Orange Juice", "Blue Curaçao"],
+    "canonicalRecipe": [
+      { "item": "Jamaican Dark Rum", "amount": "1.5 oz (45 ml)" },
+      { "item": "Gold Puerto Rican Rum", "amount": "1.5 oz (45 ml)" },
+      { "item": "151-Proof Lemon Hart Demerara Rum", "amount": "1.0 oz (30 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Donn's Mix (2:1 Grapefruit/Cinnamon)", "amount": "0.5 oz (15 ml)" },
+      { "item": "Velvet Falernum", "amount": "0.5 oz (15 ml)" },
+      { "item": "Real Grenadine", "amount": "1 Teaspoon" },
+      { "item": "Absinthe / Herbsaint", "amount": "6 Drops" }
+    ],
+    "tastingNotes": ["Complex Smoke", "Cinnamon Spice", "Grapefruit Acid", "Ferocious Rum"],
+    "history": "Invented by Donn Beach to help a hungover businessman get through an important meeting. The customer returned days later saying he felt like the 'living dead'.",
+    "proTip": "Don Beach limited customers to two Zombies per night due to its extreme 4-ounce high-proof rum payload."
+  }
+]
