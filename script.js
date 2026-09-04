@@ -3,7 +3,7 @@
    Single-Screen Native Deck & Card Study Game
    ========================================================================== */
 
-// Embedded database fallback ensures instant loading with zero CORS blocks
+// Embedded fallback database ensures immediate offline play with zero CORS blocks
 const COCKTAILS_MASTER_DB = [
     {
         id: "old-fashioned",
@@ -11,21 +11,21 @@ const COCKTAILS_MASTER_DB = [
         category: "Pre-Prohibition",
         era: "Circa 1880s • Louisville, KY",
         glassware: "rocks",
-        glasswareName: "Double Rocks",
+        glasswareName: "Rocks / Lowball",
         method: "stir",
         methodName: "Stirred over Ice",
-        ingredients: ["Bourbon / Rye Whiskey", "Demerara Syrup", "Angostura Bitters", "Orange Peel"],
+        ingredients: ["Bourbon or Rye Whiskey", "Demerara Syrup", "Angostura Bitters", "Orange Peel"],
         decoys: ["Sweet Vermouth", "Campari", "Lemon Juice", "Club Soda"],
         canonicalRecipe: [
             { item: "Bourbon or Rye Whiskey", amount: "2.0 oz (60 ml)" },
-            { item: "Demerara Syrup", amount: "0.25 oz (7.5 ml)" },
+            { item: "Demerara Syrup (2:1)", amount: "0.25 oz (7.5 ml)" },
             { item: "Angostura Bitters", amount: "2–3 Dashes" },
-            { item: "Orange Peel", amount: "Expressed & Inserted" }
+            { item: "Orange Peel", amount: "Expressed over Top" }
         ],
         tastingNotes: ["Spirit-Forward", "Charred Oak", "Caramelized Sugar", "Warm Spice"],
-        history: "Born when 19th-century patrons grew exhausted by elaborate bar novelties, ordering their whiskey prepared the 'old-fashioned way'—spirit, sugar, water, and aromatic bitters.",
+        history: "Born when 19th-century patrons grew exhausted by elaborate bar novelties and ordered their whiskey prepared the 'old-fashioned way'—spirit, sugar, water, and bitters.",
         proTip: "Express orange peel oils firmly over the rim and liquid surface. Never muddle cocktail cherries into the liquid; keep the silhouette clear and dense.",
-        techniqueLore: "Stir gently over a single clear ice block for 30–40 seconds until chilled to 28°F. This provides ~22% dilution without cloudy aeration bubbles."
+        techniqueLore: "Stir gently over a single hand-carved ice block for 30–40 seconds until chilled to 28°F. This provides ~22% dilution without cloudy aeration bubbles."
     },
     {
         id: "negroni",
@@ -33,7 +33,7 @@ const COCKTAILS_MASTER_DB = [
         category: "Classic Aperitivo",
         era: "Est. 1919 • Caffè Casoni, Florence",
         glassware: "rocks",
-        glasswareName: "Double Rocks",
+        glasswareName: "Rocks / Lowball",
         method: "stir",
         methodName: "Stirred over Ice",
         ingredients: ["London Dry Gin", "Campari", "Sweet Vermouth", "Orange Peel"],
@@ -42,56 +42,57 @@ const COCKTAILS_MASTER_DB = [
             { item: "London Dry Gin", amount: "1.0 oz (30 ml)" },
             { item: "Campari", amount: "1.0 oz (30 ml)" },
             { item: "Sweet Vermouth", amount: "1.0 oz (30 ml)" },
-            { item: "Orange Twist", amount: "Expressed Over Top" }
+            { item: "Orange Twist", amount: "Expressed over Top" }
         ],
         tastingNotes: ["Bittersweet", "Pungent Juniper", "Bitter Orange", "Herbal Gentian"],
         history: "Count Camillo Negroni famously requested bartender Forsco Scarselli fortify his favorite Americano by swapping effervescent club soda for pungent London Dry gin.",
-        proTip: "Keep your sweet vermouth refrigerated once uncorked; oxidized fortified wine flattens the herbal brightness of this legendary trio.",
-        techniqueLore: "The mathematical symmetry (1:1:1) requires precise chilling so the bitter gentian root integrates with vermouth botanicals without watery over-dilution."
+        proTip: "Keep sweet vermouth refrigerated once uncorked; oxidized fortified wine flattens the herbal brightness of this legendary trio.",
+        techniqueLore: "The 1:1:1 ratio requires precise chilling so bitter gentian root integrates with vermouth botanicals without watery over-dilution."
     },
     {
-        id: "margarita",
-        name: "Classic Margarita",
-        category: "Agave Classic",
-        era: "Est. 1938 • Baja California",
-        glassware: "coupe",
-        glasswareName: "Cocktail Coupe",
-        method: "shake",
-        methodName: "Vigorously Shaken",
-        ingredients: ["Blanco Tequila", "Cointreau", "Fresh Lime Juice", "Agave Nectar"],
-        decoys: ["Mezcal", "Simple Syrup", "Lemon Juice", "Orange Bitters"],
-        canonicalRecipe: [
-            { item: "Blanco Tequila (100% Agave)", amount: "2.0 oz (60 ml)" },
-            { item: "Cointreau / Triple Sec", amount: "0.75 oz (22.5 ml)" },
-            { item: "Fresh Lime Juice", amount: "0.75 oz (22.5 ml)" },
-            { item: "Agave Nectar", amount: "1 Barspoon" }
-        ],
-        tastingNotes: ["Crisp Citrus", "Earthy Agave", "Bright Saline", "Candied Orange"],
-        history: "A descendant of the 1930s Daisy family of cocktails (spirit + citrus + orange liqueur), reimagined to spotlight authentic Mexican blue agave spirits.",
-        proTip: "Rim only half of the glass perimeter with flake sea salt. This allows the guest to choose when they want saline contrast and when they want pure citrus.",
-        techniqueLore: "Vigorous shaking with large, dense cubes shatters microscopic ice shards through the citrus pectin, producing an opaque, frosty velvet texture."
-    },
-    {
-        id: "espresso-martini",
-        name: "Espresso Martini",
-        category: "Modern Craft",
-        era: "Est. 1983 • Soho Brasserie, London",
-        glassware: "coupe",
-        glasswareName: "Cocktail Coupe",
-        method: "shake",
-        methodName: "Vigorously Shaken",
-        ingredients: ["Vodka", "Coffee Liqueur", "Fresh Espresso", "Simple Syrup"],
-        decoys: ["Irish Cream", "Cold Brew", "Dark Rum", "Cacao Liqueur"],
+        id: "bloody-mary",
+        name: "Classic Bloody Mary",
+        category: "World Classic",
+        era: "Est. 1921 • Harry's New York Bar, Paris",
+        glassware: "highball",
+        glasswareName: "Highball",
+        method: "throw",
+        methodName: "Thrown between Shakers",
+        ingredients: ["Vodka", "Tomato Juice", "Fresh Lemon Juice", "Worcestershire Sauce", "Hot Pepper Sauce", "Celery Salt"],
+        decoys: ["Gin", "Clamato Juice", "Lime Juice", "Soy Sauce"],
         canonicalRecipe: [
             { item: "Vodka", amount: "1.5 oz (45 ml)" },
-            { item: "Coffee Liqueur (e.g. Kahlúa)", amount: "0.75 oz (22.5 ml)" },
-            { item: "Fresh Pulled Espresso", amount: "1.0 oz (30 ml)" },
-            { item: "Rich Simple Syrup (2:1)", amount: "0.25 oz (7.5 ml)" }
+            { item: "Tomato Juice", amount: "3.0 oz (90 ml)" },
+            { item: "Fresh Lemon Juice", amount: "0.5 oz (15 ml)" },
+            { item: "Worcestershire Sauce", amount: "2 Dashes" },
+            { item: "Tabasco & Celery Salt", amount: "To Taste" }
         ],
-        tastingNotes: ["Velveteen Crema", "Roasted Cocoa", "Dark Toffee", "Clean Finish"],
-        history: "Invented by London icon Dick Bradsell when a supermodel notoriously pulled up to his bar asking for a drink that would 'wake me up and then mess me up.'",
-        proTip: "Pull the espresso shot right before shaking; natural crema oils emulsify under hard aeration to create a dense, mousse-like foam head.",
-        techniqueLore: "Float three espresso beans centered on the foam head in a tight triad, traditionally symbolizing health, wealth, and happiness."
+        tastingNotes: ["Savory Umami", "Spicy Heat", "Zesty Tomato", "Bracing Citrus"],
+        history: "Created by Fernand Petiot at Harry's New York Bar in Paris, later elevated at the St. Regis King Cole Bar in NYC as the 'Red Snapper'.",
+        proTip: "Never shake a Bloody Mary. Shaking breaks tomato pectin cells into a watery foam. Rolling (throwing) chills and integrates without destroying viscosity.",
+        techniqueLore: "Throwing between ice-filled tins allows heavy tomato solids and savory spices to aerate and chill with zero dilution surge."
+    },
+    {
+        id: "tom-collins",
+        name: "Tom Collins",
+        category: "Pre-Prohibition",
+        era: "Est. 1876 • Jerry Thomas, New York",
+        glassware: "collins",
+        glasswareName: "Collins",
+        method: "shake",
+        methodName: "Shaken & Topped",
+        ingredients: ["Old Tom Gin / London Dry", "Fresh Lemon Juice", "Simple Syrup", "Club Soda"],
+        decoys: ["Lime Juice", "Vodka", "Tonic Water", "Ginger Ale"],
+        canonicalRecipe: [
+            { item: "Old Tom Gin (or London Dry)", amount: "2.0 oz (60 ml)" },
+            { item: "Fresh Lemon Juice", amount: "1.0 oz (30 ml)" },
+            { item: "Simple Syrup (1:1)", amount: "0.5 oz (15 ml)" },
+            { item: "Chilled Club Soda", amount: "Top (~2.5 oz)" }
+        ],
+        tastingNotes: ["Sparkling Citrus", "Botanical Pine", "Balanced Sweet", "Quenching"],
+        history: "Linked to the Great Tom Collins Hoax of 1874, where pranksters sent victims racing through New York bars seeking a slanderous fellow named Tom Collins.",
+        proTip: "Add chilled club soda to the glass before straining the shaken gin and lemon mix; this incorporates bubbles uniformly without flat spots.",
+        techniqueLore: "A tall, slender Collins glass preserves carbonation bubbles longer by reducing the surface area exposed to ambient air."
     },
     {
         id: "daiquiri",
@@ -105,14 +106,36 @@ const COCKTAILS_MASTER_DB = [
         ingredients: ["White Rum", "Fresh Lime Juice", "Demerara Simple Syrup"],
         decoys: ["Dark Rum", "Triple Sec", "Lemon Juice", "Maraschino Liqueur"],
         canonicalRecipe: [
-            { item: "Light Cuban/Puerto Rican Rum", amount: "2.0 oz (60 ml)" },
+            { item: "Light Cuban Rum", amount: "2.0 oz (60 ml)" },
             { item: "Fresh Lime Juice", amount: "0.75 oz (22.5 ml)" },
             { item: "Rich Demerara Syrup (2:1)", amount: "0.75 oz (22.5 ml)" }
         ],
         tastingNotes: ["Electric Citrus", "Cane Grass", "Mineral Crispness", "Silky Balance"],
-        history: "Originated when American mining engineer Jennings Cox ran out of gin at a gathering in Cuba and mixed local sugar cane rum with freshly plucked limes.",
-        proTip: "The classic Daiquiri is the ultimate bartender test. There is nowhere to hide poor ice technique or synthetic lime juice.",
-        techniqueLore: "Double-strain through a fine mesh conical strainer to catch tiny ice shards so the mouthfeel remains silken from first sip to last."
+        history: "Originated when American mining engineer Jennings Cox ran out of gin at a gathering in Cuba and mixed local cane rum with freshly plucked limes.",
+        proTip: "The classic Daiquiri is the ultimate bartender litmus test. There is nowhere to hide poor ice technique or pasteurized citrus juice.",
+        techniqueLore: "Double-strain through a fine-mesh conical strainer to catch tiny ice shards so the mouthfeel remains mirror-smooth from first sip to last."
+    },
+    {
+        id: "dry-martini",
+        name: "Classic Dry Martini",
+        category: "Classic",
+        era: "Circa 1900s • New York / San Francisco",
+        glassware: "martini",
+        glasswareName: "Martini",
+        method: "stir",
+        methodName: "Stirred over Ice",
+        ingredients: ["London Dry Gin", "Dry Vermouth", "Orange Bitters", "Lemon Peel or Olive"],
+        decoys: ["Sweet Vermouth", "Vodka", "Maraschino Liqueur", "Simple Syrup"],
+        canonicalRecipe: [
+            { item: "London Dry Gin", amount: "2.5 oz (75 ml)" },
+            { item: "Dry French Vermouth", amount: "0.5 oz (15 ml)" },
+            { item: "Orange Bitters", amount: "1 Dash (Classic Spec)" },
+            { item: "Lemon Peel or Castelvetrano Olive", amount: "1 Garnish" }
+        ],
+        tastingNotes: ["Bone Dry", "Pine Juniper", "Delicate Floral", "Silken"],
+        history: "The apex of cocktail minimalism. Evolving from the sweeter Martinez into a bone-dry beacon of early 20th-century cafe society.",
+        proTip: "Chill your glassware in a freezer below 0°F. A Martini should be served brutally cold; warm temperatures expose unrefined alcohol burn.",
+        techniqueLore: "Stir with high-density ice cubes for 45 revolutions. Stirring maintains velvety density and a mirror-like clarity unattainable by shaking."
     },
     {
         id: "manhattan",
@@ -126,68 +149,153 @@ const COCKTAILS_MASTER_DB = [
         ingredients: ["Rye Whiskey", "Sweet Vermouth", "Angostura Bitters", "Brandied Cherry"],
         decoys: ["Bourbon Whiskey", "Dry Vermouth", "Orange Bitters", "Campari"],
         canonicalRecipe: [
-            { item: "Straight Rye Whiskey", amount: "2.0 oz (60 ml)" },
+            { item: "Straight Rye Whiskey (100 Proof)", amount: "2.0 oz (60 ml)" },
             { item: "Sweet Italian Vermouth", amount: "1.0 oz (30 ml)" },
             { item: "Angostura Bitters", amount: "2 Dashes" },
             { item: "Luxardo Brandied Cherry", amount: "1 Garnish" }
         ],
         tastingNotes: ["Dark Cherry", "Spicy Rye Grain", "Warming Botanical", "Vanilla Oak"],
         history: "A timeless masterpiece created in New York City. The peppery rye grain cuts cleanly across the lush, fortified wine herbal sweetness.",
-        proTip: "Always reach for spicy 100-proof Straight Rye rather than sweeter Bourbon to avoid a flabby, overly saccharine profile.",
-        techniqueLore: "Serve chilled in a stemmed Nick & Nora glass to prevent the drinker's hand warmth from raising the serving temperature."
+        proTip: "Always reach for spicy 100-proof Straight Rye rather than softer Bourbon to avoid a flabby, overly sweet flavor profile.",
+        techniqueLore: "Serve chilled in a stemmed Nick & Nora glass to prevent the drinker's hand warmth from raising the cocktail's temperature."
     },
     {
-        id: "penicillin",
-        name: "Penicillin",
-        category: "Modern Classic",
-        era: "Est. 2005 • Milk & Honey, NYC",
-        glassware: "rocks",
-        glasswareName: "Double Rocks",
+        id: "hurricane",
+        name: "New Orleans Hurricane",
+        category: "Tiki Classic",
+        era: "Est. 1940s • Pat O'Brien's, New Orleans",
+        glassware: "hurricane",
+        glasswareName: "Hurricane",
         method: "shake",
         methodName: "Vigorously Shaken",
-        ingredients: ["Blended Scotch", "Fresh Lemon Juice", "Honey-Ginger Syrup", "Peated Islay Scotch"],
-        decoys: ["Bourbon Whiskey", "Simple Syrup", "Ginger Beer", "Orange Bitters"],
+        ingredients: ["Dark Jamaican Rum", "White Rum", "Passion Fruit Purée / Syrup", "Fresh Lemon Juice", "Real Grenadine"],
+        decoys: ["Bourbon", "Orange Juice", "Pineapple Juice", "Blue Curaçao"],
         canonicalRecipe: [
-            { item: "Blended Scotch Whisky", amount: "2.0 oz (60 ml)" },
-            { item: "Fresh Lemon Juice", amount: "0.75 oz (22.5 ml)" },
-            { item: "Honey-Ginger Syrup", amount: "0.75 oz (22.5 ml)" },
-            { item: "Peated Islay Scotch", amount: "0.25 oz (Float)" }
+            { item: "Dark Jamaican Overproof Rum", amount: "2.0 oz (60 ml)" },
+            { item: "Light Rum", amount: "2.0 oz (60 ml)" },
+            { item: "Passion Fruit Syrup", amount: "1.5 oz (45 ml)" },
+            { item: "Fresh Lemon Juice", amount: "1.0 oz (30 ml)" },
+            { item: "Pomegranate Grenadine", amount: "0.5 oz (15 ml)" }
         ],
-        tastingNotes: ["Campfire Peat Smoke", "Candied Ginger", "Soothing Wild Honey", "Bright Lemon"],
-        history: "Devised by Australian pioneer Sam Ross in NYC. It quickly became hailed as the first undisputed worldwide modern classic of the 21st century.",
-        proTip: "Pour the smoky Islay Scotch gently over an inverted barspoon directly on top of the poured drink so it floats aromatically.",
-        techniqueLore: "The olfactory contrast is key: the nose encounters intense Islay peat smoke, while the palate receives warming ginger, honey, and bright citrus."
+        tastingNotes: ["Tart Passion Fruit", "Funky Molasses", "Sweet Pomegranate", "Island Punch"],
+        history: "Created by Pat O'Brien during WWII when whiskey was rationed and bar owners were forced to buy up to 50 cases of rum to secure a single case of scotch.",
+        proTip: "Avoid commercial neon red Hurricane mixes; authentic tart passion fruit syrup and fresh lemon juice transform this drink into a world-class punch.",
+        techniqueLore: "The curved glass shape was modeled after hurricane kerosene lamp glass chimneys ubiquitous across New Orleans."
     },
     {
-        id: "sazerac",
-        name: "New Orleans Sazerac",
-        category: "Pre-Prohibition",
-        era: "Est. 1850s • New Orleans, LA",
-        glassware: "rocks",
-        glasswareName: "Double Rocks",
-        method: "stir",
-        methodName: "Stirred over Ice",
-        ingredients: ["Rye Whiskey", "Peychaud's Bitters", "Demerara Sugar", "Absinthe Rinse"],
-        decoys: ["Bourbon Whiskey", "Angostura Bitters", "Sweet Vermouth", "Lemon Juice"],
+        id: "margarita",
+        name: "Classic Margarita",
+        category: "Agave Classic",
+        era: "Est. 1938 • Baja California, Mexico",
+        glassware: "margarita-glass",
+        glasswareName: "Margarita",
+        method: "shake",
+        methodName: "Vigorously Shaken",
+        ingredients: ["Blanco Tequila", "Cointreau", "Fresh Lime Juice", "Agave Nectar"],
+        decoys: ["Mezcal", "Simple Syrup", "Lemon Juice", "Orange Bitters"],
         canonicalRecipe: [
-            { item: "Rye Whiskey", amount: "2.0 oz (60 ml)" },
-            { item: "Peychaud's Bitters", amount: "3 Dashes" },
-            { item: "Angostura Bitters", amount: "1 Dash" },
-            { item: "Demerara Sugar Cube / Syrup", amount: "1 Cube / 0.25 oz" },
-            { item: "Absinthe", amount: "Rinse Glass" }
+            { item: "Blanco Tequila (100% Blue Agave)", amount: "2.0 oz (60 ml)" },
+            { item: "Cointreau / Triple Sec", amount: "0.75 oz (22.5 ml)" },
+            { item: "Fresh Lime Juice", amount: "0.75 oz (22.5 ml)" },
+            { item: "Agave Nectar", amount: "1 Barspoon" }
         ],
-        tastingNotes: ["Anise & Fennel", "Peppery Spice", "Bright Floral Bitters", "Zesty Lemon"],
-        history: "America's earliest known branded cocktail, evolving from French cognac to Maryland rye whiskey, forever bound to New Orleans culture.",
-        proTip: "Swirl a few drops of absinthe in a chilled glass and dump the excess before straining the cocktail. The aroma should haunt, not overwhelm.",
-        techniqueLore: "Serve without ice (neat) in a chilled rocks glass. Express a lemon twist over the surface, then discard the peel before serving."
+        tastingNotes: ["Crisp Citrus", "Earthy Agave", "Bright Saline", "Candied Orange"],
+        history: "A descendant of the 1930s Daisy family of cocktails (spirit + citrus + orange liqueur), reformulated to celebrate Mexican blue agave spirits.",
+        proTip: "Salt only half of the glass perimeter. This allows the guest to choose between crisp saline bursts and pure citrus agave sips.",
+        techniqueLore": "Vigorous shaking with large, dense cubes shatters microscopic ice shards through citrus pectin, producing an opaque, frosty velvet texture."
+    },
+    {
+        id: "b-52",
+        name: "B-52 Pousse-Café",
+        category: "Disco Era Layered Shot",
+        era: "Est. 1977 • Banff Springs Hotel, Alberta",
+        glassware: "shot",
+        glasswareName: "Shot Glass",
+        method: "build",
+        methodName: "Layered over Spoon",
+        ingredients: ["Coffee Liqueur (Kahlúa)", "Irish Cream (Baileys)", "Grand Marnier (Orange Cognac)"],
+        decoys: ["Vodka", "Dark Rum", "Amaretto", "Sambuca"],
+        canonicalRecipe: [
+            { item: "Coffee Liqueur (e.g. Kahlúa)", amount: "0.5 oz (15 ml) [Bottom]" },
+            { item: "Irish Cream (e.g. Baileys)", amount: "0.5 oz (15 ml) [Middle]" },
+            { item: "Grand Marnier (Triple Sec)", amount: "0.5 oz (15 ml) [Top]" }
+        ],
+        tastingNotes: ["Rich Espresso", "Creamy Vanilla", "Candied Orange", "Velvet Cocoa"],
+        history: "Invented by Peter Fich at the Banff Springs Hotel, named after the Boeing B-52 Stratofortress bomber and the band The B-52's.",
+        proTip: "Pour layers slowly over the back of a barspoon touching the glass wall. The liqueurs must be warm or room temperature; cold liquids blend easily.",
+        techniqueLore": "Specific gravity differences (Kahlúa: 1.18 g/ml, Baileys: 1.05 g/ml, Grand Marnier: 1.03 g/ml) allow the distinct layers to float."
+    },
+    {
+        id: "mint-julep",
+        name: "Kentucky Mint Julep",
+        category: "American Heritage",
+        era: "Circa 1800 • American South / Louisville, KY",
+        glassware: "julep-cup",
+        glasswareName: "Julep Cup",
+        method: "build",
+        methodName: "Muddled & Built",
+        ingredients: ["Kentucky Straight Bourbon", "Fresh Spearmint", "Demerara Syrup", "Crushed Ice"],
+        decoys: ["Rye Whiskey", "Club Soda", "Lemon Juice", "Bitters"],
+        canonicalRecipe: [
+            { item: "Kentucky Straight Bourbon (High Proof)", amount: "2.5 oz (75 ml)" },
+            { item: "Demerara Syrup (1:1)", amount: "0.5 oz (15 ml)" },
+            { item: "Fresh Mint Leaves", amount: "8–10 Leaves" },
+            { item: "Pellet / Pebble Crushed Ice", amount: "Packed to Dome" }
+        ],
+        tastingNotes: ["Cooling Mint", "Warm Vanilla", "Charred Oak", "Caramel"],
+        history: "Synonymous with Churchill Downs and the Kentucky Derby since 1938, originating as an early morning medicine in Virginia and Kentucky.",
+        proTip: "Hold the pewter julep cup strictly by the top rim or bottom base so your hand heat doesn't melt the exterior frost coating.",
+        techniqueLore": "Stirring high-proof bourbon with crushed ice produces frost on silver or pewter, insulating the spirit at ice-cold temperatures."
+    },
+    {
+        id: "moscow-mule",
+        name: "Moscow Mule",
+        category: "Mid-Century Classic",
+        era: "Est. 1941 • Cock 'n Bull, Hollywood, CA",
+        glassware: "copper-mug",
+        glasswareName: "Copper Mug",
+        method: "build",
+        methodName: "Built in Glass",
+        ingredients: ["Vodka", "Fresh Lime Juice", "Spicy Ginger Beer", "Lime Wheel"],
+        decoys: ["Gin", "Ginger Ale", "Simple Syrup", "Lemon Juice"],
+        canonicalRecipe: [
+            { item: "Vodka", amount: "2.0 oz (60 ml)" },
+            { item: "Fresh Lime Juice", amount: "0.75 oz (22.5 ml)" },
+            { item: "Spicy Ginger Beer", amount: "Top (~4.0 oz)" },
+            { item: "Fresh Lime Wheel & Mint", amount: "1 Garnish" }
+        ],
+        tastingNotes: ["Fiery Ginger", "Tart Lime", "Crisp Clean", "Chilled Frost"],
+        history: "Created when John Martin of Smirnoff, Jack Morgan of the Cock 'n Bull restaurant, and a businesswoman with excess copper mugs joined forces to market vodka in America.",
+        proTip: "Use fermented, fiery ginger beer (like Fever-Tree or Bundaberg), not sweet ginger ale. Vodka requires sharp ginger heat for backbone.",
+        techniqueLore": "Copper conducts cold rapidly, creating an exterior frost layer that keeps the drink sub-zero and numbs the lips during sips."
+    },
+    {
+        id: "b-and-b",
+        name: "B&B (Brandy & Bénédictine)",
+        category: "Interwar Digestif",
+        era: "Circa 1930s • 21 Club, NYC",
+        glassware: "snifter",
+        glasswareName: "Snifter",
+        method: "build",
+        methodName: "Layered / Built",
+        ingredients: ["Cognac / Fine Brandy", "Bénédictine D.O.M."],
+        decoys: ["Rye Whiskey", "Grand Marnier", "Drambuie", "Sweet Vermouth"],
+        canonicalRecipe: [
+            { item: "Cognac (VSOP)", amount: "1.0 oz (30 ml)" },
+            { item: "Bénédictine D.O.M.", amount: "1.0 oz (30 ml)" }
+        ],
+        tastingNotes: ["Herbal Honey", "Dried Apricot", "Warm Cognac", "Saffron Spice"],
+        history: "Originated at New York's 21 Club during the 1930s, pairing the herbal richness of Normandy monks' Bénédictine with dry French Cognac.",
+        proTip: "Serve neat at room temperature. Swirl gently in the snifter and cradle the bowl in your palm to warm the aromatic botanical vapors.",
+        techniqueLore": "The snifter's wide bowl and narrow inward rim trap volatile ester compounds, focusing herbal honey notes directly toward the olfactory system."
     },
     {
         id: "french-75",
         name: "French 75",
         category: "Prohibition Classic",
         era: "Est. 1915 • Harry's New York Bar, Paris",
-        glassware: "highball",
-        glasswareName: "Highball / Flute",
+        glassware: "champagne-flute",
+        glasswareName: "Champagne Flute",
         method: "shake",
         methodName: "Shaken & Topped",
         ingredients: ["London Dry Gin", "Fresh Lemon Juice", "Simple Syrup", "Brut Champagne"],
@@ -195,52 +303,93 @@ const COCKTAILS_MASTER_DB = [
         canonicalRecipe: [
             { item: "London Dry Gin", amount: "1.0 oz (30 ml)" },
             { item: "Fresh Lemon Juice", amount: "0.5 oz (15 ml)" },
-            { item: "Simple Syrup", amount: "0.5 oz (15 ml)" },
+            { item: "Simple Syrup (1:1)", amount: "0.5 oz (15 ml)" },
             { item: "Brut Champagne", amount: "Top (~2.5 oz)" }
         ],
         tastingNotes: ["Effervescent", "Crisp Botanical", "Tart Lemon", "Dry Toast"],
-        history: "Named for the devastating French 75mm artillery cannon, said to kick with identical force. Popularized in Paris and immortalized in the Savoy Cocktail Book.",
+        history: "Named for the devastating French 75mm artillery gun, said to kick with identical force. Popularized in Paris and immortalized in the Savoy Cocktail Book.",
         proTip: "Use bone-dry Brut Champagne; sweetness from cheap sparkling wine destroys the brisk, razor-sharp lemon acidity.",
-        techniqueLore: "Shake the gin, lemon, and syrup hard with ice, strain into your chilled glass, and gently float cold Champagne on top to preserve carbonation."
+        techniqueLore": "Shake the gin, lemon, and syrup hard with ice, strain into your chilled glass, and gently float cold Champagne on top to preserve carbonation."
     },
     {
-        id: "aviation",
-        name: "Aviation",
-        category: "Pre-Prohibition",
-        era: "Est. 1916 • Hotel Wallick, NYC",
-        glassware: "coupe",
-        glasswareName: "Cocktail Coupe",
+        id: "aperol-spritz",
+        name: "Aperol Spritz",
+        category: "Italian Aperitivo",
+        era: "Est. 1950s • Venice / Padua, Italy",
+        glassware: "wine-glass",
+        glasswareName: "Wine Glass",
+        method: "build",
+        methodName: "Built in Glass",
+        ingredients: ["Prosecco", "Aperol", "Club Soda", "Fresh Orange Slice"],
+        decoys: ["Campari", "Sweet Vermouth", "Gin", "Lemon Juice"],
+        canonicalRecipe: [
+            { item: "Dry Prosecco (DOC)", amount: "3.0 oz (90 ml)" },
+            { item: "Aperol", amount: "2.0 oz (60 ml)" },
+            { item: "Chilled Club Soda", amount: "1.0 oz (30 ml)" },
+            { item: "Castelvetrano Olive & Orange Slice", amount: "1 Garnish each" }
+        ],
+        tastingNotes: ["Bittersweet Orange", "Crisp Effervescence", "Rhubarb & Gentian", "Floral Peach"],
+        history: "Derived from the 19th-century Austrian Habsburg soldiers' practice of 'spritzing' heavy Venetian wine with water to make it lighter.",
+        proTip: "Follow the Venetian 3-2-1 rule: 3 parts Prosecco, 2 parts Aperol, 1 splash soda. Pour Prosecco first to prevent Aperol from sinking.",
+        techniqueLore": "Serving in a large stemmed wine glass filled with ice keeps the drink cold on warm terraces without over-dilution."
+    },
+    {
+        id: "michelada",
+        name: "Mexican Michelada",
+        category: "Mexican Heritage",
+        era: "Circa 1960s • San Luis Potosí, Mexico",
+        glassware: "pilsner",
+        glasswareName: "Pilsner",
+        method: "build",
+        methodName: "Built in Glass",
+        ingredients: ["Mexican Crisp Lager", "Fresh Lime Juice", "Worcestershire Sauce", "Hot Sauce (Valentina/Cholula)", "Tajín / Salt Rim"],
+        decoys: ["Tequila", "Tomato Puree", "Orange Juice", "Mezcal"],
+        canonicalRecipe: [
+            { item: "Cold Mexican Lager (e.g. Modelo)", amount: "Top Full Bottle" },
+            { item: "Fresh Lime Juice", amount: "1.0 oz (30 ml)" },
+            { item: "Worcestershire Sauce (Salsa Inglesa)", amount: "3 Dashes" },
+            { item: "Maggi Seasoning & Hot Sauce", amount: "2 Dashes each" },
+            { item: "Chili-Lime Salt (Tajín)", amount: "Full Rim on Glass" }
+        ],
+        tastingNotes: ["Zesty Saline", "Savory Umami", "Crisp Malt", "Fiery Chili"],
+        history: "Named as a contraction of 'Mi Chela Helada' ('My Ice-Cold Beer') or credited to Michel Ésper at the Club Deportivo Potosino in Mexico.",
+        proTip: "Use a crisp, clean adjunct lager. Heavy, hoppy IPAs or rich stouts clash with the tart lime acidity and savory sauces.",
+        techniqueLore": "The tall, flared pilsner glass showcases carbonation rising through savory seasonings while supporting a chili-lime rim."
+    },
+    {
+        id: "mai-tai",
+        name: "1944 Trader Vic Mai Tai",
+        category: "Tiki Heritage",
+        era: "Est. 1944 • Hinky Dinks, Oakland, CA",
+        glassware: "tiki-mug",
+        glasswareName: "Tiki Mug",
         method: "shake",
         methodName: "Vigorously Shaken",
-        ingredients: ["London Dry Gin", "Maraschino Liqueur", "Crème de Violette", "Fresh Lemon Juice"],
-        decoys: ["Vodka", "Triple Sec", "Blue Curaçao", "Sweet Vermouth"],
+        ingredients: ["Aged Jamaican Rum", "Rhum Agricole", "Orange Curaçao", "Orgeat (Almond Syrup)", "Fresh Lime Juice"],
+        decoys: ["Pineapple Juice", "Grenadine", "Spiced Rum", "Club Soda"],
         canonicalRecipe: [
-            { item: "London Dry Gin", amount: "2.0 oz (60 ml)" },
-            { item: "Maraschino Liqueur (Luxardo)", amount: "0.5 oz (15 ml)" },
-            { item: "Crème de Violette", amount: "0.25 oz (7.5 ml)" },
-            { item: "Fresh Lemon Juice", amount: "0.75 oz (22.5 ml)" }
+            { item: "Aged Jamaican Pot Still Rum", amount: "1.0 oz (30 ml)" },
+            { item: "Martinique Rhum Agricole", amount: "1.0 oz (30 ml)" },
+            { item: "Pierre Ferrand Dry Curaçao", amount: "0.5 oz (15 ml)" },
+            { item: "Orgeat (Almond Milk Syrup)", amount: "0.5 oz (15 ml)" },
+            { item: "Fresh Lime Juice", amount: "1.0 oz (30 ml)" }
         ],
-        tastingNotes: ["Floral Violet", "Sour Cherry Stone", "Crisp Pine", "Powdered Blossom"],
-        history: "Published by Hugo Ensslin on the eve of Prohibition, named for its atmospheric, sky-blue hue reminiscent of early 20th-century aviation dawn.",
-        proTip: "A heavy hand with Crème de Violette turns the drink into lavender hand-soap. Treat violette with the caution of liquid perfume.",
-        techniqueLore: "Hard shaking with cold ice yields a cloudy, pale sky-blue wash with a delicate crystalline sheen."
+        tastingNotes: ["Nutty Almond", "Funky Molasses", "Tart Lime", "Candied Orange"],
+        history: "Trader Vic Bergeron shook this for Tahitian friends who exclaimed 'Maita'i roa a'e!' ('Out of this world!'). True Tiki contains no neon mixers or grenadine.",
+        proTip": "Slap a fresh mint bouquet against the back of your hand before resting it alongside a spent lime wheel hull to evoke an island palm tree.",
+        techniqueLore": "Shake with crushed ice for only 6 seconds, then pour unstrained into your mug to immediately chill and dilute funky pot-still rums."
     }
 ];
 
 /* ==========================================================================
-   Luxury Vector Glassware & Hardware Registry
+   Complete Vector Glassware (16) & Hardware Registry (4)
    ========================================================================== */
 const HARDWARE_LIBRARY = {
     glassware: [
         {
             id: "rocks",
-            name: "Double Rocks",
-            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M5 4 L7 20 Q12 21 17 20 L19 4 Z" /><line x1="4.5" y1="4" x2="19.5" y2="4" stroke-width="1.5"/><path d="M7 17 Q12 18 17 17" opacity="0.5"/></svg>`
-        },
-        {
-            id: "coupe",
-            name: "Cocktail Coupe",
-            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M4 6 Q12 15 20 6 Z" /><line x1="12" y1="13" x2="12" y2="20" stroke-width="1.8"/><path d="M8 20 Q12 19 16 20" stroke-width="1.8"/></svg>`
+            name: "Rocks / Lowball",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M5 5 L7 20 Q12 21 17 20 L19 5 Z" /><line x1="4.5" y1="5" x2="19.5" y2="5" stroke-width="1.5"/><path d="M7 17 Q12 18 17 17" opacity="0.4"/></svg>`
         },
         {
             id: "highball",
@@ -248,21 +397,96 @@ const HARDWARE_LIBRARY = {
             svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M7 3 L8 21 Q12 21.5 16 21 L17 3 Z" /><line x1="6.5" y1="3" x2="17.5" y2="3" stroke-width="1.5"/></svg>`
         },
         {
+            id: "collins",
+            name: "Collins",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M8 2 L8.5 22 Q12 22.5 15.5 22 L16 2 Z" /><line x1="7.5" y1="2" x2="16.5" y2="2" stroke-width="1.5"/><line x1="8.3" y1="18" x2="15.7" y2="18" opacity="0.3"/></svg>`
+        },
+        {
+            id: "coupe",
+            name: "Cocktail Coupe",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M4 6 Q12 15 20 6 Z" /><line x1="12" y1="13" x2="12" y2="20" stroke-width="1.8"/><path d="M8 20 Q12 19 16 20" stroke-width="1.8"/></svg>`
+        },
+        {
+            id: "martini",
+            name: "Martini",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M4 4 L12 13 L20 4 Z" /><line x1="12" y1="13" x2="12" y2="20" stroke-width="1.8"/><path d="M8 20 Q12 19.5 16 20" stroke-width="1.8"/></svg>`
+        },
+        {
             id: "nick-nora",
             name: "Nick & Nora",
             svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M6 5 C6 14 18 14 18 5 Z" /><line x1="12" y1="12.5" x2="12" y2="20" stroke-width="1.8"/><path d="M8 20 Q12 19 16 20" stroke-width="1.8"/></svg>`
+        },
+        {
+            id: "hurricane",
+            name: "Hurricane",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M7 3 Q6 10 9 12 Q5 17 8 20 L16 20 Q19 17 15 12 Q18 10 17 3 Z" /><path d="M8 20 L16 20 L16 22 L8 22 Z"/></svg>`
+        },
+        {
+            id: "margarita-glass",
+            name: "Margarita",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M4 4 Q12 7 20 4 L17 9 Q14 10 14 13 L14 19 L10 19 L10 13 Q10 10 7 9 Z" /><path d="M7 21 L17 21" stroke-width="1.8"/></svg>`
+        },
+        {
+            id: "shot",
+            name: "Shot Glass",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M6 7 L8 21 Q12 21.5 16 21 L18 7 Z" /><line x1="5.5" y1="7" x2="18.5" y2="7" stroke-width="1.5"/><rect x="8" y="18" width="8" height="3" opacity="0.4"/></svg>`
+        },
+        {
+            id: "julep-cup",
+            name: "Julep Cup",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M6 5 L7.5 20 L16.5 20 L18 5 Z" /><path d="M5 5 L19 5" stroke-width="2"/><path d="M6.5 20 L17.5 20" stroke-width="2"/></svg>`
+        },
+        {
+            id: "copper-mug",
+            name: "Copper Mug",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><rect x="5" y="6" width="12" height="14" rx="2"/><path d="M17 9 C20 9 20 17 17 17" stroke-width="1.8" fill="none"/></svg>`
+        },
+        {
+            id: "snifter",
+            name: "Snifter",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M8 5 C3 11 6 16 12 16 C18 16 21 11 16 5 Z" /><line x1="12" y1="16" x2="12" y2="20" stroke-width="1.8"/><path d="M8 20 L16 20" stroke-width="1.8"/></svg>`
+        },
+        {
+            id: "champagne-flute",
+            name: "Champagne Flute",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M9 2 L10 14 Q12 16 14 14 L15 2 Z" /><line x1="12" y1="15" x2="12" y2="21" stroke-width="1.8"/><path d="M8 21 L16 21" stroke-width="1.8"/></svg>`
+        },
+        {
+            id: "wine-glass",
+            name: "Wine Glass",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M6 4 C6 13 18 13 18 4 Z" /><line x1="12" y1="13" x2="12" y2="20" stroke-width="1.8"/><path d="M8 20 Q12 19.5 16 20" stroke-width="1.8"/></svg>`
+        },
+        {
+            id: "pilsner",
+            name: "Pilsner",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M7 2 Q10 13 8 20 L16 20 Q14 13 17 2 Z" /><path d="M7.5 20 L16.5 20" stroke-width="2"/></svg>`
+        },
+        {
+            id: "tiki-mug",
+            name: "Tiki Mug",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="9" cy="8" r="1.5"/><circle cx="15" cy="8" r="1.5"/><path d="M9 16 Q12 13 15 16" stroke-width="1.5" fill="none"/></svg>`
         }
     ],
     methods: [
         {
+            id: "build",
+            name: "Build in Glass",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M8 3 L8 19 Q12 21 16 19 L16 3 Z"/><line x1="6" y1="11" x2="18" y2="11" stroke-dasharray="2,2"/></svg>`
+        },
+        {
             id: "stir",
-            name: "Stirred (Ice)",
-            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><circle cx="12" cy="12" r="8" stroke-dasharray="3,3"/><path d="M12 4 L12 20" /><path d="M12 20 C10 20 10 22 12 22 C14 22 14 20 12 20" /></svg>`
+            name: "Stir (Ice)",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><circle cx="12" cy="12" r="8" stroke-dasharray="3,3"/><path d="M12 4 L12 20"/><path d="M12 20 C10 20 10 22 12 22 C14 22 14 20 12 20"/></svg>`
         },
         {
             id: "shake",
             name: "Vigorous Shake",
-            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M7 8 L17 8 L15 20 L9 20 Z" /><path d="M8 8 L9 4 L15 4 L16 8 Z" /><line x1="6" y1="12" x2="18" y2="12" stroke-width="1.2"/></svg>`
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M7 8 L17 8 L15 20 L9 20 Z"/><path d="M8 8 L9 4 L15 4 L16 8 Z"/><line x1="6" y1="12" x2="18" y2="12" stroke-width="1.2"/></svg>`
+        },
+        {
+            id: "throw",
+            name: "Throw / Roll",
+            svg: `<svg viewBox="0 0 24 24" class="hw-icon-svg"><path d="M4 6 L10 6 L9 13 L5 13 Z"/><path d="M15 11 L21 11 L20 18 L16 18 Z"/><path d="M8 9 C11 5 13 15 17 12" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`
         }
     ]
 };
@@ -286,7 +510,7 @@ let puzzleState = {
     userMethod: null,
     methodRevealed: false,
 
-    // Ingredients array: { name, isRevealed, userSelection }
+    // Ingredients array: { targetName, isRevealed, userSelection }
     ingredients: [],
     decoysPool: []
 };
@@ -645,13 +869,18 @@ function setupPuzzleState(drink) {
 function renderPuzzleUI() {
     const drink = cocktailsDB[currentDrinkIndex];
 
+    // Helper: Safely resolve glassware object with graceful fallback
+    const resolveGlass = (id) => HARDWARE_LIBRARY.glassware.find(g => g.id === id) || HARDWARE_LIBRARY.glassware[0];
+    // Helper: Safely resolve method object with graceful fallback
+    const resolveMethod = (id) => HARDWARE_LIBRARY.methods.find(m => m.id === id) || HARDWARE_LIBRARY.methods[0];
+
     // 1. Render Glassware Slot
     if (puzzleState.glassRevealed) {
-        const glassObj = HARDWARE_LIBRARY.glassware.find(g => g.id === drink.glassware);
+        const glassObj = resolveGlass(drink.glassware);
         dom.displayGlass.className = "hw-placeholder filled";
         dom.displayGlass.innerHTML = `${glassObj.svg} <span>${glassObj.name}</span>`;
     } else if (puzzleState.userGlass) {
-        const glassObj = HARDWARE_LIBRARY.glassware.find(g => g.id === puzzleState.userGlass);
+        const glassObj = resolveGlass(puzzleState.userGlass);
         dom.displayGlass.className = "hw-placeholder filled";
         dom.displayGlass.innerHTML = `${glassObj.svg} <span>${glassObj.name}</span>`;
     } else {
@@ -661,11 +890,11 @@ function renderPuzzleUI() {
 
     // 2. Render Method Slot
     if (puzzleState.methodRevealed) {
-        const methodObj = HARDWARE_LIBRARY.methods.find(m => m.id === drink.method);
+        const methodObj = resolveMethod(drink.method);
         dom.displayMethod.className = "hw-placeholder filled";
         dom.displayMethod.innerHTML = `${methodObj.svg} <span>${methodObj.name}</span>`;
     } else if (puzzleState.userMethod) {
-        const methodObj = HARDWARE_LIBRARY.methods.find(m => m.id === puzzleState.userMethod);
+        const methodObj = resolveMethod(puzzleState.userMethod);
         dom.displayMethod.className = "hw-placeholder filled";
         dom.displayMethod.innerHTML = `${methodObj.svg} <span>${methodObj.name}</span>`;
     } else {
@@ -746,7 +975,7 @@ function renderSelectionTrays() {
         dom.ingredientsTray.appendChild(chip);
     });
 
-    // B. Render Glassware Choices
+    // B. Render Glassware Choices (All 16 glasses)
     dom.glassTray.innerHTML = "";
     HARDWARE_LIBRARY.glassware.forEach(glass => {
         const btn = document.createElement("button");
@@ -763,7 +992,7 @@ function renderSelectionTrays() {
         dom.glassTray.appendChild(btn);
     });
 
-    // C. Render Method Choices
+    // C. Render Method Choices (All 4 methods)
     dom.methodTray.innerHTML = "";
     HARDWARE_LIBRARY.methods.forEach(method => {
         const btn = document.createElement("button");
@@ -965,7 +1194,7 @@ function setupEvents() {
 }
 
 /* ==========================================================================
-   Optional External JSON Hydration with embedded fallback
+   External JSON Hydration with embedded fallback
    ========================================================================== */
 async function hydrateDrinksFromJSON() {
     try {
@@ -978,7 +1207,7 @@ async function hydrateDrinksFromJSON() {
         }
     } catch (err) {
         // Seamless fallback to embedded DB (e.g. file:// protocol or offline mode)
-        console.info("Using embedded drinks library.");
+        console.info("Using embedded master drinks library.");
     }
     loadDrink(0);
 }
