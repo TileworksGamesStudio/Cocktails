@@ -4,316 +4,210 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#090807">
-    <title>SPECS // Mobile Speakeasy Masterclass</title>
+    <title>SPECS // Speakeasy Card Masterclass</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Background Ambience -->
     <div class="ambient-glow glow-top"></div>
     <div class="ambient-glow glow-bottom"></div>
 
+    <!-- Celebration Sparkle Canvas -->
+    <canvas id="sparkle-canvas"></canvas>
+
     <div class="app-viewport">
-        <!-- TOP APP HEADER -->
+        
+        <!-- HEADER -->
         <header class="app-header">
-            <div class="header-main-row">
-                <div class="brand-block">
-                    <span class="eyebrow">SPEAKEASY MASTERCLASS</span>
+            <div class="header-top">
+                <div class="brand">
+                    <span class="brand-sub">SPEAKEASY DECK</span>
                     <h1 class="brand-title">S P E C S</h1>
                 </div>
 
-                <div class="difficulty-toggle" id="difficulty-group">
-                    <button class="diff-chip" data-mode="easy">EASY</button>
-                    <button class="diff-chip active" data-mode="medium">MED</button>
-                    <button class="diff-chip" data-mode="hard">HARD</button>
+                <!-- Difficulty Selector -->
+                <div class="diff-control" id="diff-control">
+                    <button class="diff-btn" data-mode="easy">EASY</button>
+                    <button class="diff-btn active" data-mode="medium">MED</button>
+                    <button class="diff-btn" data-mode="hard">HARD</button>
                 </div>
 
-                <div class="quick-tools">
-                    <button id="unit-btn" class="icon-tool" aria-label="Toggle Unit">
-                        <span id="unit-label">OZ</span>
-                    </button>
-                    <button id="sound-btn" class="icon-tool" aria-label="Toggle Audio">
-                        <svg id="sound-icon-on" class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                            <path d="M19 5a10 10 0 0 1 0 14M15.5 8.5a5 5 0 0 1 0 7"></path>
-                        </svg>
-                        <svg id="sound-icon-off" class="svg-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                            <line x1="23" y1="9" x2="17" y2="15"></line>
-                            <line x1="17" y1="9" x2="23" y2="15"></line>
-                        </svg>
-                    </button>
-                </div>
+                <!-- Audio Toggle -->
+                <button id="sound-btn" class="icon-tool" aria-label="Toggle Sound">
+                    <svg id="sound-icon-on" class="sound-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19 5a10 10 0 0 1 0 14M15.5 8.5a5 5 0 0 1 0 7"></path>
+                    </svg>
+                    <svg id="sound-icon-off" class="sound-svg hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                    </svg>
+                </button>
             </div>
 
-            <!-- DECK STATUS RIBBON -->
+            <!-- Card Ribbon & Stats -->
             <div class="deck-ribbon">
-                <button id="prev-card-btn" class="deck-arrow" aria-label="Previous Drink">‹</button>
-                <div class="deck-meta">
-                    <span id="drink-index-pill" class="pill-tracker">DRINK 1 / 6</span>
-                    <span id="streak-pill" class="pill-streak">STREAK: 0 🔥</span>
+                <button id="prev-card-btn" class="nav-arrow" aria-label="Previous Drink">‹</button>
+                <div class="meta-status">
+                    <span id="card-counter" class="status-pill">CARD 1 / 10</span>
+                    <span id="streak-counter" class="status-pill highlight">STREAK: 0 🔥</span>
                 </div>
-                <button id="next-card-btn" class="deck-arrow" aria-label="Next Drink">›</button>
+                <button id="next-card-btn" class="nav-arrow" aria-label="Next Drink">›</button>
             </div>
         </header>
 
-        <!-- TOP ATTENTION ZONE: 3D FLIPPABLE COCKTAIL CARD DECK -->
-        <section class="stage-deck">
-            <div class="card-3d-scene" id="card-3d-scene">
-                <div class="card-3d-flip" id="cocktail-card">
+        <!-- CENTER STAGE: 3D FLIPPABLE CARD -->
+        <main class="card-stage">
+            <div class="card-scene">
+                <div class="card-flip" id="active-card">
 
-                    <!-- CARD FRONT: VISUAL GLASS & BUILD STATUS -->
+                    <!-- ================= CARD FRONT (CHALLENGE) ================= -->
                     <div class="card-face card-front">
-                        <div class="card-front-top">
-                            <div class="drink-title-group">
-                                <div class="badge-row">
-                                    <span class="drink-badge" id="card-category">CLASSIC</span>
-                                    <span class="drink-origin-badge" id="card-origin">Circa 1880s</span>
+                        <div class="card-front-header">
+                            <div class="card-badge-row">
+                                <span class="tag-category" id="front-category">CLASSIC</span>
+                                <span class="tag-era" id="front-era">Circa 1880s</span>
+                            </div>
+                            <h2 class="drink-name" id="front-drink-name">Old Fashioned</h2>
+                        </div>
+
+                        <!-- Hardware Slots: Glassware & Method -->
+                        <div class="hardware-row">
+                            <div class="hw-slot" id="slot-glass" data-target="glass">
+                                <span class="hw-label">GLASSWARE</span>
+                                <div class="hw-placeholder" id="display-glass">
+                                    <span class="plus-icon">+</span> Select Glass
                                 </div>
-                                <h2 class="drink-title" id="card-drink-name">Old Fashioned</h2>
                             </div>
-                            <button id="flip-to-back-btn" class="card-flip-btn" aria-label="Flip to Recipe Lore">
-                                <span>LORE & SPEC</span>
-                                <span class="flip-icon">↺</span>
-                            </button>
+                            <div class="hw-slot" id="slot-method" data-target="method">
+                                <span class="hw-label">METHOD</span>
+                                <div class="hw-placeholder" id="display-method">
+                                    <span class="plus-icon">+</span> Select Method
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- DYNAMIC HIGH-RES VECTOR GLASS MODEL -->
-                        <div class="glassware-display">
-                            <svg class="cocktail-svg" id="cocktail-svg" viewBox="0 0 300 320">
-                                <defs>
-                                    <clipPath id="glassInteriorClip">
-                                        <path id="glass-clip-path" d="M80 80 L85 240 Q150 250 215 240 L220 80 Z" />
-                                    </clipPath>
-                                    <linearGradient id="glassReflection" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="rgba(255,255,255,0.25)" />
-                                        <stop offset="20%" stop-color="rgba(255,255,255,0.03)" />
-                                        <stop offset="70%" stop-color="rgba(255,255,255,0.02)" />
-                                        <stop offset="100%" stop-color="rgba(255,255,255,0.2)" />
-                                    </linearGradient>
-                                    <linearGradient id="cremaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" stop-color="#f5d0a9" />
-                                        <stop offset="100%" stop-color="#c99158" />
-                                    </linearGradient>
-                                </defs>
-
-                                <!-- Table Shadow -->
-                                <ellipse cx="150" cy="275" rx="60" ry="8" class="svg-shadow" />
-
-                                <!-- Glass Content (Clipped to interior) -->
-                                <g clip-path="url(#glassInteriorClip)">
-                                    <rect id="glass-base-void" x="0" y="0" width="300" height="320" fill="transparent" />
-                                    
-                                    <!-- Dynamic Liquid Strata layers appended via JS -->
-                                    <g id="liquid-layers-group"></g>
-
-                                    <!-- Effervescent bubbles for carbonated drinks -->
-                                    <g id="svg-bubbles" class="bubbles-fx" opacity="0">
-                                        <circle cx="120" cy="200" r="2" fill="#fff" />
-                                        <circle cx="145" cy="180" r="1.5" fill="#fff" />
-                                        <circle cx="165" cy="210" r="2" fill="#fff" />
-                                        <circle cx="155" cy="150" r="2.5" fill="#fff" />
-                                        <circle cx="130" cy="130" r="1.5" fill="#fff" />
-                                    </g>
-
-                                    <!-- Ice Elements -->
-                                    <g id="ice-layer">
-                                        <!-- Large Diamond Rock (Old Fashioned / Oaxaca) -->
-                                        <polygon id="ice-rock" class="ice-facets hidden" points="110,140 150,115 190,140 180,210 120,210" />
-                                        <!-- Cubes -->
-                                        <g id="ice-cubes" class="hidden">
-                                            <rect x="100" y="160" width="44" height="44" rx="7" class="ice-cube" />
-                                            <rect x="155" y="150" width="44" height="44" rx="7" class="ice-cube" />
-                                            <rect x="125" y="105" width="44" height="44" rx="7" class="ice-cube" />
-                                        </g>
-                                    </g>
-
-                                    <!-- Microfoam Crema Head -->
-                                    <rect id="foam-layer" x="60" y="80" width="180" height="24" rx="4" fill="url(#cremaGrad)" opacity="0" />
-
-                                    <!-- Washline Target Marker -->
-                                    <line id="washline-marker" x1="75" y1="105" x2="225" y2="105" stroke="rgba(245,158,11,0.5)" stroke-dasharray="3,3" stroke-width="1.5" />
-                                </g>
-
-                                <!-- Glassware Contour & Stems -->
-                                <path id="glass-contour" d="M78 78 L84 242 Q150 252 216 242 L222 78 Z" fill="url(#glassReflection)" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
-                                <path id="glass-stem" class="hidden" d="M150 200 L150 270" stroke="rgba(255,255,255,0.5)" stroke-width="4" stroke-linecap="round" />
-                                <path id="glass-foot" class="hidden" d="M110 270 Q150 266 190 270" stroke="rgba(255,255,255,0.5)" stroke-width="3" fill="rgba(255,255,255,0.1)" />
-
-                                <!-- Garnishes -->
-                                <g id="garnish-group" opacity="0">
-                                    <path id="garnish-orange" class="hidden" d="M185 75 C215 60, 230 100, 205 115 C185 125, 180 110, 195 95" stroke="#ea580c" stroke-width="8" stroke-linecap="round" fill="none" />
-                                    <g id="garnish-lime" class="hidden">
-                                        <circle cx="215" cy="85" r="24" fill="#65a30d" stroke="#365314" stroke-width="2.5" />
-                                        <circle cx="215" cy="85" r="18" fill="#84cc16" stroke="#f7fee7" stroke-width="1.5" />
-                                    </g>
-                                    <g id="garnish-beans" class="hidden">
-                                        <ellipse cx="138" cy="98" rx="5" ry="3.5" fill="#291e18" transform="rotate(-20 138 98)" />
-                                        <ellipse cx="158" cy="96" rx="5" ry="3.5" fill="#291e18" transform="rotate(30 158 96)" />
-                                        <ellipse cx="148" cy="108" rx="5" ry="3.5" fill="#291e18" transform="rotate(75 148 108)" />
-                                    </g>
-                                </g>
-                            </svg>
+                        <!-- Ingredients Slots Section -->
+                        <div class="ingredients-section">
+                            <div class="section-title-row">
+                                <span class="sec-label">REQUIRED INGREDIENTS</span>
+                                <span class="sec-hint" id="missing-count-hint">Missing 2</span>
+                            </div>
+                            <div class="ingredient-slots-list" id="ingredient-slots-container">
+                                <!-- Dynamic ingredient slot items generated via JS -->
+                            </div>
                         </div>
 
-                        <!-- Card Front Status Footer -->
-                        <div class="card-front-foot">
-                            <div class="status-metric">
-                                <span class="metric-label">VOLUME</span>
-                                <span id="metric-volume-val" class="metric-value">0.0 oz</span>
-                            </div>
-                            <div class="status-metric center">
-                                <span class="metric-label">WASH LINE</span>
-                                <span id="metric-wash-val" class="metric-value status-empty">Empty Glass</span>
-                            </div>
-                            <div class="status-metric right">
-                                <span class="metric-label">GLASS SPEC</span>
-                                <span id="metric-glass-val" class="metric-value">Rocks</span>
-                            </div>
+                        <!-- Card Front Footer / Status Hint -->
+                        <div class="card-status-bar" id="card-status-bar">
+                            <span id="status-hint-text">Select missing items from the rack below</span>
                         </div>
                     </div>
 
-                    <!-- CARD BACK: CANONICAL RECIPE, HISTORY, FLAVOR PROFILES -->
+                    <!-- ================= CARD BACK (BIO & DOSSIER) ================= -->
                     <div class="card-face card-back">
                         <div class="card-back-header">
                             <div>
-                                <span class="card-back-tag">MASTER ARCHIVE</span>
-                                <h3 class="card-back-title" id="back-drink-name">Old Fashioned</h3>
+                                <span class="dossier-tag">MASTER ARCHIVE SPEC</span>
+                                <h3 class="back-title" id="back-drink-name">Old Fashioned</h3>
                             </div>
-                            <button id="flip-to-front-btn" class="card-flip-btn return-btn" aria-label="Return to Build">
-                                <span>RETURN</span>
-                                <span class="flip-icon">↺</span>
+                            <button id="flip-back-btn" class="return-chip" aria-label="Flip to Card Front">
+                                <span>BUILD</span> ↺
                             </button>
                         </div>
 
+                        <!-- Scrollable Bio & Historical Notes -->
                         <div class="card-back-scroll">
-                            <!-- Canonical Recipe Box -->
-                            <div class="back-section">
-                                <h4 class="back-heading">CANONICAL FORMULATION</h4>
-                                <div id="back-canonical-specs" class="canonical-specs-list"></div>
-                            </div>
-
-                            <!-- Hard Mode Flavor Sensor Pad -->
-                            <div class="back-section" id="flavor-pad-section">
-                                <div class="back-flex-title">
-                                    <h4 class="back-heading">PALATE & FLAVOR PROFILE</h4>
-                                    <span class="flavor-mode-tag" id="flavor-mode-hint">Required in HARD</span>
+                            <!-- Canonical Formulation -->
+                            <div class="bio-block">
+                                <h4 class="bio-heading">CANONICAL FORMULATION</h4>
+                                <div class="canonical-recipe" id="back-canonical-recipe">
+                                    <!-- Populated via JS -->
                                 </div>
-                                <div id="flavor-chip-picker" class="flavor-chip-grid"></div>
                             </div>
 
-                            <!-- History & Technique Notes -->
-                            <div class="back-section">
-                                <h4 class="back-heading">HISTORICAL PEDIGREE</h4>
-                                <p id="back-lore-history" class="back-body-text"></p>
+                            <!-- Tasting & Sensory Profile -->
+                            <div class="bio-block">
+                                <h4 class="bio-heading">FLAVOR & PALATE PROFILE</h4>
+                                <div class="tasting-tags" id="back-tasting-tags">
+                                    <!-- Populated via JS -->
+                                </div>
                             </div>
 
-                            <div class="back-section tip-box">
-                                <h4 class="back-heading amber">HEAD BARTENDER'S SECRET</h4>
-                                <p id="back-lore-protip" class="back-body-text"></p>
+                            <!-- Historical Pedigree -->
+                            <div class="bio-block">
+                                <h4 class="bio-heading">HISTORICAL PEDIGREE</h4>
+                                <p class="bio-text" id="back-history-text"></p>
+                            </div>
+
+                            <!-- Head Bartender's Secret -->
+                            <div class="bio-block secret-box">
+                                <h4 class="bio-heading amber">HEAD BARTENDER'S SECRET</h4>
+                                <p class="bio-text" id="back-protip-text"></p>
+                            </div>
+
+                            <!-- Glassware & Dilution Lore -->
+                            <div class="bio-block">
+                                <h4 class="bio-heading">TECHNIQUE & GLASS NOTES</h4>
+                                <p class="bio-text" id="back-technique-text"></p>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            </div>
-        </section>
-
-        <!-- BOTTOM INTERACTION ZONE: SPEED RAIL & BAR WORKBENCH -->
-        <main class="workbench-dock">
-            <!-- Segmented Controls: Rail vs Hardware -->
-            <div class="workbench-tabs">
-                <button class="wb-tab active" data-dock="pour">1. INGREDIENTS & SPEED RAIL</button>
-                <button class="wb-tab" data-dock="setup">2. GLASS, METHOD & ICE</button>
-            </div>
-
-            <!-- DOCK VIEW A: SPEED RAIL & POUR CONTROL -->
-            <div class="dock-view active" id="dock-pour">
-                <!-- Jigger Precision Bar (Disabled in Easy Mode) -->
-                <div class="jigger-shelf" id="jigger-shelf">
-                    <span class="jigger-label">JIGGER:</span>
-                    <div class="jigger-pills-row" id="jigger-pills">
-                        <button class="jig-pill" data-oz="0.25" data-ml="7.5">¼</button>
-                        <button class="jig-pill" data-oz="0.50" data-ml="15">½</button>
-                        <button class="jig-pill" data-oz="0.75" data-ml="22.5">¾</button>
-                        <button class="jig-pill active" data-oz="1.00" data-ml="30">1.0</button>
-                        <button class="jig-pill" data-oz="1.50" data-ml="45">1½</button>
-                        <button class="jig-pill" data-oz="2.00" data-ml="60">2.0</button>
-                        <button class="jig-pill dash" data-oz="dash" data-ml="dash">2 DASH</button>
-                    </div>
-                </div>
-
-                <!-- Speed Rail Horizontal Bottle Carousel -->
-                <div class="speed-rail-carousel" id="speed-rail-carousel"></div>
-
-                <!-- Active Shaker Tin / Poured Tray -->
-                <div class="shaker-tin-strip">
-                    <div class="tin-label-row">
-                        <span class="tin-tag">IN THE TIN / GLASS:</span>
-                        <button id="dump-tray-btn" class="tin-dump-btn">Dump Build</button>
-                    </div>
-                    <div class="tin-pills-scroll" id="tin-pills-scroll">
-                        <span class="empty-tin-msg">Speed rail empty. Tap ingredients above...</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DOCK VIEW B: HARDWARE (Glass, Method, Ice) -->
-            <div class="dock-view" id="dock-setup">
-                <div class="hardware-grid">
-                    <!-- Glass selection -->
-                    <div class="hw-col">
-                        <span class="hw-title">GLASSWARE</span>
-                        <div class="hw-options" id="hw-glass-group">
-                            <button class="hw-btn active" data-choice="rocks">Double Rocks</button>
-                            <button class="hw-btn" data-choice="coupe">Coupe</button>
-                            <button class="hw-btn" data-choice="highball">Highball</button>
-                            <button class="hw-btn" data-choice="nick-nora">Nick & Nora</button>
+                        <!-- Back Card Action Bar -->
+                        <div class="card-back-footer">
+                            <button id="advance-next-btn" class="advance-btn">
+                                <span>NEXT SPECIMEN</span> ›
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Method selection -->
-                    <div class="hw-col">
-                        <span class="hw-title">METHOD</span>
-                        <div class="hw-options" id="hw-method-group">
-                            <button class="hw-btn active" data-choice="stir">Stir (Ice)</button>
-                            <button class="hw-btn" data-choice="shake">Vigorous Shake</button>
-                            <button class="hw-btn" data-choice="build">Build in Glass</button>
-                        </div>
-                    </div>
-
-                    <!-- Ice selection -->
-                    <div class="hw-col">
-                        <span class="hw-title">ICE TYPE</span>
-                        <div class="hw-options" id="hw-ice-group">
-                            <button class="hw-btn active" data-choice="large-rock">Big Rock</button>
-                            <button class="hw-btn" data-choice="cubed">Cubes</button>
-                            <button class="hw-btn" data-choice="neat">Neat (None)</button>
-                        </div>
-                    </div>
                 </div>
-            </div>
-
-            <!-- ACTION BAR: SUBMIT SPEC -->
-            <div class="workbench-action-row">
-                <button id="serve-spec-btn" class="serve-spec-btn">
-                    <span>SERVE & EVALUATE SPEC</span>
-                </button>
             </div>
         </main>
 
-        <!-- EVALUATION MODAL SHEET -->
-        <div id="eval-modal" class="eval-modal-backdrop hidden">
-            <div class="eval-sheet">
-                <div class="eval-status-icon" id="eval-status-icon">✦</div>
-                <h3 class="eval-headline" id="eval-headline">SPECIFICATION FLAWLESS</h3>
-                <p class="eval-subtext" id="eval-subtext">Perfect balance, correct dilution, and canonical glassware.</p>
-                <div class="eval-diagnostics-list" id="eval-diagnostics"></div>
-                <button id="close-eval-btn" class="eval-dismiss-btn">CONTINUE SERVICE</button>
+        <!-- BOTTOM INTERACTIVE RACK -->
+        <footer class="selection-dock">
+            <!-- Rack Category Tabs -->
+            <div class="dock-nav-tabs" id="rack-tabs">
+                <button class="dock-tab active" data-tab="ingredients">
+                    <span>INGREDIENTS</span>
+                    <span class="tab-badge" id="tab-ing-count">0</span>
+                </button>
+                <button class="dock-tab" data-tab="hardware">
+                    <span>GLASS & METHOD</span>
+                </button>
             </div>
-        </div>
+
+            <!-- TRAY VIEW 1: INGREDIENTS -->
+            <div class="dock-pane active" id="pane-ingredients">
+                <div class="tray-scroll" id="ingredients-tray">
+                    <!-- Dynamic chips generated via JS -->
+                </div>
+            </div>
+
+            <!-- TRAY VIEW 2: GLASSWARE & METHOD -->
+            <div class="dock-pane" id="pane-hardware">
+                <div class="hw-picker-grid">
+                    <div class="hw-picker-col">
+                        <span class="picker-subtitle">SELECT GLASS</span>
+                        <div class="hw-chips-list" id="glass-tray">
+                            <!-- Populated with SVG vector icons -->
+                        </div>
+                    </div>
+                    <div class="hw-picker-col">
+                        <span class="picker-subtitle">SELECT METHOD</span>
+                        <div class="hw-chips-list" id="method-tray">
+                            <!-- Populated via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     </div>
 

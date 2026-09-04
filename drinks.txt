@@ -1,0 +1,222 @@
+[
+  {
+    "id": "old-fashioned",
+    "name": "Old Fashioned",
+    "category": "Pre-Prohibition",
+    "era": "Circa 1880s • Louisville, KY",
+    "glassware": "rocks",
+    "glasswareName": "Double Rocks",
+    "method": "stir",
+    "methodName": "Stirred over Ice",
+    "ingredients": ["Bourbon / Rye Whiskey", "Demerara Syrup", "Angostura Bitters", "Orange Peel"],
+    "decoys": ["Sweet Vermouth", "Campari", "Lemon Juice", "Club Soda"],
+    "canonicalRecipe": [
+      { "item": "Bourbon or Rye Whiskey", "amount": "2.0 oz (60 ml)" },
+      { "item": "Demerara Syrup", "amount": "0.25 oz (7.5 ml)" },
+      { "item": "Angostura Bitters", "amount": "2–3 Dashes" },
+      { "item": "Orange Peel", "amount": "Expressed & Inserted" }
+    ],
+    "tastingNotes": ["Spirit-Forward", "Charred Oak", "Caramelized Sugar", "Warm Spice"],
+    "history": "Born when 19th-century patrons grew exhausted by elaborate bar novelties, ordering their whiskey prepared the 'old-fashioned way'—spirit, sugar, water, and aromatic bitters.",
+    "proTip": "Express orange peel oils firmly over the rim and liquid surface. Never muddle cocktail cherries into the liquid; keep the silhouette clear and dense.",
+    "techniqueLore": "Stir gently over a single clear ice block for 30–40 seconds until chilled to 28°F. This provides ~22% dilution without cloudy aeration bubbles."
+  },
+  {
+    "id": "negroni",
+    "name": "Negroni",
+    "category": "Classic Aperitivo",
+    "era": "Est. 1919 • Caffè Casoni, Florence",
+    "glassware": "rocks",
+    "glasswareName": "Double Rocks",
+    "method": "stir",
+    "methodName": "Stirred over Ice",
+    "ingredients": ["London Dry Gin", "Campari", "Sweet Vermouth", "Orange Peel"],
+    "decoys": ["Dry Vermouth", "Aperol", "Club Soda", "Tequila Blanco"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "1.0 oz (30 ml)" },
+      { "item": "Campari", "amount": "1.0 oz (30 ml)" },
+      { "item": "Sweet Vermouth", "amount": "1.0 oz (30 ml)" },
+      { "item": "Orange Twist", "amount": "Expressed Over Top" }
+    ],
+    "tastingNotes": ["Bittersweet", "Pungent Juniper", "Bitter Orange", "Herbal Gentian"],
+    "history": "Count Camillo Negroni famously requested bartender Forsco Scarselli fortify his favorite Americano by swapping effervescent club soda for pungent London Dry gin.",
+    "proTip": "Keep your sweet vermouth refrigerated once uncorked; oxidized fortified wine flattens the herbal brightness of this legendary trio.",
+    "techniqueLore": "The mathematical symmetry (1:1:1) requires precise chilling so the bitter gentian root integrates with vermouth botanicals without watery over-dilution."
+  },
+  {
+    "id": "margarita",
+    "name": "Classic Margarita",
+    "category": "Agave Classic",
+    "era": "Est. 1938 • Baja California",
+    "glassware": "coupe",
+    "glasswareName": "Cocktail Coupe",
+    "method": "shake",
+    "methodName": "Vigorously Shaken",
+    "ingredients": ["Blanco Tequila", "Cointreau", "Fresh Lime Juice", "Agave Nectar"],
+    "decoys": ["Mezcal", "Simple Syrup", "Lemon Juice", "Orange Bitters"],
+    "canonicalRecipe": [
+      { "item": "Blanco Tequila (100% Agave)", "amount": "2.0 oz (60 ml)" },
+      { "item": "Cointreau / Triple Sec", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Agave Nectar", "amount": "1 Barspoon" }
+    ],
+    "tastingNotes": ["Crisp Citrus", "Earthy Agave", "Bright Saline", "Candied Orange"],
+    "history": "A descendant of the 1930s Daisy family of cocktails (spirit + citrus + orange liqueur), reimagined to spotlight authentic Mexican blue agave spirits.",
+    "proTip": "Rim only half of the glass perimeter with flake sea salt. This allows the guest to choose when they want saline contrast and when they want pure citrus.",
+    "techniqueLore": "Vigorous shaking with large, dense cubes shatters microscopic ice shards through the citrus pectin, producing an opaque, frosty velvet texture."
+  },
+  {
+    "id": "espresso-martini",
+    "name": "Espresso Martini",
+    "category": "Modern Craft",
+    "era": "Est. 1983 • Soho Brasserie, London",
+    "glassware": "coupe",
+    "glasswareName": "Cocktail Coupe",
+    "method": "shake",
+    "methodName": "Vigorously Shaken",
+    "ingredients": ["Vodka", "Coffee Liqueur", "Fresh Espresso", "Simple Syrup"],
+    "decoys": ["Irish Cream", "Cold Brew", "Dark Rum", "Cacao Liqueur"],
+    "canonicalRecipe": [
+      { "item": "Vodka", "amount": "1.5 oz (45 ml)" },
+      { "item": "Coffee Liqueur (e.g. Kahlúa)", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Fresh Pulled Espresso", "amount": "1.0 oz (30 ml)" },
+      { "item": "Rich Simple Syrup (2:1)", "amount": "0.25 oz (7.5 ml)" }
+    ],
+    "tastingNotes": ["Velveteen Crema", "Roasted Cocoa", "Dark Toffee", "Clean Finish"],
+    "history": "Invented by London icon Dick Bradsell when a supermodel notoriously pulled up to his bar asking for a drink that would 'wake me up and then mess me up.'",
+    "proTip": "Pull the espresso shot right before shaking; natural crema oils emulsify under hard aeration to create a dense, mousse-like foam head.",
+    "techniqueLore": "Float three espresso beans centered on the foam head in a tight triad, traditionally symbolizing health, wealth, and happiness."
+  },
+  {
+    "id": "daiquiri",
+    "name": "Authentic Daiquiri",
+    "category": "Cuban Heritage",
+    "era": "Est. 1898 • Daiquirí, Cuba",
+    "glassware": "coupe",
+    "glasswareName": "Cocktail Coupe",
+    "method": "shake",
+    "methodName": "Vigorously Shaken",
+    "ingredients": ["White Rum", "Fresh Lime Juice", "Demerara Simple Syrup"],
+    "decoys": ["Dark Rum", "Triple Sec", "Lemon Juice", "Maraschino Liqueur"],
+    "canonicalRecipe": [
+      { "item": "Light Cuban/Puerto Rican Rum", "amount": "2.0 oz (60 ml)" },
+      { "item": "Fresh Lime Juice", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Rich Demerara Syrup (2:1)", "amount": "0.75 oz (22.5 ml)" }
+    ],
+    "tastingNotes": ["Electric Citrus", "Cane Grass", "Mineral Crispness", "Silky Balance"],
+    "history": "Originated when American mining engineer Jennings Cox ran out of gin at a gathering in Cuba and mixed local sugar cane rum with freshly plucked limes.",
+    "proTip": "The classic Daiquiri is the ultimate bartender test. There is nowhere to hide poor ice technique or synthetic lime juice.",
+    "techniqueLore": "Double-strain through a fine mesh conical strainer to catch tiny ice shards so the mouthfeel remains silken from first sip to last."
+  },
+  {
+    "id": "manhattan",
+    "name": "Manhattan",
+    "category": "Pre-Prohibition",
+    "era": "Est. 1870s • Manhattan Club, NYC",
+    "glassware": "nick-nora",
+    "glasswareName": "Nick & Nora",
+    "method": "stir",
+    "methodName": "Stirred over Ice",
+    "ingredients": ["Rye Whiskey", "Sweet Vermouth", "Angostura Bitters", "Brandied Cherry"],
+    "decoys": ["Bourbon Whiskey", "Dry Vermouth", "Orange Bitters", "Campari"],
+    "canonicalRecipe": [
+      { "item": "Straight Rye Whiskey", "amount": "2.0 oz (60 ml)" },
+      { "item": "Sweet Italian Vermouth", "amount": "1.0 oz (30 ml)" },
+      { "item": "Angostura Bitters", "amount": "2 Dashes" },
+      { "item": "Luxardo Brandied Cherry", "amount": "1 Garnish" }
+    ],
+    "tastingNotes": ["Dark Cherry", "Spicy Rye Grain", "Warming Botanical", "Vanilla Oak"],
+    "history": "A timeless masterpiece created in New York City. The peppery rye grain cuts cleanly across the lush, fortified wine herbal sweetness.",
+    "proTip": "Always reach for spicy 100-proof Straight Rye rather than sweeter Bourbon to avoid a flabby, overly saccharine profile.",
+    "techniqueLore": "Serve chilled in a stemmed Nick & Nora glass to prevent the drinker's hand warmth from raising the serving temperature."
+  },
+  {
+    "id": "penicillin",
+    "name": "Penicillin",
+    "category": "Modern Classic",
+    "era": "Est. 2005 • Milk & Honey, NYC",
+    "glassware": "rocks",
+    "glasswareName": "Double Rocks",
+    "method": "shake",
+    "methodName": "Vigorously Shaken",
+    "ingredients": ["Blended Scotch", "Fresh Lemon Juice", "Honey-Ginger Syrup", "Peated Islay Scotch"],
+    "decoys": ["Bourbon Whiskey", "Simple Syrup", "Ginger Beer", "Orange Bitters"],
+    "canonicalRecipe": [
+      { "item": "Blended Scotch Whisky", "amount": "2.0 oz (60 ml)" },
+      { "item": "Fresh Lemon Juice", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Honey-Ginger Syrup", "amount": "0.75 oz (22.5 ml)" },
+      { "item": "Peated Islay Scotch", "amount": "0.25 oz (Float)" }
+    ],
+    "tastingNotes": ["Campfire Peat Smoke", "Candied Ginger", "Soothing Wild Honey", "Bright Lemon"],
+    "history": "Devised by Australian pioneer Sam Ross in NYC. It quickly became hailed as the first undisputed worldwide modern classic of the 21st century.",
+    "proTip": "Pour the smoky Islay Scotch gently over an inverted barspoon directly on top of the poured drink so it floats aromatically.",
+    "techniqueLore": "The olfactory contrast is key: the nose encounters intense Islay peat smoke, while the palate receives warming ginger, honey, and bright citrus."
+  },
+  {
+    "id": "sazerac",
+    "name": "New Orleans Sazerac",
+    "category": "Pre-Prohibition",
+    "era": "Est. 1850s • New Orleans, LA",
+    "glassware": "rocks",
+    "glasswareName": "Double Rocks",
+    "method": "stir",
+    "methodName": "Stirred over Ice",
+    "ingredients": ["Rye Whiskey", "Peychaud's Bitters", "Demerara Sugar", "Absinthe Rinse"],
+    "decoys": ["Bourbon Whiskey", "Angostura Bitters", "Sweet Vermouth", "Lemon Juice"],
+    "canonicalRecipe": [
+      { "item": "Rye Whiskey", "amount": "2.0 oz (60 ml)" },
+      { "item": "Peychaud's Bitters", "amount": "3 Dashes" },
+      { "item": "Angostura Bitters", "amount": "1 Dash" },
+      { "item": "Demerara Sugar Cube / Syrup", "amount": "1 Cube / 0.25 oz" },
+      { "item": "Absinthe", "amount": "Rinse Glass" }
+    ],
+    "tastingNotes": ["Anise & Fennel", "Peppery Spice", "Bright Floral Bitters", "Zesty Lemon"],
+    "history": "America's earliest known branded cocktail, evolving from French cognac to Maryland rye whiskey, forever bound to New Orleans culture.",
+    "proTip": "Swirl a few drops of absinthe in a chilled glass and dump the excess before straining the cocktail. The aroma should haunt, not overwhelm.",
+    "techniqueLore": "Serve without ice (neat) in a chilled rocks glass. Express a lemon twist over the surface, then discard the peel before serving."
+  },
+  {
+    "id": "french-75",
+    "name": "French 75",
+    "category": "Prohibition Classic",
+    "era": "Est. 1915 • Harry's New York Bar, Paris",
+    "glassware": "highball",
+    "glasswareName": "Highball / Flute",
+    "method": "shake",
+    "methodName": "Shaken & Topped",
+    "ingredients": ["London Dry Gin", "Fresh Lemon Juice", "Simple Syrup", "Brut Champagne"],
+    "decoys": ["Vodka", "Club Soda", "Lime Juice", "Orange Liqueur"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "1.0 oz (30 ml)" },
+      { "item": "Fresh Lemon Juice", "amount": "0.5 oz (15 ml)" },
+      { "item": "Simple Syrup", "amount": "0.5 oz (15 ml)" },
+      { "item": "Brut Champagne", "amount": "Top (~2.5 oz)" }
+    ],
+    "tastingNotes": ["Effervescent", "Crisp Botanical", "Tart Lemon", "Dry Toast"],
+    "history": "Named for the devastating French 75mm artillery cannon, said to kick with identical force. Popularized in Paris and immortalized in the Savoy Cocktail Book.",
+    "proTip": "Use bone-dry Brut Champagne; sweetness from cheap sparkling wine destroys the brisk, razor-sharp lemon acidity.",
+    "techniqueLore": "Shake the gin, lemon, and syrup hard with ice, strain into your chilled glass, and gently float cold Champagne on top to preserve carbonation."
+  },
+  {
+    "id": "aviation",
+    "name": "Aviation",
+    "category": "Pre-Prohibition",
+    "era": "Est. 1916 • Hotel Wallick, NYC",
+    "glassware": "coupe",
+    "glasswareName": "Cocktail Coupe",
+    "method": "shake",
+    "methodName": "Vigorously Shaken",
+    "ingredients": ["London Dry Gin", "Maraschino Liqueur", "Crème de Violette", "Fresh Lemon Juice"],
+    "decoys": ["Vodka", "Triple Sec", "Blue Curaçao", "Sweet Vermouth"],
+    "canonicalRecipe": [
+      { "item": "London Dry Gin", "amount": "2.0 oz (60 ml)" },
+      { "item": "Maraschino Liqueur (Luxardo)", "amount": "0.5 oz (15 ml)" },
+      { "item": "Crème de Violette", "amount": "0.25 oz (7.5 ml)" },
+      { "item": "Fresh Lemon Juice", "amount": "0.75 oz (22.5 ml)" }
+    ],
+    "tastingNotes": ["Floral Violet", "Sour Cherry Stone", "Crisp Pine", "Powdered Blossom"],
+    "history": "Published by Hugo Ensslin on the eve of Prohibition, named for its atmospheric, sky-blue hue reminiscent of early 20th-century aviation dawn.",
+    "proTip": "A heavy hand with Crème de Violette turns the drink into lavender hand-soap. Treat violette with the caution of liquid perfume.",
+    "techniqueLore": "Hard shaking with cold ice yields a cloudy, pale sky-blue wash with a delicate crystalline sheen."
+  }
+]
