@@ -611,7 +611,7 @@
     "category": "Disco Era Layered Shot",
     "era": "Est. 1977 • Banff Springs Hotel, Alberta",
     "glassware": "Shot Glass",
-    "glassType": "shot",
+    "glassType": "rocks",
     "method": "Layered over Spoon",
     "ingredients": ["Coffee Liqueur (Kahlúa)", "Irish Cream (Baileys)", "Grand Marnier (Orange Cognac)"],
     "decoys": ["Vodka", "Dark Rum", "Amaretto", "Sambuca", "Cointreau"],
@@ -632,7 +632,7 @@
     "category": "Late 20th Century",
     "era": "Circa 1970s • Yokosuka Naval Base / Boston",
     "glassware": "Shot Glass",
-    "glassType": "shot",
+    "glassType": "rocks",
     "method": "Vigorously Shaken",
     "ingredients": ["Vodka", "Triple Sec / Cointreau", "Fresh Lime Juice"],
     "decoys": ["Tequila", "Gin", "Lemon Juice", "Simple Syrup", "Blue Curaçao"],
@@ -697,7 +697,7 @@
     "category": "Interwar Digestif",
     "era": "Circa 1930s • 21 Club, NYC",
     "glassware": "Snifter",
-    "glassType": "snifter",
+    "glassType": "rocks",
     "method": "Built in Glass",
     "ingredients": ["Cognac / Fine Brandy", "Bénédictine D.O.M."],
     "decoys": ["Rye Whiskey", "Grand Marnier", "Drambuie", "Sweet Vermouth", "Amaretto"],
@@ -872,7 +872,7 @@
     "category": "Mexican Heritage",
     "era": "Circa 1960s • San Luis Potosí, Mexico",
     "glassware": "Pilsner",
-    "glassType": "pilsner",
+    "glassType": "highball",
     "method": "Built in Glass",
     "ingredients": ["Mexican Crisp Lager", "Fresh Lime Juice", "Worcestershire Sauce", "Hot Sauce", "Tajín Salt Rim"],
     "decoys": ["Tequila", "Tomato Puree", "Orange Juice", "Mezcal", "Vodka"],
@@ -895,7 +895,7 @@
     "category": "Victorian Classic",
     "era": "Est. 1861 • Brooks's Club, London",
     "glassware": "Pilsner",
-    "glassType": "pilsner",
+    "glassType": "flute",
     "method": "Built in Glass",
     "ingredients": ["Guinness Extra Stout", "Brut Champagne"],
     "decoys": ["Bourbon", "Ginger Ale", "Cola", "Irish Cream", "Port Wine"],
@@ -1085,4 +1085,10 @@
       { "item": "Cognac (VSOP)", "amount": "1.5 oz (45 ml)" },
       { "item": "Cointreau / Triple Sec", "amount": "0.75 oz (22.5 ml)" },
       { "item": "Fresh Lemon Juice", "amount": "0.75 oz (22.5 ml)" },
-      { "item": "Fine Superfine Sugar", "amount": "Half Rim on Glass"
+      { "item": "Fine Superfine Sugar", "amount": "Half Rim on Glass" }
+    ],
+    "tastingNotes": ["Tart Lemon", "Candied Orange", "Warm Cognac Oak", "Velvet Dryness"],
+    "history": "Born around the end of WWI at Harry's New York Bar in Paris or the Ritz, named after the motorcycle sidecar an American army captain rode in.",
+    "proTip": "Sugar only half the rim so the drinker can alternate between sweet crystalline sips and sharp citrus cognac bites."
+  }
+]
