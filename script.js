@@ -1,18 +1,22 @@
 /* ==========================================================================
-   SPECS // Mobile Speakeasy Card Masterclass Engine
-   Embedded Database of 37 Canonical Cocktails + Clean Mobile Interaction
+   SPECS // Masterclass Engine
+   Dynamic drinks.json Loader, Tag Filtering, Glassware SVGs & Multi-Tier Quizzing
    ========================================================================== */
 
-const DRINKS = [
+// Embedded fallback database in case browser blocks local fetch (file:// CORS security)
+const FALLBACK_DRINKS = [
     {
         id: "old-fashioned",
         name: "Old Fashioned",
+        isSignature: false,
+        tags: ["classic", "whiskey", "spirit-forward", "pre-prohibition"],
         category: "Pre-Prohibition",
         era: "Circa 1880s • Louisville, KY",
         glassware: "Rocks / Lowball",
+        glassType: "rocks",
         method: "Stirred over Ice",
         ingredients: ["Bourbon or Rye Whiskey", "Demerara Syrup", "Angostura Bitters", "Orange Peel"],
-        decoys: ["Sweet Vermouth", "Campari", "Lemon Juice", "Club Soda"],
+        decoys: ["Sweet Vermouth", "Campari", "Lemon Juice", "Club Soda", "Maraschino Liqueur"],
         canonicalRecipe: [
             { item: "Bourbon or Rye Whiskey", amount: "2.0 oz (60 ml)" },
             { item: "Demerara Syrup (2:1)", amount: "0.25 oz (7.5 ml)" },
@@ -20,383 +24,138 @@ const DRINKS = [
             { item: "Orange Peel", amount: "Expressed over Top" }
         ],
         tastingNotes: ["Spirit-Forward", "Charred Oak", "Caramelized Sugar", "Warm Spice"],
-        history: "Born when 19th-century patrons grew exhausted by elaborate bar novelties and ordered their whiskey prepared the 'old-fashioned way'—spirit, sugar, water, and bitters.",
-        proTip: "Express orange peel oils firmly over the rim and liquid surface. Never muddle cocktail cherries into the liquid; keep the silhouette clear and dense."
+        history: "Born when 19th-century patrons grew exhausted by elaborate bar novelties and ordered their whiskey prepared the 'old-fashioned way'.",
+        proTip: "Express orange peel oils firmly over the rim. Never muddle fruit into the base liquid."
+    },
+    {
+        id: "smoke-and-mirrors",
+        name: "Smoke & Mirrors",
+        isSignature: true,
+        tags: ["signature", "house-cocktail", "agave", "spirit-forward", "smoky"],
+        category: "House Signature",
+        era: "Speakeasy Signature • House Creation",
+        glassware: "Nick & Nora",
+        glassType: "nick-nora",
+        method: "Stirred over Block Ice",
+        ingredients: ["Espadín Mezcal", "Amaro Nonino", "Ancho Reyes Chile Liqueur", "Grapefruit Twist"],
+        decoys: ["Tequila Blanco", "Sweet Vermouth", "Lime Juice", "Agave Nectar", "Green Chartreuse"],
+        canonicalRecipe: [
+            { item: "Espadín Mezcal", amount: "1.5 oz (45 ml)" },
+            { item: "Amaro Nonino Quintessentia", amount: "0.75 oz (22.5 ml)" },
+            { item: "Ancho Reyes Chile Liqueur", amount: "0.5 oz (15 ml)" },
+            { item: "Grapefruit Twist", amount: "Flamed over Glass" }
+        ],
+        tastingNotes: ["Campfire Smoke", "Caramelized Orange", "Gentle Capsaicin", "Alpine Botanicals"],
+        history: "Developed as an autumn house signature to bridge earthy Oaxacan agave with northern Italian alpine bitterness.",
+        proTip: "Flame the grapefruit twist to slightly caramelize the cold-pressed skin oils."
     },
     {
         id: "negroni",
         name: "Negroni",
+        isSignature: false,
+        tags: ["classic", "gin", "aperitivo", "spirit-forward"],
         category: "Classic Aperitivo",
         era: "Est. 1919 • Caffè Casoni, Florence",
         glassware: "Rocks / Lowball",
+        glassType: "rocks",
         method: "Stirred over Ice",
-        ingredients: ["London Dry Gin", "Campari", "Sweet Vermouth", "Orange Twist"],
-        decoys: ["Dry Vermouth", "Aperol", "Club Soda", "Tequila Blanco"],
+        ingredients: ["London Dry Gin", "Campari", "Sweet Vermouth", "Orange Peel"],
+        decoys: ["Dry Vermouth", "Aperol", "Club Soda", "Tequila Blanco", "Cointreau"],
         canonicalRecipe: [
             { item: "London Dry Gin", amount: "1.0 oz (30 ml)" },
             { item: "Campari", amount: "1.0 oz (30 ml)" },
             { item: "Sweet Vermouth", amount: "1.0 oz (30 ml)" },
-            { item: "Orange Twist", amount: "Expressed over Top" }
+            { item: "Orange Peel", amount: "Expressed over Top" }
         ],
         tastingNotes: ["Bittersweet", "Pungent Juniper", "Bitter Orange", "Herbal Gentian"],
-        history: "Count Camillo Negroni famously requested bartender Forsco Scarselli fortify his favorite Americano by swapping club soda for pungent London Dry gin.",
-        proTip: "Keep sweet vermouth refrigerated once uncorked; oxidized fortified wine flattens the herbal brightness of this legendary trio."
-    },
-    {
-        id: "whiskey-sour",
-        name: "Whiskey Sour",
-        category: "Pre-Prohibition",
-        era: "Est. 1860s • Waukesha, WI / New York",
-        glassware: "Rocks / Lowball",
-        method: "Vigorously Shaken",
-        ingredients: ["Bourbon Whiskey", "Fresh Lemon Juice", "Simple Syrup", "Egg White / Aquafaba"],
-        decoys: ["Rye Whiskey", "Lime Juice", "Orange Liqueur", "Sweet Vermouth"],
-        canonicalRecipe: [
-            { item: "Bourbon Whiskey", amount: "2.0 oz (60 ml)" },
-            { item: "Fresh Lemon Juice", amount: "0.75 oz (22.5 ml)" },
-            { item: "Simple Syrup (1:1)", amount: "0.75 oz (22.5 ml)" },
-            { item: "Fresh Egg White (or Aquafaba)", amount: "0.5 oz (15 ml)" }
-        ],
-        tastingNotes: ["Creamy Texture", "Tart Lemon", "Warm Caramel", "Subtle Vanilla"],
-        history: "Codified in Jerry Thomas's 1862 guide. The addition of egg white emerged in the early 20th century to create its signature velvety crown.",
-        proTip: "Reverse dry shake: shake hard with ice first to chill and dilute, strain out ice, then shake without ice to whip dense, meringue-like foam."
-    },
-    {
-        id: "dark-n-stormy",
-        name: "Dark 'n Stormy",
-        category: "Bermuda Heritage",
-        era: "Circa 1920s • Bermuda",
-        glassware: "Highball",
-        method: "Built in Glass",
-        ingredients: ["Gosling's Black Seal Rum", "Spicy Ginger Beer", "Fresh Lime Juice"],
-        decoys: ["White Rum", "Ginger Ale", "Simple Syrup", "Cola"],
-        canonicalRecipe: [
-            { item: "Gosling's Black Seal Rum", amount: "2.0 oz (60 ml)" },
-            { item: "Spicy Ginger Beer", amount: "4.0 oz (120 ml)" },
-            { item: "Fresh Lime Juice", amount: "0.5 oz (15 ml)" }
-        ],
-        tastingNotes: ["Dark Molasses", "Pungent Ginger", "Tart Citrus", "Caramelized Spice"],
-        history: "Trademarked by Gosling Brothers in Bermuda after British naval officers combined black molasses rum with carbonated ginger beer.",
-        proTip: "Float black rum gently on top of ginger beer over ice so the dense rum resembles a dark storm cloud hovering over the sea."
-    },
-    {
-        id: "americano",
-        name: "Americano",
-        category: "Italian Heritage",
-        era: "Est. 1860s • Caffè Campari, Milan",
-        glassware: "Highball",
-        method: "Built in Glass",
-        ingredients: ["Campari", "Sweet Vermouth", "Club Soda", "Orange Slice"],
-        decoys: ["London Dry Gin", "Aperol", "Tonic Water", "Dry Vermouth"],
-        canonicalRecipe: [
-            { item: "Campari", amount: "1.5 oz (45 ml)" },
-            { item: "Sweet Italian Vermouth", amount: "1.5 oz (45 ml)" },
-            { item: "Chilled Club Soda", amount: "Top (~2.0 oz)" }
-        ],
-        tastingNotes: ["Bittersweet", "Herbal Botanical", "Effervescent", "Zesty Orange"],
-        history: "Originally known as the Milano-Torino, renamed due to its tremendous popularity among American tourists visiting during Prohibition.",
-        proTip: "Pour club soda down the spiral shaft of a barspoon into the ice to preserve maximum effervescence."
-    },
-    {
-        id: "bloody-mary",
-        name: "Classic Bloody Mary",
-        category: "World Classic",
-        era: "Est. 1921 • Harry's New York Bar, Paris",
-        glassware: "Highball",
-        method: "Thrown between Shakers",
-        ingredients: ["Vodka", "Tomato Juice", "Fresh Lemon Juice", "Worcestershire Sauce", "Hot Sauce", "Celery Salt"],
-        decoys: ["Gin", "Clamato Juice", "Lime Juice", "Soy Sauce"],
-        canonicalRecipe: [
-            { item: "Vodka", amount: "1.5 oz (45 ml)" },
-            { item: "Tomato Juice", amount: "3.0 oz (90 ml)" },
-            { item: "Fresh Lemon Juice", amount: "0.5 oz (15 ml)" },
-            { item: "Worcestershire Sauce", amount: "2 Dashes" },
-            { item: "Tabasco & Celery Salt", amount: "To Taste" }
-        ],
-        tastingNotes: ["Savory Umami", "Spicy Heat", "Zesty Tomato", "Bracing Citrus"],
-        history: "Created by Fernand Petiot in Paris, later elevated at the St. Regis King Cole Bar in NYC under the title 'Red Snapper'.",
-        proTip: "Never shake a Bloody Mary. Violent shaking breaks tomato pectin cells into watery foam. Throwing chills without destroying body."
-    },
-    {
-        id: "tom-collins",
-        name: "Tom Collins",
-        category: "Pre-Prohibition",
-        era: "Est. 1876 • Jerry Thomas, New York",
-        glassware: "Collins",
-        method: "Shaken & Topped",
-        ingredients: ["Old Tom Gin (or London Dry)", "Fresh Lemon Juice", "Simple Syrup", "Club Soda"],
-        decoys: ["Lime Juice", "Vodka", "Tonic Water", "Ginger Ale"],
-        canonicalRecipe: [
-            { item: "Old Tom Gin (or London Dry)", amount: "2.0 oz (60 ml)" },
-            { item: "Fresh Lemon Juice", amount: "1.0 oz (30 ml)" },
-            { item: "Simple Syrup (1:1)", amount: "0.5 oz (15 ml)" },
-            { item: "Chilled Club Soda", amount: "Top (~2.5 oz)" }
-        ],
-        tastingNotes: ["Sparkling Citrus", "Botanical Pine", "Balanced Sweet", "Quenching"],
-        history: "Linked to the Great Tom Collins Hoax of 1874, where pranksters sent victims racing through New York bars seeking a non-existent slanderer.",
-        proTip: "Add chilled club soda to the glass before straining the shaken gin and lemon mix to incorporate bubbles uniformly."
-    },
-    {
-        id: "mojito",
-        name: "Cuban Mojito",
-        category: "Cuban Heritage",
-        era: "Circa 1930s • Havana, Cuba",
-        glassware: "Collins",
-        method: "Muddled & Built",
-        ingredients: ["White Rum", "Fresh Lime Juice", "Fresh Spearmint", "Demerara Sugar", "Club Soda"],
-        decoys: ["Dark Rum", "Lemon Juice", "Tonic Water", "Triple Sec"],
-        canonicalRecipe: [
-            { item: "White Cuban Rum", amount: "2.0 oz (60 ml)" },
-            { item: "Fresh Lime Juice", amount: "0.75 oz (22.5 ml)" },
-            { item: "Fine Sugar / Syrup", amount: "0.5 oz (15 ml)" },
-            { item: "Fresh Spearmint Leaves", amount: "8–10 Leaves" },
-            { item: "Club Soda", amount: "Top (~1.5 oz)" }
-        ],
-        tastingNotes: ["Crisp Mint", "Zesty Lime", "Cane Sugar", "Effervescent"],
-        history: "Beloved by Ernest Hemingway at La Bodeguita del Medio in Havana, evolving from 16th-century medicinal aguardiente tonics.",
-        proTip: "Never aggressively grind mint with the muddler; tearing leaf veins releases bitter chlorophyll tannins. Press gently."
-    },
-    {
-        id: "daiquiri",
-        name: "Authentic Daiquiri",
-        category: "Cuban Heritage",
-        era: "Est. 1898 • Daiquirí, Cuba",
-        glassware: "Cocktail Coupe",
-        method: "Vigorously Shaken",
-        ingredients: ["White Rum", "Fresh Lime Juice", "Demerara Simple Syrup"],
-        decoys: ["Dark Rum", "Triple Sec", "Lemon Juice", "Maraschino Liqueur"],
-        canonicalRecipe: [
-            { item: "Light Cuban Rum", amount: "2.0 oz (60 ml)" },
-            { item: "Fresh Lime Juice", amount: "0.75 oz (22.5 ml)" },
-            { item: "Rich Demerara Syrup (2:1)", amount: "0.75 oz (22.5 ml)" }
-        ],
-        tastingNotes: ["Electric Citrus", "Cane Grass", "Mineral Crispness", "Silky Balance"],
-        history: "Originated when American mining engineer Jennings Cox ran out of gin at a Cuban gathering and blended local cane rum with plucked limes.",
-        proTip: "The classic Daiquiri is the ultimate bartender litmus test. There is nowhere to hide poor ice dilution or stale citrus."
-    },
-    {
-        id: "dry-martini",
-        name: "Classic Dry Martini",
-        category: "Classic",
-        era: "Circa 1900s • New York / San Francisco",
-        glassware: "Martini Glass",
-        method: "Stirred over Ice",
-        ingredients: ["London Dry Gin", "Dry Vermouth", "Orange Bitters", "Lemon Peel or Olive"],
-        decoys: ["Sweet Vermouth", "Vodka", "Maraschino Liqueur", "Simple Syrup"],
-        canonicalRecipe: [
-            { item: "London Dry Gin", amount: "2.5 oz (75 ml)" },
-            { item: "Dry French Vermouth", amount: "0.5 oz (15 ml)" },
-            { item: "Orange Bitters", amount: "1 Dash" },
-            { item: "Lemon Peel or Castelvetrano Olive", amount: "1 Garnish" }
-        ],
-        tastingNotes: ["Bone Dry", "Pine Juniper", "Delicate Floral", "Silken"],
-        history: "The apex of cocktail minimalism, evolving from the sweeter Martinez into a bone-dry beacon of 20th-century sophistication.",
-        proTip: "Chill your glassware in the freezer below 0°F. A Martini should be served brutally cold; warm temperatures expose harsh alcohol burn."
-    },
-    {
-        id: "manhattan",
-        name: "Manhattan",
-        category: "Pre-Prohibition",
-        era: "Est. 1870s • Manhattan Club, NYC",
-        glassware: "Nick & Nora",
-        method: "Stirred over Ice",
-        ingredients: ["Straight Rye Whiskey", "Sweet Vermouth", "Angostura Bitters", "Brandied Cherry"],
-        decoys: ["Bourbon Whiskey", "Dry Vermouth", "Orange Bitters", "Campari"],
-        canonicalRecipe: [
-            { item: "Straight Rye Whiskey (100 Proof)", amount: "2.0 oz (60 ml)" },
-            { item: "Sweet Italian Vermouth", amount: "1.0 oz (30 ml)" },
-            { item: "Angostura Bitters", amount: "2 Dashes" },
-            { item: "Luxardo Brandied Cherry", amount: "1 Garnish" }
-        ],
-        tastingNotes: ["Dark Cherry", "Spicy Rye Grain", "Warming Botanical", "Vanilla Oak"],
-        history: "A timeless masterpiece created in New York City. The peppery rye grain cuts cleanly across lush fortified wine sweetness.",
-        proTip: "Always reach for spicy 100-proof Straight Rye rather than Bourbon to prevent a flabby, overly sugary flavor profile."
-    },
-    {
-        id: "espresso-martini",
-        name: "Espresso Martini",
-        category: "Modern Craft",
-        era: "Est. 1983 • Soho Brasserie, London",
-        glassware: "Martini Glass",
-        method: "Vigorously Shaken",
-        ingredients: ["Vodka", "Coffee Liqueur", "Fresh Hot Espresso", "Simple Syrup"],
-        decoys: ["Irish Cream", "Cold Brew", "Dark Rum", "Cacao Liqueur"],
-        canonicalRecipe: [
-            { item: "Vodka", amount: "1.5 oz (45 ml)" },
-            { item: "Coffee Liqueur (Kahlúa)", amount: "0.75 oz (22.5 ml)" },
-            { item: "Fresh Pulled Hot Espresso", amount: "1.0 oz (30 ml)" },
-            { item: "Rich Simple Syrup (2:1)", amount: "0.25 oz (7.5 ml)" }
-        ],
-        tastingNotes: ["Velveteen Crema", "Roasted Cocoa", "Dark Toffee", "Clean Finish"],
-        history: "Invented by London icon Dick Bradsell when a supermodel walked up to his bar asking for a drink that would 'wake me up and mess me up.'",
-        proTip: "Pull the espresso shot immediately before shaking. Natural crema oils emulsify under hard aeration to create a dense foam head."
-    },
-    {
-        id: "margarita",
-        name: "Classic Margarita",
-        category: "Agave Classic",
-        era: "Est. 1938 • Baja California, Mexico",
-        glassware: "Margarita Glass",
-        method: "Vigorously Shaken",
-        ingredients: ["Blanco Tequila", "Cointreau / Triple Sec", "Fresh Lime Juice", "Agave Nectar"],
-        decoys: ["Mezcal", "Simple Syrup", "Lemon Juice", "Orange Bitters"],
-        canonicalRecipe: [
-            { item: "Blanco Tequila (100% Blue Agave)", amount: "2.0 oz (60 ml)" },
-            { item: "Cointreau / Triple Sec", amount: "0.75 oz (22.5 ml)" },
-            { item: "Fresh Lime Juice", amount: "0.75 oz (22.5 ml)" },
-            { item: "Agave Nectar", amount: "1 Barspoon" }
-        ],
-        tastingNotes: ["Crisp Citrus", "Earthy Agave", "Bright Saline", "Candied Orange"],
-        history: "A descendant of the 1930s Daisy family of cocktails (spirit + citrus + orange liqueur), adapted for Mexican blue agave tequila.",
-        proTip: "Salt only half of the glass perimeter so guests can choose between saline bursts and unadorned citrus sips."
-    },
-    {
-        id: "french-75",
-        name: "French 75",
-        category: "Prohibition Classic",
-        era: "Est. 1915 • Harry's New York Bar, Paris",
-        glassware: "Champagne Flute",
-        method: "Shaken & Topped",
-        ingredients: ["London Dry Gin", "Fresh Lemon Juice", "Simple Syrup", "Brut Champagne"],
-        decoys: ["Vodka", "Club Soda", "Lime Juice", "Orange Liqueur"],
-        canonicalRecipe: [
-            { item: "London Dry Gin", amount: "1.0 oz (30 ml)" },
-            { item: "Fresh Lemon Juice", amount: "0.5 oz (15 ml)" },
-            { item: "Simple Syrup (1:1)", amount: "0.5 oz (15 ml)" },
-            { item: "Brut Champagne", amount: "Top (~2.5 oz)" }
-        ],
-        tastingNotes: ["Effervescent", "Crisp Botanical", "Tart Lemon", "Dry Brioche"],
-        history: "Named for the devastating French 75mm artillery gun, famous for kicking with identical velocity.",
-        proTip: "Use bone-dry Brut Champagne; excess sweetness from cheap prosecco destroys the brisk, razor-sharp lemon acidity."
-    },
-    {
-        id: "moscow-mule",
-        name: "Moscow Mule",
-        category: "Mid-Century Classic",
-        era: "Est. 1941 • Cock 'n Bull, Hollywood, CA",
-        glassware: "Copper Mug",
-        method: "Built in Glass",
-        ingredients: ["Vodka", "Fresh Lime Juice", "Spicy Ginger Beer", "Lime Wheel"],
-        decoys: ["Gin", "Ginger Ale", "Simple Syrup", "Lemon Juice"],
-        canonicalRecipe: [
-            { item: "Vodka", amount: "2.0 oz (60 ml)" },
-            { item: "Fresh Lime Juice", amount: "0.75 oz (22.5 ml)" },
-            { item: "Spicy Ginger Beer", amount: "Top (~4.0 oz)" },
-            { item: "Fresh Lime Wheel & Mint", amount: "1 Garnish" }
-        ],
-        tastingNotes: ["Fiery Ginger", "Tart Lime", "Crisp Clean", "Chilled Frost"],
-        history: "Created when John Martin of Smirnoff, Jack Morgan of the Cock 'n Bull, and a businesswoman with excess copper mugs joined forces.",
-        proTip: "Use fermented, fiery ginger beer rather than sweet ginger ale. Neutral vodka requires sharp ginger heat for backbone."
-    },
-    {
-        id: "mint-julep",
-        name: "Kentucky Mint Julep",
-        category: "American Heritage",
-        era: "Circa 1800 • Louisville, KY",
-        glassware: "Julep Cup",
-        method: "Muddled & Built",
-        ingredients: ["Straight Bourbon Whiskey", "Fresh Spearmint", "Demerara Syrup", "Crushed Ice"],
-        decoys: ["Rye Whiskey", "Club Soda", "Lemon Juice", "Bitters"],
-        canonicalRecipe: [
-            { item: "Kentucky Straight Bourbon", amount: "2.5 oz (75 ml)" },
-            { item: "Demerara Syrup (1:1)", amount: "0.5 oz (15 ml)" },
-            { item: "Fresh Spearmint Leaves", amount: "8–10 Leaves" },
-            { item: "Crushed Ice", amount: "Packed to Dome" }
-        ],
-        tastingNotes: ["Cooling Mint", "Warm Vanilla", "Charred Oak", "Caramel"],
-        history: "Synonymous with Churchill Downs and the Kentucky Derby since 1938, originally consumed as morning medicine in Virginia.",
-        proTip: "Hold the silver cup strictly by the top rim or bottom base so hand heat doesn't melt the exterior frost coating."
-    },
-    {
-        id: "mai-tai",
-        name: "1944 Trader Vic Mai Tai",
-        category: "Tiki Heritage",
-        era: "Est. 1944 • Hinky Dinks, Oakland, CA",
-        glassware: "Tiki Mug / Double Rocks",
-        method: "Vigorously Shaken",
-        ingredients: ["Aged Jamaican Rum", "Rhum Agricole", "Orange Curaçao", "Orgeat (Almond Syrup)", "Fresh Lime Juice"],
-        decoys: ["Pineapple Juice", "Grenadine", "Spiced Rum", "Club Soda"],
-        canonicalRecipe: [
-            { item: "Aged Jamaican Rum", amount: "1.0 oz (30 ml)" },
-            { item: "Martinique Rhum Agricole", amount: "1.0 oz (30 ml)" },
-            { item: "Dry Orange Curaçao", amount: "0.5 oz (15 ml)" },
-            { item: "Orgeat (Almond Milk Syrup)", amount: "0.5 oz (15 ml)" },
-            { item: "Fresh Lime Juice", amount: "1.0 oz (30 ml)" }
-        ],
-        tastingNotes: ["Nutty Almond", "Funky Molasses", "Tart Lime", "Candied Orange"],
-        history: "Trader Vic Bergeron shook this for Tahitian friends who exclaimed 'Maita'i roa a'e!' ('Out of this world!'). True Tiki has no grenadine.",
-        proTip: "Slap fresh mint against your wrist to burst essential oils before placing it alongside a spent lime half to evoke an island palm tree."
-    },
-    {
-        id: "aperol-spritz",
-        name: "Aperol Spritz",
-        category: "Italian Aperitivo",
-        era: "Est. 1950s • Venice / Padua, Italy",
-        glassware: "Stemmed Wine Glass",
-        method: "Built in Glass",
-        ingredients: ["Dry Prosecco (DOC)", "Aperol", "Club Soda", "Orange Slice"],
-        decoys: ["Campari", "Sweet Vermouth", "Gin", "Lemon Juice"],
-        canonicalRecipe: [
-            { item: "Dry Prosecco (DOC)", amount: "3.0 oz (90 ml)" },
-            { item: "Aperol", amount: "2.0 oz (60 ml)" },
-            { item: "Chilled Club Soda", amount: "1.0 oz (30 ml)" }
-        ],
-        tastingNotes: ["Bittersweet Orange", "Crisp Effervescence", "Rhubarb & Gentian", "Floral Peach"],
-        history: "Derived from 19th-century Austrian soldiers spritzing heavy Venetian wine with soda water to make it refreshing.",
-        proTip: "Follow the 3-2-1 rule: 3 parts Prosecco, 2 parts Aperol, 1 splash soda. Pour wine first to prevent Aperol from sinking to the bottom."
-    },
-    {
-        id: "last-word",
-        name: "The Last Word",
-        category: "Prohibition Classic",
-        era: "Est. 1916 • Detroit Athletic Club",
-        glassware: "Cocktail Coupe",
-        method: "Vigorously Shaken",
-        ingredients: ["London Dry Gin", "Green Chartreuse", "Maraschino Liqueur", "Fresh Lime Juice"],
-        decoys: ["Yellow Chartreuse", "Cointreau", "Lemon Juice", "Vodka"],
-        canonicalRecipe: [
-            { item: "London Dry Gin", amount: "0.75 oz (22.5 ml)" },
-            { item: "Green Chartreuse", amount: "0.75 oz (22.5 ml)" },
-            { item: "Maraschino Liqueur", amount: "0.75 oz (22.5 ml)" },
-            { item: "Fresh Lime Juice", amount: "0.75 oz (22.5 ml)" }
-        ],
-        tastingNotes: ["Intense Herbal", "Sharp Lime", "Cherry Pit", "Complex Pine"],
-        history: "Rescued from obscurity in 2004 by Seattle bartender Murray Stenson, sparking the 21st-century Chartreuse cocktail renaissance.",
-        proTip: "Equal parts (1:1:1:1) is gospel. The ferocious 110-proof Green Chartreuse flawlessly balances Maraschino's rich sweetness."
-    },
-    {
-        id: "aviation",
-        name: "Aviation",
-        category: "Pre-Prohibition",
-        era: "Est. 1916 • Hotel Wallick, NYC",
-        glassware: "Cocktail Coupe",
-        method: "Vigorously Shaken",
-        ingredients: ["London Dry Gin", "Maraschino Liqueur", "Crème de Violette", "Fresh Lemon Juice"],
-        decoys: ["Vodka", "Triple Sec", "Blue Curaçao", "Sweet Vermouth"],
-        canonicalRecipe: [
-            { item: "London Dry Gin", amount: "2.0 oz (60 ml)" },
-            { item: "Maraschino Liqueur", amount: "0.5 oz (15 ml)" },
-            { item: "Crème de Violette", amount: "0.25 oz (7.5 ml)" },
-            { item: "Fresh Lemon Juice", amount: "0.75 oz (22.5 ml)" }
-        ],
-        tastingNotes: ["Floral Violet", "Sour Cherry Stone", "Crisp Pine", "Powdered Blossom"],
-        history: "Published by Hugo Ensslin on the eve of Prohibition, named for its pale sky-blue hue reminiscent of early aviation.",
-        proTip: "Treat violette like liquid perfume. A heavy pour quickly turns this drink into lavender soap."
+        history: "Count Camillo Negroni famously requested bartender Forsco Scarselli fortify his Americano with London Dry gin.",
+        proTip: "Always refrigerate vermouth after opening; oxidized fortified wine flattens botanical nuances."
     }
 ];
 
 /* ==========================================================================
-   App State
+   GLASSWARE VECTOR SVG ARTIFACTS
    ========================================================================== */
+const GLASS_SVGS = {
+    "rocks": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <path d="M10 10 L14 40 L34 40 L38 10 Z" />
+            <line x1="8" y1="10" x2="40" y2="10" />
+            <path d="M15 36 L33 36" stroke-dasharray="2 2" />
+        </svg>`,
+    "coupe": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <path d="M8 12 Q24 28 40 12 Z" />
+            <line x1="24" y1="23" x2="24" y2="39" />
+            <line x1="16" y1="39" x2="32" y2="39" />
+        </svg>`,
+    "nick-nora": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <path d="M12 12 C12 24, 36 24, 36 12 Z" />
+            <line x1="24" y1="21" x2="24" y2="39" />
+            <line x1="17" y1="39" x2="31" y2="39" />
+        </svg>`,
+    "martini": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <path d="M9 12 L24 27 L39 12 Z" />
+            <line x1="24" y1="27" x2="24" y2="40" />
+            <line x1="16" y1="40" x2="32" y2="40" />
+        </svg>`,
+    "highball": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <path d="M14 8 L16 41 L32 41 L34 8 Z" />
+            <line x1="12" y1="8" x2="36" y2="8" />
+        </svg>`,
+    "copper-mug": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <rect x="12" y="14" width="22" height="26" rx="3" />
+            <path d="M34 18 C40 18, 40 32, 34 32" />
+        </svg>`,
+    "julep": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <path d="M12 12 L15 40 L33 40 L36 12 Z" />
+            <line x1="10" y1="12" x2="38" y2="12" stroke-width="2.5" />
+            <line x1="13" y1="40" x2="35" y2="40" stroke-width="2.5" />
+        </svg>`,
+    "flute": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <path d="M18 6 L18 26 Q24 31 30 26 L30 6 Z" />
+            <line x1="24" y1="29" x2="24" y2="41" />
+            <line x1="18" y1="41" x2="30" y2="41" />
+        </svg>`,
+    "tiki": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <rect x="14" y="9" width="20" height="31" rx="2" />
+            <circle cx="20" cy="18" r="2" />
+            <circle cx="28" cy="18" r="2" />
+            <path d="M19 28 Q24 33 29 28" />
+        </svg>`,
+    "wine": `
+        <svg class="glass-svg" viewBox="0 0 48 48">
+            <path d="M14 10 C14 26, 34 26, 34 10 Z" />
+            <line x1="24" y1="22" x2="24" y2="40" />
+            <line x1="16" y1="40" x2="32" y2="40" />
+        </svg>`
+};
+
+/* ==========================================================================
+   APP STATE
+   ========================================================================== */
+let allMasterDrinks = [];
+let filteredDrinks = [];
+let activeFilter = "all";
+let difficulty = "easy"; // "easy" | "medium" | "hard"
 let currentIndex = 0;
 let streak = 0;
 let soundOn = true;
 let mode = "quiz"; // "quiz" | "study"
-let targetMissingIngredient = "";
-let isSolved = false;
+
+// Quiz Round State
+let missingIngredientsList = [];
+let solvedIngredientsList = [];
 
 /* ==========================================================================
-   Lightweight Synthesizer Audio (No external files)
+   SYNTHESIZER AUDIO FX
    ========================================================================== */
 let audioCtx = null;
 function getCtx() {
@@ -414,31 +173,48 @@ const AudioSFX = {
             const ctx = getCtx();
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
-            osc.frequency.setValueAtTime(550, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.04);
-            gain.gain.setValueAtTime(0.08, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+            osc.frequency.setValueAtTime(600, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(250, ctx.currentTime + 0.035);
+            gain.gain.setValueAtTime(0.06, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
             osc.connect(gain);
             gain.connect(ctx.destination);
             osc.start();
-            osc.stop(ctx.currentTime + 0.04);
+            osc.stop(ctx.currentTime + 0.035);
         } catch(e) {}
     },
-    success() {
+    successSlot() {
         if (!soundOn) return;
         try {
             const ctx = getCtx();
-            [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+            osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.12); // A5
+            gain.gain.setValueAtTime(0.08, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.12);
+        } catch(e) {}
+    },
+    masterComplete() {
+        if (!soundOn) return;
+        try {
+            const ctx = getCtx();
+            [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
                 osc.type = "triangle";
-                osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.05);
-                gain.gain.setValueAtTime(0.08, ctx.currentTime + idx * 0.05);
-                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.05 + 0.25);
+                osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.06);
+                gain.gain.setValueAtTime(0.07, ctx.currentTime + i * 0.06);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.06 + 0.35);
                 osc.connect(gain);
                 gain.connect(ctx.destination);
-                osc.start(ctx.currentTime + idx * 0.05);
-                osc.stop(ctx.currentTime + idx * 0.05 + 0.25);
+                osc.start(ctx.currentTime + i * 0.06);
+                osc.stop(ctx.currentTime + i * 0.06 + 0.35);
             });
         } catch(e) {}
     },
@@ -449,41 +225,50 @@ const AudioSFX = {
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             osc.type = "sawtooth";
-            osc.frequency.setValueAtTime(140, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.15);
-            gain.gain.setValueAtTime(0.1, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+            osc.frequency.setValueAtTime(160, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(70, ctx.currentTime + 0.2);
+            gain.gain.setValueAtTime(0.09, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
             osc.connect(gain);
             gain.connect(ctx.destination);
             osc.start();
-            osc.stop(ctx.currentTime + 0.15);
+            osc.stop(ctx.currentTime + 0.2);
         } catch(e) {}
     }
 };
 
 /* ==========================================================================
-   DOM Elements
+   DOM ELEMENTS
    ========================================================================== */
 const el = {
     flipper: document.getElementById("card-flipper"),
     cardFront: document.getElementById("card-front"),
     cardBack: document.getElementById("card-back"),
-    cardIndex: document.getElementById("card-index-indicator"),
-    category: document.getElementById("card-category"),
-    era: document.getElementById("card-era"),
-    title: document.getElementById("card-title"),
-    glass: document.getElementById("card-glass"),
-    method: document.getElementById("card-method"),
-    recipeList: document.getElementById("recipe-list"),
+    cardIndexIndicator: document.getElementById("card-index-indicator"),
+    streakVal: document.getElementById("streak-val"),
+    currentFilterDisplay: document.getElementById("current-filter-display"),
+    diffToolbar: document.getElementById("diff-toolbar"),
+    btnHint: document.getElementById("btn-hint"),
 
-    // Back card
+    // Front Card Details
+    cardCategory: document.getElementById("card-category"),
+    cardSigBadge: document.getElementById("card-sig-badge"),
+    cardEra: document.getElementById("card-era"),
+    cardTitle: document.getElementById("card-title"),
+    cardGlass: document.getElementById("card-glass"),
+    cardMethod: document.getElementById("card-method"),
+    glassGraphicContainer: document.getElementById("glass-graphic-container"),
+    recipeList: document.getElementById("recipe-list"),
+    slotProgressText: document.getElementById("slot-progress-text"),
+
+    // Back Card Details
     backTitle: document.getElementById("back-title"),
     backTasting: document.getElementById("back-tasting"),
     backCanonical: document.getElementById("back-canonical"),
     backProtip: document.getElementById("back-protip"),
     backHistory: document.getElementById("back-history"),
 
-    // Controls
+    // Quiz & Controls
     quizTray: document.getElementById("quiz-tray"),
     quizPrompt: document.getElementById("quiz-prompt"),
     choicesGrid: document.getElementById("choices-grid"),
@@ -495,175 +280,287 @@ const el = {
     soundIcon: document.getElementById("sound-icon"),
     btnModeQuiz: document.getElementById("btn-mode-quiz"),
     btnModeStudy: document.getElementById("btn-mode-study"),
-    streakVal: document.getElementById("streak-val"),
 
-    // Modal
-    searchModal: document.getElementById("search-modal"),
+    // Modals
+    btnFilterToggle: document.getElementById("btn-filter-toggle"),
+    filterModal: document.getElementById("filter-modal"),
+    btnCloseFilter: document.getElementById("btn-close-filter"),
+    btnApplyFilters: document.getElementById("btn-apply-filters"),
     btnSearchModal: document.getElementById("btn-search-modal"),
+    searchModal: document.getElementById("search-modal"),
     btnCloseModal: document.getElementById("btn-close-modal"),
-    modalDrinksList: document.getElementById("modal-drinks-list")
+    modalDrinksList: document.getElementById("modal-drinks-list"),
+    modalTotalCount: document.getElementById("modal-total-count")
 };
 
 /* ==========================================================================
-   Deck Rendering Logic
+   INITIALIZATION & DRINKS.JSON FETCH
    ========================================================================== */
-function renderDrink(index) {
-    currentIndex = index;
-    const drink = DRINKS[currentIndex];
-    isSolved = false;
+async function loadDrinksDatabase() {
+    try {
+        const response = await fetch("drinks.json");
+        if (!response.ok) throw new Error("Could not load drinks.json");
+        allMasterDrinks = await response.json();
+    } catch (err) {
+        console.warn("Using embedded drinks fallback:", err);
+        allMasterDrinks = FALLBACK_DRINKS;
+    }
+    applyFilter(activeFilter);
+}
 
-    // Reset 3D flip
+/* ==========================================================================
+   TAG FILTERING ENGINE
+   ========================================================================== */
+function applyFilter(filterTag) {
+    activeFilter = filterTag;
+
+    if (activeFilter === "all") {
+        filteredDrinks = [...allMasterDrinks];
+        el.currentFilterDisplay.textContent = "ALL SPECIMENS";
+    } else if (activeFilter === "classic") {
+        // Excludes signature cocktails strictly
+        filteredDrinks = allMasterDrinks.filter(d => !d.isSignature);
+        el.currentFilterDisplay.textContent = "CLASSIC CANON";
+    } else if (activeFilter === "signature") {
+        filteredDrinks = allMasterDrinks.filter(d => d.isSignature);
+        el.currentFilterDisplay.textContent = "HOUSE SIGNATURES";
+    } else {
+        // Filter by spirit or attribute tag
+        filteredDrinks = allMasterDrinks.filter(d => d.tags && d.tags.includes(activeFilter));
+        el.currentFilterDisplay.textContent = activeFilter.toUpperCase();
+    }
+
+    if (filteredDrinks.length === 0) {
+        // Safety: reset to all if filter returns nothing
+        filteredDrinks = [...allMasterDrinks];
+        activeFilter = "all";
+        el.currentFilterDisplay.textContent = "ALL SPECIMENS";
+    }
+
+    currentIndex = 0;
+    renderCurrentDrink();
+}
+
+/* ==========================================================================
+   CARD RENDERING
+   ========================================================================== */
+function renderCurrentDrink() {
+    const drink = filteredDrinks[currentIndex];
+    if (!drink) return;
+
+    // Reset 3D Rotation
     el.flipper.classList.remove("flipped");
 
-    // Header counter
-    el.cardIndex.textContent = `${String(currentIndex + 1).padStart(2, "0")} / ${String(DRINKS.length).padStart(2, "0")}`;
+    // Header Indicators
+    el.cardIndexIndicator.textContent = `${String(currentIndex + 1).padStart(2, "0")}/${String(filteredDrinks.length).padStart(2, "0")}`;
     el.streakVal.textContent = streak;
 
-    // Front Meta
-    el.category.textContent = drink.category.toUpperCase();
-    el.era.textContent = drink.era;
-    el.title.textContent = drink.name;
-    el.glass.textContent = drink.glassware;
-    el.method.textContent = drink.method;
+    // Signature Tagging vs Classic Tagging
+    if (drink.isSignature) {
+        el.cardCategory.textContent = "SIGNATURE";
+        el.cardSigBadge.classList.remove("hidden");
+    } else {
+        el.cardCategory.textContent = drink.category.toUpperCase();
+        el.cardSigBadge.classList.add("hidden");
+    }
 
-    // Back Dossier
+    el.cardEra.textContent = drink.era;
+    el.cardTitle.textContent = drink.name;
+    el.cardGlass.textContent = drink.glassware;
+    el.cardMethod.textContent = drink.method;
+
+    // Inject Vector Glassware Graphic
+    const glassType = drink.glassType || "rocks";
+    el.glassGraphicContainer.innerHTML = GLASS_SVGS[glassType] || GLASS_SVGS["rocks"];
+
+    // Populate Dossier (Back)
     el.backTitle.textContent = drink.name;
     el.backHistory.textContent = drink.history;
     el.backProtip.textContent = drink.proTip;
-
     el.backTasting.innerHTML = drink.tastingNotes.map(t => `<span class="taste-chip">${t}</span>`).join("");
-    el.backCanonical.innerHTML = drink.canonicalRecipe.map(item => `
+    el.backCanonical.innerHTML = drink.canonicalRecipe.map(row => `
         <div class="canon-row">
-            <span>${item.item}</span>
-            <strong>${item.amount}</strong>
+            <span>${row.item}</span>
+            <strong>${row.amount}</strong>
         </div>
     `).join("");
 
-    // Setup Recipe view based on mode
-    if (mode === "quiz") {
-        setupQuiz(drink);
+    // Setup Mode
+    if (mode === "study") {
+        setupStudyMode(drink);
     } else {
-        setupStudy(drink);
+        setupQuizRound(drink);
     }
 }
 
-function setupStudy(drink) {
+/* ==========================================================================
+   STUDY MODE
+   ========================================================================== */
+function setupStudyMode(drink) {
     el.quizTray.classList.add("hidden");
+    el.diffToolbar.classList.add("hidden");
+    el.slotProgressText.textContent = "STUDY SPECIFICATION";
+
     el.recipeList.innerHTML = drink.ingredients.map(ing => `
         <li class="recipe-item">
             <span>${ing}</span>
-            <span style="color: var(--gold-primary);">✓</span>
+            <span style="color: var(--gold-primary); font-family: var(--font-mono);">CANONICAL</span>
         </li>
     `).join("");
 }
 
-function setupQuiz(drink) {
+/* ==========================================================================
+   DYNAMIC QUIZ ENGINE (EASY, MEDIUM, HARD)
+   ========================================================================== */
+function setupQuizRound(drink) {
     el.quizTray.classList.remove("hidden");
-    el.quizPrompt.textContent = "Identify the missing ingredient:";
+    el.diffToolbar.classList.remove("hidden");
+    solvedIngredientsList = [];
 
-    // Pick 1 ingredient to hide
-    const hiddenIndex = Math.floor(Math.random() * drink.ingredients.length);
-    targetMissingIngredient = drink.ingredients[hiddenIndex];
+    const totalIngs = drink.ingredients.length;
+    let missingCount = 1;
 
-    // Render list with hidden item
-    el.recipeList.innerHTML = drink.ingredients.map((ing, idx) => {
-        if (idx === hiddenIndex) {
-            return `<li class="recipe-item target-hidden" id="masked-slot">? [ TAP BELOW TO COMPLETE ]</li>`;
+    if (difficulty === "easy") {
+        missingCount = 1;
+        el.quizPrompt.textContent = "Select the single missing ingredient:";
+    } else if (difficulty === "medium") {
+        missingCount = Math.min(3, Math.max(2, totalIngs - 1));
+        el.quizPrompt.textContent = `Reconstruct recipe: tap missing elements:`;
+    } else if (difficulty === "hard") {
+        missingCount = totalIngs; // 100% blind recipe test!
+        el.quizPrompt.textContent = `BLIND CHALLENGE: Build full recipe from backbar:`;
+    }
+
+    // Pick random indices to obscure
+    const shuffledIndices = drink.ingredients.map((_, i) => i).sort(() => Math.random() - 0.5);
+    const chosenHiddenIndices = new Set(shuffledIndices.slice(0, missingCount));
+
+    missingIngredientsList = [];
+    drink.ingredients.forEach((item, idx) => {
+        if (chosenHiddenIndices.has(idx)) {
+            missingIngredientsList.push(item);
         }
-        return `<li class="recipe-item"><span>${ing}</span></li>`;
-    }).join("");
+    });
 
-    // Generate 4 options (1 correct + 3 random decoys)
-    const decoys = [...drink.decoys].sort(() => Math.random() - 0.5).slice(0, 3);
-    const options = [targetMissingIngredient, ...decoys].sort(() => Math.random() - 0.5);
+    updateRecipeSlots();
+    generateDynamicChoiceTray(drink);
+}
+
+function updateRecipeSlots() {
+    const drink = filteredDrinks[currentIndex];
+    el.slotProgressText.textContent = `${solvedIngredientsList.length} / ${missingIngredientsList.length + solvedIngredientsList.length} FOUND`;
+
+    el.recipeList.innerHTML = drink.ingredients.map((item) => {
+        const isCurrentlyMissing = missingIngredientsList.includes(item);
+        const isSolved = solvedIngredientsList.includes(item);
+
+        if (isCurrentlyMissing) {
+            return `<li class="recipe-item target-hidden" data-ingredient="${item}">? [ HIDDEN INGREDIENT ]</li>`;
+        } else if (isSolved) {
+            return `<li class="recipe-item revealed"><span>✓ ${item}</span><span style="color: var(--green-correct);">SOLVED</span></li>`;
+        } else {
+            return `<li class="recipe-item"><span>${item}</span></li>`;
+        }
+    }).join("");
+}
+
+function generateDynamicChoiceTray(drink) {
+    // Generate decoy count based on difficulty
+    let decoyCount = 3;
+    if (difficulty === "medium") decoyCount = 3;
+    if (difficulty === "hard") decoyCount = 4;
+
+    const availableDecoys = [...drink.decoys].sort(() => Math.random() - 0.5).slice(0, decoyCount);
+    
+    // Combine all missing items with decoys and randomize
+    const pool = [...missingIngredientsList, ...availableDecoys].sort(() => Math.random() - 0.5);
 
     el.choicesGrid.innerHTML = "";
-    options.forEach(opt => {
+    pool.forEach(optionText => {
         const btn = document.createElement("button");
         btn.className = "choice-btn";
-        btn.textContent = opt;
-        btn.addEventListener("click", () => handleGuess(opt, btn));
+        btn.textContent = optionText;
+        btn.addEventListener("click", () => handleOptionTap(optionText, btn));
         el.choicesGrid.appendChild(btn);
     });
 }
 
-function handleGuess(selectedText, buttonEl) {
-    if (isSolved) return;
+function handleOptionTap(selectedText, buttonEl) {
+    if (missingIngredientsList.includes(selectedText)) {
+        // CORRECT GUESS
+        AudioSFX.successSlot();
+        buttonEl.classList.add("correct-used");
 
-    if (selectedText === targetMissingIngredient) {
-        // CORRECT
-        isSolved = true;
-        streak++;
-        el.streakVal.textContent = streak;
-        AudioSFX.success();
+        // Move item from missing to solved
+        missingIngredientsList = missingIngredientsList.filter(item => item !== selectedText);
+        solvedIngredientsList.push(selectedText);
 
-        buttonEl.classList.add("correct");
+        updateRecipeSlots();
 
-        const slot = document.getElementById("masked-slot");
-        if (slot) {
-            slot.className = "recipe-item revealed";
-            slot.textContent = `✓ ${targetMissingIngredient}`;
+        // Check if round complete
+        if (missingIngredientsList.length === 0) {
+            streak++;
+            el.streakVal.textContent = streak;
+            AudioSFX.masterComplete();
+
+            // Short delight delay before flipping to back
+            setTimeout(() => {
+                el.flipper.classList.add("flipped");
+            }, 700);
         }
-
-        // Auto flip to back after short delight delay
-        setTimeout(() => {
-            el.flipper.classList.add("flipped");
-        }, 650);
-
     } else {
-        // WRONG
+        // INCORRECT GUESS
         streak = 0;
         el.streakVal.textContent = "0";
         AudioSFX.error();
 
-        buttonEl.classList.add("wrong");
-        setTimeout(() => buttonEl.classList.remove("wrong"), 600);
+        buttonEl.classList.add("wrong-pulse");
+        setTimeout(() => buttonEl.classList.remove("wrong-pulse"), 450);
     }
 }
 
 /* ==========================================================================
-   Event Listeners & Gestures
+   EVENT HANDLERS & NAVIGATION
    ========================================================================== */
 function bindEvents() {
-    // Navigation
+    // Deck Navigation
     el.btnNext.addEventListener("click", () => {
         AudioSFX.tap();
-        const next = (currentIndex + 1) % DRINKS.length;
-        renderDrink(next);
+        currentIndex = (currentIndex + 1) % filteredDrinks.length;
+        renderCurrentDrink();
     });
 
     el.btnPrev.addEventListener("click", () => {
         AudioSFX.tap();
-        const prev = (currentIndex - 1 + DRINKS.length) % DRINKS.length;
-        renderDrink(prev);
+        currentIndex = (currentIndex - 1 + filteredDrinks.length) % filteredDrinks.length;
+        renderCurrentDrink();
     });
 
-    // Flip Controls
+    // 3D Flip
     el.btnFlipFront.addEventListener("click", () => {
         AudioSFX.tap();
         el.flipper.classList.toggle("flipped");
     });
-
     el.btnFlipBack.addEventListener("click", () => {
         AudioSFX.tap();
         el.flipper.classList.remove("flipped");
     });
 
-    // Sound Toggle
+    // Sound
     el.btnSound.addEventListener("click", () => {
         soundOn = !soundOn;
         el.soundIcon.textContent = soundOn ? "🔊" : "🔇";
         if (soundOn) AudioSFX.tap();
     });
 
-    // Mode Toggle
+    // Mode Toggle (Quiz / Study)
     el.btnModeQuiz.addEventListener("click", () => {
         if (mode === "quiz") return;
         mode = "quiz";
         el.btnModeQuiz.classList.add("active");
         el.btnModeStudy.classList.remove("active");
         AudioSFX.tap();
-        renderDrink(currentIndex);
+        renderCurrentDrink();
     });
 
     el.btnModeStudy.addEventListener("click", () => {
@@ -672,13 +569,58 @@ function bindEvents() {
         el.btnModeStudy.classList.add("active");
         el.btnModeQuiz.classList.remove("active");
         AudioSFX.tap();
-        renderDrink(currentIndex);
+        renderCurrentDrink();
     });
 
-    // Quick Jump Modal
+    // Difficulty Selector
+    document.querySelectorAll(".diff-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".diff-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            difficulty = btn.dataset.diff;
+            AudioSFX.tap();
+            renderCurrentDrink();
+        });
+    });
+
+    // Pedagogical Hint Button
+    el.btnHint.addEventListener("click", () => {
+        if (missingIngredientsList.length === 0) return;
+        AudioSFX.tap();
+        const hintTarget = missingIngredientsList[0];
+        const firstLetter = hintTarget.charAt(0);
+        el.quizPrompt.textContent = `💡 HINT: Starts with "${firstLetter}..." (${hintTarget.length} letters)`;
+    });
+
+    // Filter Modal Open & Close
+    el.btnFilterToggle.addEventListener("click", () => {
+        AudioSFX.tap();
+        el.filterModal.classList.add("open");
+    });
+
+    el.btnCloseFilter.addEventListener("click", () => {
+        el.filterModal.classList.remove("open");
+    });
+
+    el.btnApplyFilters.addEventListener("click", () => {
+        AudioSFX.tap();
+        el.filterModal.classList.remove("open");
+    });
+
+    // Filter Chip Taps
+    document.querySelectorAll(".tag-chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+            document.querySelectorAll(".tag-chip").forEach(c => c.classList.remove("active"));
+            chip.classList.add("active");
+            AudioSFX.tap();
+            applyFilter(chip.dataset.filter);
+        });
+    });
+
+    // All Specimens Quick Jump Modal
     el.btnSearchModal.addEventListener("click", () => {
         AudioSFX.tap();
-        renderModalList();
+        renderSpecimensList();
         el.searchModal.classList.add("open");
     });
 
@@ -686,7 +628,7 @@ function bindEvents() {
         el.searchModal.classList.remove("open");
     });
 
-    // Swipe Navigation for touch screens
+    // Touch Swipe Gestures
     let startX = 0;
     let startY = 0;
     el.flipper.addEventListener("touchstart", (e) => {
@@ -697,7 +639,6 @@ function bindEvents() {
     el.flipper.addEventListener("touchend", (e) => {
         const diffX = e.changedTouches[0].clientX - startX;
         const diffY = e.changedTouches[0].clientY - startY;
-
         if (Math.abs(diffX) > 60 && Math.abs(diffY) < 45) {
             if (diffX < 0) el.btnNext.click();
             else el.btnPrev.click();
@@ -705,25 +646,33 @@ function bindEvents() {
     }, { passive: true });
 }
 
-function renderModalList() {
-    el.modalDrinksList.innerHTML = DRINKS.map((d, i) => `
-        <button class="modal-item-btn ${i === currentIndex ? "current" : ""}" data-index="${i}">
-            <span>${d.name}</span>
-            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-primary);">${d.category}</span>
+function renderSpecimensList() {
+    el.modalTotalCount.textContent = filteredDrinks.length;
+    el.modalDrinksList.innerHTML = filteredDrinks.map((d, idx) => `
+        <button class="modal-item-btn ${idx === currentIndex ? 'current' : ''}" data-index="${idx}">
+            <div>
+                <strong>${d.name}</strong>
+                ${d.isSignature ? '<span style="color:#ef4444; font-size:0.7rem; margin-left:4px;">✦ HOUSE</span>' : ''}
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-primary);">
+                ${d.glassware}
+            </span>
         </button>
     `).join("");
 
     el.modalDrinksList.querySelectorAll(".modal-item-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-            const idx = parseInt(btn.dataset.index, 10);
-            renderDrink(idx);
+            currentIndex = parseInt(btn.dataset.index, 10);
+            renderCurrentDrink();
             el.searchModal.classList.remove("open");
         });
     });
 }
 
-// Initial launch
+/* ==========================================================================
+   LAUNCH APPLICATION
+   ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
     bindEvents();
-    renderDrink(0);
+    loadDrinksDatabase();
 });

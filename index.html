@@ -3,85 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#0d0c0a">
-    <title>SPECS // Cocktail Deck</title>
+    <meta name="theme-color" content="#0a0908">
+    <title>SPECS // Speakeasy Masterclass</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="app-shell">
         
-        <!-- HEADER -->
+        <!-- TOP NAVIGATION -->
         <header class="top-nav">
             <div class="nav-brand">
-                <span class="logo">SPECS</span>
-                <span class="drink-count" id="card-index-indicator">01 / 37</span>
+                <span class="brand-crest">✦</span>
+                <div>
+                    <span class="logo">SPECS</span>
+                    <div class="deck-filter-tag" id="current-filter-display">ALL COCKTAILS</div>
+                </div>
             </div>
 
             <div class="nav-controls">
-                <!-- Mode Toggle -->
+                <!-- Filter Toggle Pill -->
+                <button id="btn-filter-toggle" class="dock-badge filter-badge">
+                    <span>FILTERS</span>
+                    <span class="badge-dot" id="filter-active-dot"></span>
+                </button>
+
+                <!-- Study / Quiz Toggle -->
                 <div class="mode-pill">
                     <button id="btn-mode-quiz" class="mode-btn active">QUIZ</button>
                     <button id="btn-mode-study" class="mode-btn">STUDY</button>
                 </div>
 
-                <!-- Streak & Sound -->
-                <div class="streak-pill" id="streak-badge" title="Current streak">
+                <!-- Streak Counter -->
+                <div class="streak-pill" id="streak-badge" title="Mastery Streak">
                     🔥 <span id="streak-val">0</span>
                 </div>
+
+                <!-- Sound FX -->
                 <button id="btn-sound" class="icon-btn" aria-label="Toggle Sound">
                     <span id="sound-icon">🔊</span>
                 </button>
             </div>
         </header>
 
-        <!-- MAIN CARD VIEW -->
+        <!-- DIFFICULTY SELECTOR TOOLBAR -->
+        <div class="difficulty-toolbar" id="diff-toolbar">
+            <div class="diff-label">DIFFICULTY:</div>
+            <div class="diff-buttons">
+                <button class="diff-btn active" data-diff="easy">
+                    EASY <span class="diff-sub">1 MISSING</span>
+                </button>
+                <button class="diff-btn" data-diff="medium">
+                    MED <span class="diff-sub">3 MISSING</span>
+                </button>
+                <button class="diff-btn" data-diff="hard">
+                    HARD <span class="diff-sub">ALL BLIND</span>
+                </button>
+            </div>
+            <button id="btn-hint" class="hint-btn" title="Get a hint">💡 HINT</button>
+        </div>
+
+        <!-- MAIN CARD CONTAINER -->
         <main class="deck-container">
             <div class="card-flipper" id="card-flipper">
                 
-                <!-- FRONT FACE -->
+                <!-- CARD FRONT (SPECIFICATION) -->
                 <section class="card-face card-front" id="card-front">
+                    
+                    <!-- TOP CARD META & GLASSWARE GRAPHIC -->
                     <div class="card-header">
-                        <div class="meta-tags">
-                            <span class="tag" id="card-category">PRE-PROHIBITION</span>
-                            <span class="tag-sub" id="card-era">Circa 1880s</span>
+                        <div class="header-left">
+                            <div class="meta-tags">
+                                <span class="tag" id="card-category">CLASSIC</span>
+                                <span class="tag-signature hidden" id="card-sig-badge">HOUSE SIGNATURE</span>
+                                <span class="tag-sub" id="card-era">Circa 1880s</span>
+                            </div>
+                            <h1 class="drink-title" id="card-title">Old Fashioned</h1>
                         </div>
-                        <h1 class="drink-title" id="card-title">Old Fashioned</h1>
-                        <div class="spec-badges">
-                            <div class="spec-badge">
-                                <span class="badge-label">GLASS</span>
-                                <strong id="card-glass">Rocks</strong>
-                            </div>
-                            <div class="spec-badge">
-                                <span class="badge-label">METHOD</span>
-                                <strong id="card-method">Stirred</strong>
-                            </div>
+
+                        <!-- Bespoke Glassware SVG Icon Display -->
+                        <div class="glass-art-emblem" id="glass-graphic-container" title="Glassware">
+                            <!-- SVG injected dynamically -->
                         </div>
                     </div>
 
-                    <!-- INGREDIENTS AREA -->
+                    <!-- SPECIFICATION BADGES -->
+                    <div class="spec-badges">
+                        <div class="spec-badge">
+                            <span class="badge-label">VESSEL</span>
+                            <strong id="card-glass">Rocks / Lowball</strong>
+                        </div>
+                        <div class="spec-badge">
+                            <span class="badge-label">METHOD</span>
+                            <strong id="card-method">Stirred over Ice</strong>
+                        </div>
+                    </div>
+
+                    <!-- INTERACTIVE RECIPE SLOT CONTAINER -->
                     <div class="recipe-container">
-                        <div class="section-heading">SPECIFICATION</div>
+                        <div class="section-heading-row">
+                            <span class="section-heading">RECIPE SPECIFICATION</span>
+                            <span class="slot-progress" id="slot-progress-text"></span>
+                        </div>
                         <ul class="recipe-list" id="recipe-list">
-                            <!-- Injected via JavaScript -->
+                            <!-- Injected dynamically -->
                         </ul>
                     </div>
 
-                    <!-- FLIP HINT / TOGGLE -->
+                    <!-- FLIP PROMPT BAR -->
                     <button class="flip-action-bar" id="btn-flip-front">
-                        <span>TAP FOR PEDIGREE & PRO-TIP</span>
+                        <span>TAP FOR PEDIGREE, MEASURES & PRO-TIP</span>
                         <span class="flip-arrow">↺</span>
                     </button>
                 </section>
 
-                <!-- BACK FACE -->
+                <!-- CARD BACK (MASTER DOSSIER) -->
                 <section class="card-face card-back" id="card-back">
                     <div class="card-header back-header">
                         <div>
-                            <span class="tag back-tag">MASTER DOSSIER</span>
+                            <span class="tag back-tag">CANONICAL DOSSIER</span>
                             <h2 class="drink-title small" id="back-title">Old Fashioned</h2>
                         </div>
                         <button class="icon-btn-text" id="btn-flip-back">
@@ -92,25 +135,25 @@
                     <div class="dossier-body">
                         <!-- Tasting Profile -->
                         <div class="dossier-section">
-                            <div class="section-heading">TASTING PROFILE</div>
+                            <div class="section-heading">PALATE PROFILE</div>
                             <div class="tasting-tags" id="back-tasting"></div>
                         </div>
 
-                        <!-- Full Recipe with Exact Specs -->
+                        <!-- Canonical Proportions -->
                         <div class="dossier-section">
-                            <div class="section-heading">CANONICAL MEASURES</div>
+                            <div class="section-heading amber">CANONICAL FORMULATION</div>
                             <div class="canonical-box" id="back-canonical"></div>
                         </div>
 
                         <!-- Pro Tip -->
                         <div class="dossier-section tip-box">
-                            <div class="section-heading amber">BARTENDER'S PRO-TIP</div>
+                            <div class="section-heading gold">BARTENDER'S PRO-TIP</div>
                             <p class="body-text" id="back-protip"></p>
                         </div>
 
                         <!-- Historical Lore -->
                         <div class="dossier-section">
-                            <div class="section-heading">HISTORICAL ORIGIN</div>
+                            <div class="section-heading">PEDIGREE & PROVENANCE</div>
                             <p class="body-text" id="back-history"></p>
                         </div>
                     </div>
@@ -119,25 +162,27 @@
             </div>
         </main>
 
-        <!-- BOTTOM INTERACTION AREA -->
+        <!-- BOTTOM INTERACTION DOCK -->
         <footer class="bottom-dock">
             
-            <!-- QUIZ CHOICES (Visible in Quiz Mode) -->
+            <!-- QUIZ OPTION TRAY -->
             <div class="quiz-tray" id="quiz-tray">
-                <div class="quiz-prompt" id="quiz-prompt">Identify the missing ingredient:</div>
+                <div class="quiz-header-status">
+                    <span class="quiz-prompt" id="quiz-prompt">Identify the missing ingredient:</span>
+                </div>
                 <div class="choices-grid" id="choices-grid">
-                    <!-- 4 Large Tappable Option Buttons -->
+                    <!-- Dynamic choice buttons inserted here -->
                 </div>
             </div>
 
-            <!-- DECK NAVIGATION -->
+            <!-- NAVIGATION CONTROLS -->
             <div class="nav-bar">
                 <button class="nav-btn" id="btn-prev" aria-label="Previous Drink">
                     <span class="nav-icon">‹</span> PREV
                 </button>
 
                 <button class="nav-btn center-action" id="btn-search-modal">
-                    ALL SPECIMENS ☰
+                    INDEX <span class="counter-badge" id="card-index-indicator">01/17</span>
                 </button>
 
                 <button class="nav-btn" id="btn-next" aria-label="Next Drink">
@@ -146,15 +191,54 @@
             </div>
         </footer>
 
-        <!-- QUICK JUMP MODAL -->
+        <!-- ON-THE-FLY FILTER DRAWER / MODAL -->
+        <div class="modal-overlay" id="filter-modal">
+            <div class="modal-card filter-card">
+                <div class="modal-header">
+                    <h3>COLLECTION FILTER</h3>
+                    <button class="icon-btn" id="btn-close-filter">✕</button>
+                </div>
+                
+                <p class="filter-instruction">Filter cocktails on the fly without breaking your streak:</p>
+                
+                <div class="filter-groups">
+                    <div class="filter-group-label">LINEAGE</div>
+                    <div class="tag-chips-wrap">
+                        <button class="tag-chip active" data-filter="all">All Cocktails</button>
+                        <button class="tag-chip" data-filter="classic">Classics Only</button>
+                        <button class="tag-chip signature-chip" data-filter="signature">House Signatures ✦</button>
+                    </div>
+
+                    <div class="filter-group-label">SPIRIT BASE</div>
+                    <div class="tag-chips-wrap">
+                        <button class="tag-chip" data-filter="whiskey">Whiskey / Bourbon</button>
+                        <button class="tag-chip" data-filter="gin">Gin</button>
+                        <button class="tag-chip" data-filter="agave">Agave / Mezcal</button>
+                        <button class="tag-chip" data-filter="rum">Rum</button>
+                        <button class="tag-chip" data-filter="vodka">Vodka</button>
+                    </div>
+
+                    <div class="filter-group-label">PROFILE</div>
+                    <div class="tag-chips-wrap">
+                        <button class="tag-chip" data-filter="spirit-forward">Spirit-Forward</button>
+                        <button class="tag-chip" data-filter="sour">Sour / Citrus</button>
+                        <button class="tag-chip" data-filter="aperitivo">Aperitivo</button>
+                    </div>
+                </div>
+
+                <button class="action-btn-gold" id="btn-apply-filters">APPLY FILTER</button>
+            </div>
+        </div>
+
+        <!-- SPECIMEN QUICK JUMP MODAL -->
         <div class="modal-overlay" id="search-modal">
             <div class="modal-card">
                 <div class="modal-header">
-                    <h3>SELECT DRINK (37)</h3>
+                    <h3>ACTIVE COCKTAILS (<span id="modal-total-count">0</span>)</h3>
                     <button class="icon-btn" id="btn-close-modal">✕</button>
                 </div>
                 <div class="modal-list" id="modal-drinks-list">
-                    <!-- 37 items injected via JS -->
+                    <!-- Injected via script -->
                 </div>
             </div>
         </div>
